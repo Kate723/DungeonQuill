@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DungeonQuill", "DungeonQuill\DungeonQuill.vcxproj", "{B48BAF65-268F-4CE1-B6C7-0D77BA5579D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B48BAF65-268F-4CE1-B6C7-0D77BA5579D8}.Debug|x64.ActiveCfg = Debug|x64
+		{B48BAF65-268F-4CE1-B6C7-0D77BA5579D8}.Debug|x64.Build.0 = Debug|x64
+		{B48BAF65-268F-4CE1-B6C7-0D77BA5579D8}.Release|x64.ActiveCfg = Release|x64
+		{B48BAF65-268F-4CE1-B6C7-0D77BA5579D8}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC33E127-2F81-4BF0-8154-E6C61D1F7BA8}
+	EndGlobalSection
+EndGlobal

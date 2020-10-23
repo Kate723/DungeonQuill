@@ -1,0 +1,1 @@
+#include "CombatPiece.h"

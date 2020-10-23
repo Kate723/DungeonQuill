@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/DungeonQuill"/>
+    <qresource prefix="/qss">
+        <file>Source/AMOLED.qss</file>
+        <file>Source/Aqua.qss</file>
+        <file>Source/ConsoleStyle.qss</file>
+        <file>Source/ElegantDark.qss</file>
+        <file>Source/ManjaroMix.qss</file>
+        <file>Source/MaterialDark.qss</file>
+        <file>Source/Ubuntu.qss</file>
+    </qresource>
+</RCC>
