@@ -1,4 +1,4 @@
 ﻿#include "BasicInfo.h"
 
-BasicInfo::BasicInfo(int id,std::string name, std::string remarks):
-	id(id), name(name), remarks(remarks) {}
+BasicInfo::BasicInfo(int tid,std::string tname, std::string tremarks):
+	id(tid), name(tname), remarks(tremarks) {}

@@ -14,7 +14,7 @@ enum Shape {					//形状
 };
 
 enum EquipemntType {			//装备类型
-	OTHER,
+	OTHER_E,
 	WEAPON,
 	AMOUR,
 	TOOL
@@ -50,12 +50,12 @@ enum WeaponRange {				//武器范围
 };
 
 enum Size {						//体型
-	Tiny,
-	Small,
-	Medium,
-	Large,
-	Huge,
-	Gargantuan
+	TINY,
+	SMALL,
+	MEDIUM,
+	LARGE,
+	HUGE_S,
+	GARGANTUAN
 };
 
 enum CharacterType {			//角色类型
@@ -65,34 +65,34 @@ enum CharacterType {			//角色类型
 };
 
 enum CombatCondition {			//人物状态
-	Norm,
-	Dead,
-	NeedDeathST,
-	Stable
+	NORM,
+	DEAD,
+	NEED_DEATH_ST,
+	STABLE
 };
 
 enum Aligment {					//阵营
-	LawfulGood,
-	NeutralGood,
-	ChaoticGood,
-	LawfulNeutral,
-	TrueNeutral,
-	ChaoticNeutral,
-	LawfulEvil,
-	NeutralEvil,
-	ChaoticEvil
+	LG,
+	NG,
+	CG,
+	LN,
+	TN,
+	CN,
+	LE,
+	NE,
+	CE
 };
 
 enum AbilityType {				//属性类型
-	Other,
-	All,
-	None,
-	Strength,
-	Dexterity,
-	Constitution,
-	Intelligence,
-	Wisdom,
-	Charisma
+	OTHER,
+	ALL,
+	NONE,
+	STRENGTH,
+	DEXTERITY,
+	CONSTITUTION,
+	INTELLIGENCE,
+	WISDOM,
+	CHARISMA
 };
 
 enum Skill {					//技能
@@ -129,8 +129,8 @@ enum DamageType {				//伤害类型
 };
 
 enum AttackRollType {			//攻击检定类型
-	AttackRoll,
-	SavingThrow
+	ATTACKROLL,
+	SAVINGTHROW
 };
 
 enum STSuccess {				//豁免成功
