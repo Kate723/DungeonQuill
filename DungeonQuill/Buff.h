@@ -5,8 +5,11 @@
 */
 
 #pragma once
+#include "EnumType.h"
 #include "BasicInfo.h"
-#include "CombatCharacter.h"
+//#include "CombatCharacter.h"
+
+class CombatCharacter;
 
 class Buff
 {
@@ -17,6 +20,6 @@ class Buff
 	AbilityType dependAbility;				//依赖检定属性
 
 public:
-	Buff(BasicInfo* _buffInfo = NULL, CombatCharacter* _sourceCharacter = NULL);//构造函数
+	Buff(BasicInfo* _buffInfo, CombatCharacter* _sourceCharacter);//构造函数
 };
 
