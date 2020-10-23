@@ -4,6 +4,7 @@
 //创建数据库
 void DataManager::createDb()
 {
+    //法术数据库
     QSqlDatabase spelldb = QSqlDatabase::addDatabase("QSQLITE");
     spelldb.setDatabaseName("spell.db");
     if (!spelldb.open())
@@ -19,7 +20,7 @@ void DataManager::createDb()
         "attackRollNeed bool, savingThrowNeed bool, savingThrowTypeID int, damageType int, DiceRollTypediceNum int, DiceRollTypediceNumDependence int,"
         "DiceRollTypediceSideNum int, DamageSpellNum int)");
    
-    //吟游诗人
+    //吟游诗人表
     query.exec("create table spellBard (ID  int primary key)");
     
     query.prepare("insert into spellBard values (?)");
@@ -27,7 +28,15 @@ void DataManager::createDb()
     IDList << 1002<<1001;
     query.addBindValue(IDList);
     query.execBatch();
-    
+    spelldb.close();
+
+    //冒险者数据库
+    QSqlDatabase advdb = QSqlDatabase::addDatabase("QSQLITE");
+    spelldb.setDatabaseName("adv.db");
+    if (!advdb.open())
+        exit(-1);
+    QSqlQuery query;
+    query.exec("create table Adventurer()");
 
     query.exec("select * from spellBard");
     while (query.next())
