@@ -13,7 +13,7 @@
 
 struct AbilityIncrease
 {
-	AbilityScore::AbilityType increaseType;
+	AbilityType increaseType;
 	int increase;
 };
 
