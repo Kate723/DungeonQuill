@@ -43,7 +43,7 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtSql;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Software\Qt\5.14.2\msvc2017_64\include\QtSql;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
@@ -121,6 +121,7 @@
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Race.cpp" />
     <ClCompile Include="Spell.cpp" />
+    <ClCompile Include="SpellBotton.cpp" />
     <ClCompile Include="SpellComponments.cpp" />
     <ClCompile Include="SpellDisplay.cpp" />
     <ClCompile Include="Wealth.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="BasicInfo.h" />
     <ClInclude Include="Buff.h" />
     <ClInclude Include="CharacterDetails.h" />
+    <QtMoc Include="SpellBotton.h" />
     <ClInclude Include="Wealth.h" />
     <ClInclude Include="Weapon.h" />
     <QtMoc Include="SpellDisplay.h" />

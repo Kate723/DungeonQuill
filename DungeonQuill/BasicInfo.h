@@ -14,7 +14,6 @@ public:
 	std::string name;					//名称
 	std::string remarks;				//备注
 
-	BasicInfo(int tid, std::string tname = "我觉得这里应该有名字。", std::string tremarks = "不说点什么吗？"):
-	id(tid),name(tname),remarks(tremarks){}		//构造函数
+	BasicInfo(int tid, std::string tname = "我觉得这里应该有名字。", std::string tremarks = "不说点什么吗？");		//构造函数
 };
 

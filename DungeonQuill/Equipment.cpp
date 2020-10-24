@@ -4,7 +4,7 @@ Equipment::Equipment(int ID, std::string name, std::string remark, EquipemntType
 	equipmentInfo(ID,name,remark), equipmentType(type){}
 
 int Equipment::getID() {
-	return this->equipmentInfo.getID();
+	return this->equipmentInfo.id;
 }
 
 std::string Equipment::getName() {

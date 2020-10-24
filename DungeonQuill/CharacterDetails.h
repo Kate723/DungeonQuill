@@ -6,11 +6,14 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "EnumType.h"
+
 struct Height{
 	int feet, inch;
 	Height(int tfeet, int tinch):
 	feet(tfeet),inch(tinch){}
 };
+
 struct Characteristics {
 	std::string trait[3];	//特点
 	std::string ideal;		//理想
@@ -18,7 +21,8 @@ struct Characteristics {
 	std::string flaw;		//缺点
 	Characteristics(std::string tideal,	std::string tbond,std::string tflaw):
 	ideal(tideal),bond(tbond),flaw(tflaw){}
-};			
+};
+
 class CharacterDetails
 {
 	bool sex;					//0为男性，1为女性
