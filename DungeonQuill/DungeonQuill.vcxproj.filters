@@ -28,6 +28,9 @@
     <Filter Include="Header Files\Character">
       <UniqueIdentifier>{4ace83d7-7ed5-4cc8-8488-c389cc350c48}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ui">
+      <UniqueIdentifier>{27f1e29e-3346-4dfa-934e-f6c570813619}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="DungeonQuill.qrc">
@@ -36,9 +39,6 @@
     <QtUic Include="DungeonQuill.ui">
       <Filter>Resource Files</Filter>
     </QtUic>
-    <QtMoc Include="DungeonQuill.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <ClCompile Include="DungeonQuill.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -132,6 +132,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpellBotton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -234,10 +237,16 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CharacterDisplay.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ui</Filter>
     </QtMoc>
     <QtMoc Include="SpellDisplay.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ui</Filter>
+    </QtMoc>
+    <QtMoc Include="DungeonQuill.h">
+      <Filter>Header Files\ui</Filter>
+    </QtMoc>
+    <QtMoc Include="SpellBotton.h">
+      <Filter>Header Files\ui</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
-#include "DataManager.h"
+ï»¿#include "DataManager.h"
 #include <QSqlError>
 #include <QDebug>
-//´´½¨Êý¾Ý¿â
+//åˆ›å»ºæ•°æ®åº“
 void DataManager::createDb()
 {
     QSqlDatabase spelldb = QSqlDatabase::addDatabase("QSQLITE");
@@ -11,7 +11,7 @@ void DataManager::createDb()
    
     QSqlQuery query;
 
-    //·¨Êõ×Ü±í
+    //æ³•æœ¯æ€»è¡¨
     query.exec("create table DamageSpell(ID  int primary key, nameCh varchar(20), nameEn varchar(20), schoolID int, level int, isRitual bool,"
         "CastingTimelength int, CastingTimeremarks varchar(20), range int, isSelfOnly bool, SpellComponmentsverbalNeed bool,"
         "SpellComponmentssomaticNeed bool, SpellComponmentsmaterialNeed bool, SpellComponmentsremark varchar(20), DurationconcentrationNeed bool,"
@@ -19,7 +19,7 @@ void DataManager::createDb()
         "attackRollNeed bool, savingThrowNeed bool, savingThrowTypeID int, damageType int, DiceRollTypediceNum int, DiceRollTypediceNumDependence int,"
         "DiceRollTypediceSideNum int, DamageSpellNum int)");
    
-    //Ò÷ÓÎÊ«ÈË
+    //åŸæ¸¸è¯—äºº
     query.exec("create table spellBard (ID  int primary key)");
     
     query.prepare("insert into spellBard values (?)");
@@ -63,7 +63,7 @@ void DataManager::download()
 
 
 /*
-//²éÑ¯
+//æŸ¥è¯¢
 void DungeonQuill::queryClick()
 {
     int qlevel = ui.comboBox_level->currentIndex();
