@@ -1,62 +1,82 @@
-/*´´½¨ÈÕÆÚ£º2020/9/18
-* ÀàÃû³Æ£º·¨Êõ
-* ÀàÓÃÍ¾£º´æ´¢·¨ÊõÊı¾İ£¬ÔÚ½¨Á¢½ÇÉ«ÓëÕ½¶·Á÷³ÌÖĞÌá¹©Êı¾İ²éÑ¯
-* ×÷Õß£ºÎâÍ®
+ï»¿/*åˆ›å»ºæ—¥æœŸï¼š2020/9/18
+* ç±»åç§°ï¼šæ³•æœ¯
+* ç±»ç”¨é€”ï¼šå­˜å‚¨æ³•æœ¯æ•°æ®ï¼Œåœ¨å»ºç«‹è§’è‰²ä¸æˆ˜æ–—æµç¨‹ä¸­æä¾›æ•°æ®æŸ¥è¯¢
+* ä½œè€…ï¼šå´å½¤
 */
 
 #include <string>
 #include <vector>
+#include "EnumType.h"
 #include "SpellComponments.h"
 #include "Area.h"
 #include "DiceRollType.h"
 #include "Adventurer.h"
 
 #pragma once
-struct CastingTime			//Ê©·¨Ê±¼ä
+struct CastingTime			//æ–½æ³•æ—¶é—´
 {
-	int length;				//³¤¶È±ê¼Ç£¬0£º1·´Ó¦£¬1£º1¸½Ôù£¬2£º1¶¯×÷£¬3£º¸ü³¤
-	std::string remarks;	//±¸×¢£¬³¤ÓÚ1¶¯×÷½«±»±ê¼ÇÔÚÕâÀï
-	CastingTime(int l, std::string& r) :
-		length(l), remarks(r) {}
+	int length;				//é•¿åº¦æ ‡è®°ï¼Œ0ï¼š1ååº”ï¼Œ1ï¼š1é™„èµ ï¼Œ2ï¼š1åŠ¨ä½œï¼Œ3ï¼šæ›´é•¿
+	std::string remarks;	//å¤‡æ³¨ï¼Œé•¿äº1åŠ¨ä½œå°†è¢«æ ‡è®°åœ¨è¿™é‡Œ
+	CastingTime(int length, std::string& remark) :
+		length(length), remarks(remark) {}
 
 };
 
-struct Duration				//·¨Êõ³ÖĞøÊ±¼ä
+struct Duration				//æ³•æœ¯æŒç»­æ—¶é—´
 {
-	bool concentrationNeed;	//ÊÇ·ñĞèÒª×¨×¢
-	int time;				//³ÖĞøÊ±¼ä£¬0£º¼´Ê±£¬1£º1ÂÖ£¬2£º¸ü³¤
-	std::string remarks;	//±¸×¢£¬±ê¼Ç¸ü³¤Ê±¼ä
-	Duration(bool c, int t, std::string& r) :
-		concentrationNeed(c), time(t), remarks(r) {}
+	bool concentrationNeed;	//æ˜¯å¦éœ€è¦ä¸“æ³¨
+	int time;				//æŒç»­æ—¶é—´ï¼Œ0ï¼šå³æ—¶ï¼Œ1ï¼š1è½®ï¼Œ2ï¼šæ›´é•¿
+	std::string remarks;	//å¤‡æ³¨ï¼Œæ ‡è®°æ›´é•¿æ—¶é—´
+	Duration(bool concentarte, int time, std::string& remark) :
+		concentrationNeed(concentarte), time(time), remarks(remark) {}
 };
 
 class Spell
 {
-	int ID;						//·¨Êõ±àºÅ
-	std::string nameCh, nameEn;	//·¨ÊõÖĞÓ¢ÎÄÃû³Æ
-	int schoolID;				//ËùÊôÑ§ÅÉ±àºÅ
-	int level;					//·¨Êõ»·½×
-	bool isRitual;				//ÊÇ·ñÎªÒÇÊ½·¨Êõ
+	int ID;						//æ³•æœ¯ç¼–å·
+	std::string nameCh, nameEn;	//æ³•æœ¯ä¸­è‹±æ–‡åç§°
+	int schoolID;				//æ‰€å±å­¦æ´¾ç¼–å·
+	int level;					//æ³•æœ¯ç¯é˜¶
+	bool isRitual;				//æ˜¯å¦ä¸ºä»ªå¼æ³•æœ¯
 
-	CastingTime cT;				//Ê©·¨Ê±¼ä
+	CastingTime castingTime;				//æ–½æ³•æ—¶é—´
 
-	int range;					//Ê©·¨¾àÀë£¬µ¥Î»Îª³ß£¬0¼´Îª´¥¼°»ò×ÔÉí
-	bool isSelfOnly;			//ÊÇ·ñÖ»ÄÜ¶Ô×ÔÉíÊ¹ÓÃ
+	int range;					//æ–½æ³•è·ç¦»ï¼Œå•ä½ä¸ºå°ºï¼Œ0å³ä¸ºè§¦åŠæˆ–è‡ªèº«
+	bool isSelfOnly;			//æ˜¯å¦åªèƒ½å¯¹è‡ªèº«ä½¿ç”¨
 
-	SpellComponments componments;	//·¨Êõ³É·Ö
+	SpellComponments componments;	//æ³•æœ¯æˆåˆ†
 
-	Duration d;					//·¨Êõ³ÖĞøÊ±¼ä
+	Duration duration;					//æ³•æœ¯æŒç»­æ—¶é—´
 
-	bool targetNeed;			//ÊÇ·ñĞèÒªÄ¿±ê
-	int targetNum;				//Ä¿±êÊıÁ¿
-	
-	Area effectArea;			//·¨ÊõÓ°ÏìÇøÓò
+	bool targetNeed;			//æ˜¯å¦éœ€è¦ç›®æ ‡
+	int targetNum;				//ç›®æ ‡æ•°é‡
 
-	std::string remarks;		//±¸×¢£¬·¨ÊõÎÄ×ÖÃèÊö
+	Area effectArea;			//æ³•æœ¯å½±å“åŒºåŸŸ
+
+	std::string remarks;		//å¤‡æ³¨ï¼Œæ³•æœ¯æ–‡å­—æè¿°
+
+	static std::string schoolName[10];
 public:
-	Spell(int i, std::string& nC, std::string& nE, int sI, int l, bool iR, int cl, std::string& cr,int r, bool iSO, bool vN, bool sN, bool mN, 
-		std::string& cre, bool c, int t, std::string& dr,bool tN,int tNum,int asI, int s,std::string& re):
-	ID(i), nameCh(nC), nameEn(nE), schoolID(sI), level(l), isRitual(iR), cT(cl,cr), range(r), isSelfOnly(iSO), componments(vN,sN,mN,cre), d(c,t,dr),
-		targetNeed(tN), targetNum(tNum), effectArea(asI,s), remarks(re){}
-};
+	Spell(int id, std::string& nameC, std::string& nameE, int schoolID, int lv, bool ritual,
+		int castingLength, std::string& castingRemarks,
+		int range, bool selfOnly,
+		bool verbal, bool somatic, bool material,std::string& compRemark,
+		bool concentration, int time, std::string& durationRemark,
+		bool target, int tNum,
+		int areaShape, int areaSize,
+		std::string& remark) :
 
+		ID(id), nameCh(nameC), nameEn(nameE), schoolID(schoolID), level(lv), isRitual(ritual),
+		castingTime(castingLength, castingRemarks),
+		range(range), isSelfOnly(selfOnly),
+		componments(verbal, somatic, material, compRemark),
+		duration(concentration, time, durationRemark),
+		targetNeed(target), targetNum(tNum), effectArea(areaShape, areaSize), remarks(remark) {}
+
+	std::string getNameCH();
+	std::string getNameEN();
+	std::string getSchoolName();
+	int getLevel();
+	bool spellIsRitual();
+	std::string getRemarks();
+};

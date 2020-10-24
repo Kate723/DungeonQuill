@@ -36,7 +36,7 @@ void SpellDisplay::initFormat() {
 	auto item = tableItem(spellName.c_str(), emphasize, brown);
 	ui.basicTable->setItem(0, 0, item);
 
-
+	//设置
 	
 
 	initTableFormat(ui.basicTable);
@@ -45,7 +45,7 @@ void SpellDisplay::initFormat() {
 QTableWidgetItem* SpellDisplay::tableItem(const char* str,QFont font, QColor color) {
 	auto item = new QTableWidgetItem(QString::fromLocal8Bit(str));
 	item->setFlags(item->flags() & ~Qt::ItemIsEditable);
-	item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+	item->setTextAlignment(Qt::AlignHCenter);
 	item->setFont(font);
 	item->setTextColor(color);
 
@@ -56,7 +56,6 @@ QTableWidgetItem* SpellDisplay::tableItem(const char* str,QFont font, QColor col
 void SpellDisplay::initTableFormat(const QTableWidget* table)
 {
 	table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);		//列头铺满
-	table->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);		//行头铺满
 
 	((QAbstractItemView*)table)->setSelectionMode(QAbstractItemView::NoSelection);		//取消选择功能
 	((QAbstractItemView*)table)->setEditTriggers(QAbstractItemView::NoEditTriggers);		//取消编辑功能
