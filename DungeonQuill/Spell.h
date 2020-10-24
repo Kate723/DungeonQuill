@@ -77,6 +77,13 @@ public:
 	std::string getNameEN();
 	std::string getSchoolName();
 	int getLevel();
+	std::string getLevelString();
 	bool spellIsRitual();
 	std::string getRemarks();
+
+	std::string getCastingTimeRemarks();
+	std::string getRangeString();
+	std::string getComponentString();
+	std::string getDurationString();
+	
 };

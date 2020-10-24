@@ -104,6 +104,7 @@
     <ClCompile Include="Area.cpp" />
     <ClCompile Include="BasicInfo.cpp" />
     <ClCompile Include="Buff.cpp" />
+    <ClCompile Include="CharacterButton.cpp" />
     <ClCompile Include="CharacterDetails.cpp" />
     <ClCompile Include="CharacterDisplay.cpp" />
     <ClCompile Include="ChoosableClassTrait.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="Area.h" />
     <ClInclude Include="BasicInfo.h" />
     <ClInclude Include="Buff.h" />
+    <QtMoc Include="CharacterButton.h" />
     <ClInclude Include="CharacterDetails.h" />
     <QtMoc Include="SpellBotton.h" />
     <ClInclude Include="Wealth.h" />

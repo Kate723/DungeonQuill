@@ -1,10 +1,10 @@
-锘�#include "DataManager.h"
+﻿#include "DataManager.h"
 #include <QSqlError>
 #include <QDebug>
-//鍒涘缓鏁版嵁搴�
+//创建数据库
 void DataManager::createDb()
 {
-    //法术数据库
+    /*//法术数据库
     QSqlDatabase spelldb = QSqlDatabase::addDatabase("QSQLITE");
     spelldb.setDatabaseName("spell.db");
     if (!spelldb.open())
@@ -12,7 +12,68 @@ void DataManager::createDb()
    
     //普通法术表
     QSqlQuery query;
+    query.exec("create table Spell(ID  int primary key, nameCh varchar(20), nameEn varchar(20), schoolID int, level int, isRitual bool,"
+        "CastingTimelength int, CastingTimeremarks varchar(1000), range int, isSelfOnly bool, SpellComponmentsverbalNeed bool,"
+        "SpellComponmentssomaticNeed bool, SpellComponmentsmaterialNeed bool, SpellComponmentsremark varchar(1000), DurationconcentrationNeed bool,"
+        "Durationtime int, Durationremarks varchar(1000), targetNeed bool, targetNum int, AreashapeID int, Areasize int, remarks varchar(1000))");
+    
+    QString qs = "insert into Spell values (";
+    for (int i = 0; i < 22; i++)
+        qs = qs + "?";
+    qs = qs + ")";
+    query.prepare(qs);
+    QVariantList List[30];
+    List[0] <<1001 << 1000;
+    List[1] << "测试二" << "测试一";
+    List[2] << "test2" << "test1";
+    List[3] << 3 << 2;
+    List[4] << 3<< 2;
+    List[5] << 1 << 0;
+    List[6] << 3 << 2;
+    List[7] << "test2" << "test1";
+    List[8] << 3 << 2;
+    List[9] << 1 << 0;
+    List[10] << 1 << 0;
+    List[11] << 1 << 0;
+    List[12] << 1 << 0;
+    List[13] << "test2" << "test1";
+    List[14] << 1 << 0;
+    List[15] << 3 << 2;
+    List[16] << "test2" << "test1";
+    List[17] << 1 << 0;
+    List[18] << 3 << 2;
+    List[19] << 3 << 2;
+    List[20] << 3 << 2;
+    List[21] << "test2" << "test1";
+    for (int i = 0; i < 30; i++)
+        query.addBindValue(List[i]);
+    query.execBatch();
+   
+    //伤害法术表
+    query.exec("crate table damageSpell(ID  int primary key, attackRollNeed bool, savingThrowNeed bool, savingThrowTypeID int, damageType int," 
+        "DiceRollTypediceNum int, DiceRollTypediceNumDependence int,DiceRollTypediceSideNum int, DamageSpellNum int)");
 
+    qs = "insert into Spell values (";
+    for (int i = 0; i < 9; i++)
+        qs = qs + "?";
+    qs = qs + ")";
+    query.prepare(qs);
+    for (int i = 0; i < 9; i++)
+        List[i].clear();
+    List[0]<< 1001 << 1000;
+    List[1] << 1 << 0;
+    List[2] << 1 << 0;
+    List[3] << 3 << 2;
+    List[4] << 3 << 2;
+    List[5] << 3 << 2;
+    List[6] << 3 << 2;
+    List[7] << 3 << 2;
+    List[8] << 3 << 2;
+    for (int i = 0; i < 9; i++)
+        query.addBindValue(List[i]);
+    query.execBatch();
+
+    //吟游诗人法术表
     query.exec("create table spellBard (ID  int primary key)");
     
     query.prepare("insert into spellBard values (?)");
@@ -100,7 +161,7 @@ void DataManager::createDb()
     qs = qs + ")";
     query.exec(qs);
 
-    /*query.exec("select * from spellBard");
+   query.exec("select * from spellBard");
     while (query.next())
     {
             qDebug() << query.value(0);
@@ -134,7 +195,7 @@ void DataManager::download()
 
 
 /*
-//鏌ヨ
+//查询
 void DungeonQuill::queryClick()
 {
     int qlevel = ui.comboBox_level->currentIndex();

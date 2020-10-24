@@ -31,6 +31,15 @@
     <Filter Include="Header Files\ui">
       <UniqueIdentifier>{27f1e29e-3346-4dfa-934e-f6c570813619}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Combat">
+      <UniqueIdentifier>{b5ea89f7-38b8-48da-8c77-e19804dd2006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Info\Spell">
+      <UniqueIdentifier>{149e4d86-1fc4-4247-9e9b-161fd1c5d439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Character\Adventurer">
+      <UniqueIdentifier>{b42f2e30-11b4-46e5-9726-a71346544573}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="DungeonQuill.qrc">
@@ -137,6 +146,9 @@
     <ClCompile Include="SpellBotton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CharacterButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Area.h">
@@ -145,25 +157,10 @@
     <ClInclude Include="DiceRollType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CombatMap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CombatPiece.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpellComponments.h">
-      <Filter>Header Files\Info</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterDetails.h">
-      <Filter>Header Files\Character</Filter>
-    </ClInclude>
     <ClInclude Include="CombatCharacter.h">
       <Filter>Header Files\Character</Filter>
     </ClInclude>
     <ClInclude Include="CombatAction.h">
-      <Filter>Header Files\Character</Filter>
-    </ClInclude>
-    <ClInclude Include="Adventurer.h">
       <Filter>Header Files\Character</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
@@ -175,53 +172,68 @@
     <ClInclude Include="DataManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Spell.h">
-      <Filter>Header Files\Info</Filter>
-    </ClInclude>
-    <ClInclude Include="DamageSpell.h">
-      <Filter>Header Files\Info</Filter>
-    </ClInclude>
-    <ClInclude Include="AdventurerClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AdventurerRace.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Amour.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BasicInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Buff.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ChoosableClassTrait.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Class.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CombatManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EnumType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Equipment.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="AdventurerClass.h">
+      <Filter>Header Files\Character\Adventurer</Filter>
     </ClInclude>
-    <ClInclude Include="HealSpell.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Race.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="AdventurerRace.h">
+      <Filter>Header Files\Character\Adventurer</Filter>
     </ClInclude>
     <ClInclude Include="Wealth.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Character\Adventurer</Filter>
+    </ClInclude>
+    <ClInclude Include="Adventurer.h">
+      <Filter>Header Files\Character\Adventurer</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterDetails.h">
+      <Filter>Header Files\Character\Adventurer</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatManager.h">
+      <Filter>Header Files\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatMap.h">
+      <Filter>Header Files\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatPiece.h">
+      <Filter>Header Files\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageSpell.h">
+      <Filter>Header Files\Info\Spell</Filter>
+    </ClInclude>
+    <ClInclude Include="Spell.h">
+      <Filter>Header Files\Info\Spell</Filter>
+    </ClInclude>
+    <ClInclude Include="SpellComponments.h">
+      <Filter>Header Files\Info\Spell</Filter>
+    </ClInclude>
+    <ClInclude Include="Equipment.h">
+      <Filter>Header Files\Info</Filter>
     </ClInclude>
     <ClInclude Include="Weapon.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Amour.h">
+      <Filter>Header Files\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Class.h">
+      <Filter>Header Files\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Race.h">
+      <Filter>Header Files\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="ChoosableClassTrait.h">
+      <Filter>Header Files\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Buff.h">
+      <Filter>Header Files\Combat</Filter>
+    </ClInclude>
+    <ClInclude Include="HealSpell.h">
+      <Filter>Header Files\Info\Spell</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -246,6 +258,9 @@
       <Filter>Header Files\ui</Filter>
     </QtMoc>
     <QtMoc Include="SpellBotton.h">
+      <Filter>Header Files\ui</Filter>
+    </QtMoc>
+    <QtMoc Include="CharacterButton.h">
       <Filter>Header Files\ui</Filter>
     </QtMoc>
   </ItemGroup>

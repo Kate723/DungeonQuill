@@ -4,17 +4,20 @@
 #include <qcombobox.h>
 #include <qstring.h>
 #include "ui_CharacterDisplay.h"
+#include "Adventurer.h"
 
 class CharacterDisplay : public QWidget
 {
 	Q_OBJECT
 
 public:
-	CharacterDisplay(QWidget *parent = Q_NULLPTR);
+	CharacterDisplay(Adventurer* dispalyCharacter);
 	~CharacterDisplay();
 
 private:
 	Ui::CharacterDisplay ui;
+	Adventurer* character;
+
 	QTableWidgetItem* tableItem(const char* str);
 	QComboBox* newProBox();
 	void initFormat();

@@ -12,7 +12,7 @@ class SpellDisplay : public QWidget
 	Q_OBJECT
 
 public:
-	SpellDisplay(Spell* displaySpell = NULL, QWidget *parent = Q_NULLPTR);
+	SpellDisplay(Spell* displaySpell = NULL);
 	~SpellDisplay();
 
 private:
@@ -20,6 +20,6 @@ private:
 	Spell* spell;
 
 	void initFormat();
-	QTableWidgetItem* tableItem(const char* str,QFont font,QColor color = QColor(255,255,255));
+	QTableWidgetItem* tableItem(const char* str,QFont font,QColor color = QColor(0,0,0));
 	void initTableFormat(const QTableWidget* table);
 };
