@@ -1,79 +1,18 @@
-#include "DataManager.h"
+é”˜ï¿½#include "DataManager.h"
 #include <QSqlError>
 #include <QDebug>
-//´´½¨Êı¾İ¿â
+//é’æ¶˜ç¼“éç‰ˆåµæ´ï¿½
 void DataManager::createDb()
 {
-    //·¨ÊõÊı¾İ¿â
+    //æ³•æœ¯æ•°æ®åº“
     QSqlDatabase spelldb = QSqlDatabase::addDatabase("QSQLITE");
     spelldb.setDatabaseName("spell.db");
     if (!spelldb.open())
         exit(-1);
    
-    //ÆÕÍ¨·¨Êõ±í
+    //æ™®é€šæ³•æœ¯è¡¨
     QSqlQuery query;
-    query.exec("create table Spell(ID  int primary key, nameCh varchar(20), nameEn varchar(20), schoolID int, level int, isRitual bool,"
-        "CastingTimelength int, CastingTimeremarks varchar(1000), range int, isSelfOnly bool, SpellComponmentsverbalNeed bool,"
-        "SpellComponmentssomaticNeed bool, SpellComponmentsmaterialNeed bool, SpellComponmentsremark varchar(1000), DurationconcentrationNeed bool,"
-        "Durationtime int, Durationremarks varchar(1000), targetNeed bool, targetNum int, AreashapeID int, Areasize int, remarks varchar(1000))");
-    
-    QString qs = "insert into Spell values (";
-    for (int i = 0; i < 22; i++)
-        qs = qs + "?";
-    qs = qs + ")";
-    query.prepare(qs);
-    QVariantList List[30];
-    List[0] <<1001 << 1000;
-    List[1] << "²âÊÔ¶ş" << "²âÊÔÒ»";
-    List[2] << "test2" << "test1";
-    List[3] << 3 << 2;
-    List[4] << 3<< 2;
-    List[5] << 1 << 0;
-    List[6] << 3 << 2;
-    List[7] << "test2" << "test1";
-    List[8] << 3 << 2;
-    List[9] << 1 << 0;
-    List[10] << 1 << 0;
-    List[11] << 1 << 0;
-    List[12] << 1 << 0;
-    List[13] << "test2" << "test1";
-    List[14] << 1 << 0;
-    List[15] << 3 << 2;
-    List[16] << "test2" << "test1";
-    List[17] << 1 << 0;
-    List[18] << 3 << 2;
-    List[19] << 3 << 2;
-    List[20] << 3 << 2;
-    List[21] << "test2" << "test1";
-    for (int i = 0; i < 30; i++)
-        query.addBindValue(List[i]);
-    query.execBatch();
-   
-    //ÉËº¦·¨Êõ±í
-    query.exec("crate table damageSpell(ID  int primary key, attackRollNeed bool, savingThrowNeed bool, savingThrowTypeID int, damageType int," 
-        "DiceRollTypediceNum int, DiceRollTypediceNumDependence int,DiceRollTypediceSideNum int, DamageSpellNum int)");
 
-    qs = "insert into Spell values (";
-    for (int i = 0; i < 9; i++)
-        qs = qs + "?";
-    qs = qs + ")";
-    query.prepare(qs);
-    for (int i = 0; i < 9; i++)
-        List[i].clear();
-    List[0]<< 1001 << 1000;
-    List[1] << 1 << 0;
-    List[2] << 1 << 0;
-    List[3] << 3 << 2;
-    List[4] << 3 << 2;
-    List[5] << 3 << 2;
-    List[6] << 3 << 2;
-    List[7] << 3 << 2;
-    List[8] << 3 << 2;
-    for (int i = 0; i < 9; i++)
-        query.addBindValue(List[i]);
-    query.execBatch();
-
-    //Ò÷ÓÎÊ«ÈË·¨Êõ±í
     query.exec("create table spellBard (ID  int primary key)");
     
     query.prepare("insert into spellBard values (?)");
@@ -84,13 +23,13 @@ void DataManager::createDb()
 
     spelldb.close();
    
-    //×°±¸Êı¾İ¿â
+    //è£…å¤‡æ•°æ®åº“
     QSqlDatabase equdb = QSqlDatabase::addDatabase("QSQLITE");
     spelldb.setDatabaseName("equ.db");
     if (!equdb.open())
         exit(-1);
 
-    //ÆÕÍ¨×°±¸±í
+    //æ™®é€šè£…å¤‡è¡¨
     query.exec("create table equipment (ID int ,name varchar(20),remark varchar(1000), type int)");
 
     query.prepare("insert into spellBard values (?,?,?,?)");
@@ -104,7 +43,7 @@ void DataManager::createDb()
         query.addBindValue(List[i]);
     query.execBatch();
 
-    //ÎäÆ÷±í
+    //æ­¦å™¨è¡¨
     query.exec("create table weapon (ID int primary key,dN int ,dND  int ,dSN int ,tneedAmmunition  bool ,tisFinesse bool , type int,range int,"
        " tregularRange int  tmaxRange, int)");
     qs = "insert into Spell values (";
@@ -127,7 +66,7 @@ void DataManager::createDb()
         query.addBindValue(List[i]);
     query.execBatch();
 
-    //·ÀÓù±í
+    //é˜²å¾¡è¡¨
     query.exec("create table amour(ID int primary key,basicAC int,type int,strength  int) ");
     query.prepare("insert into amour values (?,?,?,?)");
     for (int i = 0; i < 3; i++)
@@ -142,7 +81,7 @@ void DataManager::createDb()
 
     equdb.close();
 
-    //Ã°ÏÕÕßÊı¾İ¿â
+    //å†’é™©è€…æ•°æ®åº“
     QSqlDatabase advdb = QSqlDatabase::addDatabase("QSQLITE");
     spelldb.setDatabaseName("adv.db");
     if (!advdb.open())
@@ -195,7 +134,7 @@ void DataManager::download()
 
 
 /*
-//²éÑ¯
+//éŒãƒ¨î‡—
 void DungeonQuill::queryClick()
 {
     int qlevel = ui.comboBox_level->currentIndex();
