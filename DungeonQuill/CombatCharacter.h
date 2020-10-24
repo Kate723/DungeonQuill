@@ -47,9 +47,9 @@ class CombatCharacter
 public:
 	static std::string conditionName[15];					//状态名称
 
-	CombatCharacter* findCharacter(int id);
+	//CombatCharacter* findCharacter(int id);
 	CombatCharacter(int tid, std::string tname,int tspeed, int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint):
-		id(tid),name(tname),type(),abilityScore(),skillPro(),size(),speed(tspeed),maxHitPoint(tmaxHitPoint),curHitPoint(tcurHitPoint),
+		id(tid),name(tname),abilityScore(),skillPro(),speed(tspeed),maxHitPoint(tmaxHitPoint),curHitPoint(tcurHitPoint),
 		tempHitPoint(ttempHitPoint){}
 };
 

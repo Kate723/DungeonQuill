@@ -10,39 +10,162 @@ void DataManager::createDb()
     if (!spelldb.open())
         exit(-1);
    
+    //普通法术表
     QSqlQuery query;
-
-    //法术总表
-    query.exec("create table DamageSpell(ID  int primary key, nameCh varchar(20), nameEn varchar(20), schoolID int, level int, isRitual bool,"
-        "CastingTimelength int, CastingTimeremarks varchar(20), range int, isSelfOnly bool, SpellComponmentsverbalNeed bool,"
-        "SpellComponmentssomaticNeed bool, SpellComponmentsmaterialNeed bool, SpellComponmentsremark varchar(20), DurationconcentrationNeed bool,"
-        "Durationtime int, Durationremarks varchar(20), targetNeed bool, targetNum int, AreashapeID int, Areasize int, remarks varchar(20), "
-        "attackRollNeed bool, savingThrowNeed bool, savingThrowTypeID int, damageType int, DiceRollTypediceNum int, DiceRollTypediceNumDependence int,"
-        "DiceRollTypediceSideNum int, DamageSpellNum int)");
+    query.exec("create table Spell(ID  int primary key, nameCh varchar(20), nameEn varchar(20), schoolID int, level int, isRitual bool,"
+        "CastingTimelength int, CastingTimeremarks varchar(1000), range int, isSelfOnly bool, SpellComponmentsverbalNeed bool,"
+        "SpellComponmentssomaticNeed bool, SpellComponmentsmaterialNeed bool, SpellComponmentsremark varchar(1000), DurationconcentrationNeed bool,"
+        "Durationtime int, Durationremarks varchar(1000), targetNeed bool, targetNum int, AreashapeID int, Areasize int, remarks varchar(1000))");
+    
+    QString qs = "insert into Spell values (";
+    for (int i = 0; i < 22; i++)
+        qs = qs + "?";
+    qs = qs + ")";
+    query.prepare(qs);
+    QVariantList List[30];
+    List[0] <<1001 << 1000;
+    List[1] << "测试二" << "测试一";
+    List[2] << "test2" << "test1";
+    List[3] << 3 << 2;
+    List[4] << 3<< 2;
+    List[5] << 1 << 0;
+    List[6] << 3 << 2;
+    List[7] << "test2" << "test1";
+    List[8] << 3 << 2;
+    List[9] << 1 << 0;
+    List[10] << 1 << 0;
+    List[11] << 1 << 0;
+    List[12] << 1 << 0;
+    List[13] << "test2" << "test1";
+    List[14] << 1 << 0;
+    List[15] << 3 << 2;
+    List[16] << "test2" << "test1";
+    List[17] << 1 << 0;
+    List[18] << 3 << 2;
+    List[19] << 3 << 2;
+    List[20] << 3 << 2;
+    List[21] << "test2" << "test1";
+    for (int i = 0; i < 30; i++)
+        query.addBindValue(List[i]);
+    query.execBatch();
    
-    //吟游诗人表
+    //伤害法术表
+    query.exec("crate table damageSpell(ID  int primary key, attackRollNeed bool, savingThrowNeed bool, savingThrowTypeID int, damageType int," 
+        "DiceRollTypediceNum int, DiceRollTypediceNumDependence int,DiceRollTypediceSideNum int, DamageSpellNum int)");
+
+    qs = "insert into Spell values (";
+    for (int i = 0; i < 9; i++)
+        qs = qs + "?";
+    qs = qs + ")";
+    query.prepare(qs);
+    for (int i = 0; i < 9; i++)
+        List[i].clear();
+    List[0]<< 1001 << 1000;
+    List[1] << 1 << 0;
+    List[2] << 1 << 0;
+    List[3] << 3 << 2;
+    List[4] << 3 << 2;
+    List[5] << 3 << 2;
+    List[6] << 3 << 2;
+    List[7] << 3 << 2;
+    List[8] << 3 << 2;
+    for (int i = 0; i < 9; i++)
+        query.addBindValue(List[i]);
+    query.execBatch();
+
+    //吟游诗人法术表
     query.exec("create table spellBard (ID  int primary key)");
     
     query.prepare("insert into spellBard values (?)");
-    QVariantList IDList;
-    IDList << 1002<<1001;
-    query.addBindValue(IDList);
+    List[0].clear();
+    List[0] << 1001<<1000;
+    query.addBindValue(List[0]);
     query.execBatch();
+
     spelldb.close();
+   
+    //装备数据库
+    QSqlDatabase equdb = QSqlDatabase::addDatabase("QSQLITE");
+    spelldb.setDatabaseName("equ.db");
+    if (!equdb.open())
+        exit(-1);
+
+    //普通装备表
+    query.exec("create table equipment (ID int ,name varchar(20),remark varchar(1000), type int)");
+
+    query.prepare("insert into spellBard values (?,?,?,?)");
+    for (int i = 0; i < 3; i++)
+        List[i].clear();
+    List[0] << 101 << 100;
+    List[1] << "test2" << "test1";
+    List[2] << "test2" << "test1";
+    List[3] << 0 << 0;
+    for (int i = 0; i < 3; i++)
+        query.addBindValue(List[i]);
+    query.execBatch();
+
+    //武器表
+    query.exec("create table weapon (ID int primary key,dN int ,dND  int ,dSN int ,tneedAmmunition  bool ,tisFinesse bool , type int,range int,"
+       " tregularRange int  tmaxRange, int)");
+    qs = "insert into Spell values (";
+    for (int i = 0; i < 9; i++)
+        qs = qs + "?";
+    qs = qs + ")";
+    query.prepare(qs);
+    for (int i = 0; i < 9; i++)
+        List[i].clear();
+    List[0] << 101 << 100;
+    List[1] << 3 << 2;
+    List[2] << 3 << 2;
+    List[3] << 3 << 2;
+    List[4] << 1 << 0;
+    List[5] << 1 << 0;
+    List[6] << 3 << 2;
+    List[7] << 3 << 2;
+    List[8] << 3 << 2;
+    for (int i = 0; i < 9; i++)
+        query.addBindValue(List[i]);
+    query.execBatch();
+
+    //防御表
+    query.exec("create table amour(ID int primary key,basicAC int,type int,strength  int) ");
+    query.prepare("insert into amour values (?,?,?,?)");
+    for (int i = 0; i < 3; i++)
+        List[i].clear();
+    List[0] << 101 << 100;
+    List[1] << 3 << 2;
+    List[2] << 3 << 2;
+    List[3] << 3 << 2;
+    for (int i = 0; i < 3; i++)
+        query.addBindValue(List[i]);
+    query.execBatch();
+
+    equdb.close();
 
     //冒险者数据库
     QSqlDatabase advdb = QSqlDatabase::addDatabase("QSQLITE");
     spelldb.setDatabaseName("adv.db");
     if (!advdb.open())
         exit(-1);
-    QSqlQuery query;
-    query.exec("create table Adventurer()");
 
-    query.exec("select * from spellBard");
+    qs = "create table Adventurer(ttid int primary key, ttname varchar(20),tspeed  int,tmaxHitPoint  int,tcurHitPoint  int ,"
+        "ttempHitPoint int,texp  int ,tsex  bool , tage int ,feet  int ,inch  int , tweight int , tideal varchar(20), tbond varchar(20), "
+        "tflaw varchar(20),tapperance varchar(20), tbgStory varchar(20),ttttname varchar(20),ttttid  int,tsubName varchar(20),tsubID  int ,"
+        "tid int , tname varchar(20), tremarks varchar(20),tttid  int ,tttname varchar(20), ttremarks varchar(20),tlevel  int ,"
+        "tspecialAbilityName varchar(20),tcurSpecialPoint  int , tmaxSpecialPoint int,tcurHitDice int ,tmaxHitDice  int ,ticonPath varchar(20),"
+        "cp int , sp int,ep  int ,gp  int ,pp  int, ";
+    for (int i = 0; i < 3*vnum; i++)
+    {
+        qs = qs + "int";
+    }
+    qs = qs + ")";
+    query.exec(qs);
+
+    /*query.exec("select * from spellBard");
     while (query.next())
     {
             qDebug() << query.value(0);
-    }
+    }*/
     
     
     /*for (int i = 0; query.next(); i++)
