@@ -83,7 +83,7 @@ void DataManager::createDb()
     query.execBatch();
 
     spelldb.close();
-   
+   /*
     //装备数据库
     QSqlDatabase equdb = QSqlDatabase::addDatabase("QSQLITE");
     spelldb.setDatabaseName("equ.db");
@@ -159,7 +159,7 @@ void DataManager::createDb()
         qs = qs + "int";
     }
     qs = qs + ")";
-    query.exec(qs);
+    query.exec(qs);*/
 
     /*query.exec("select * from spellBard");
     while (query.next())
