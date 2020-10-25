@@ -29,6 +29,6 @@ int main(int argc, char *argv[])
 
     DataManager dataManager;
     dataManager.createDb();
-    //dataManager.download();
+    dataManager.download();
     return a.exec();
 }

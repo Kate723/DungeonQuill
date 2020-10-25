@@ -17,10 +17,10 @@ void DataManager::createDb()
         "SpellComponmentssomaticNeed bool, SpellComponmentsmaterialNeed bool, SpellComponmentsremark varchar(1000), DurationconcentrationNeed bool,"
         "Durationtime int, Durationremarks varchar(1000), targetNeed bool, targetNum int, AreashapeID int, Areasize int, remarks varchar(1000))");
     
-    /*QString qs = "insert into Spell values (";
-    for (int i = 0; i < 22; i++)
-        qs = qs + "?";
-    qs = qs + ")";
+    QString qs = "insert into Spell values (";
+    for (int i = 0; i < 21; i++)
+        qs = qs + "?,";
+    qs = qs + "?)";
     query.prepare(qs);
     QVariantList List[30];
     List[0] <<1001 << 1000;
@@ -45,17 +45,17 @@ void DataManager::createDb()
     List[19] << 3 << 2;
     List[20] << 3 << 2;
     List[21] << "test2" << "test1";
-    for (int i = 0; i < 30; i++)
+    for (int i = 0; i < 22; i++)
         query.addBindValue(List[i]);
-    query.execBatch();*/
+    query.execBatch();
    
     //伤害法术表
     query.exec("create table damageSpell(ID  int primary key, attackRollNeed int, savingThrowNeed int, savingThrowTypeID int, damageType int," 
         "DiceRollTypediceNum int, DiceRollTypediceNumDependence int,DiceRollTypediceSideNum int)");
-    /*qs = "insert into Spell values (";
-    for (int i = 0; i < 8; i++)
-        qs = qs + "?";
-    qs = qs + ")";
+    qs = "insert into damageSpell values (";
+    for (int i = 0; i < 7; i++)
+        qs = qs + "?,";
+    qs = qs + "?)";
     query.prepare(qs);
     for (int i = 0; i < 8; i++)
         List[i].clear();
@@ -69,21 +69,21 @@ void DataManager::createDb()
     List[7] << 3 << 2;
     for (int i = 0; i < 8; i++)
         query.addBindValue(List[i]);
-    query.execBatch();*/
-
+    query.execBatch();
+    
     //治愈法术表
     query.exec("create table healSpell(ID  int primary key, DiceRollTypediceNum int, DiceRollTypediceNumDependence int,"
         "DiceRollTypediceSideNum int)");
-    /*query.prepare("insert into healSpell values(?,?,?,?)");
-    for (int i = 0; i < 3; i++)
+    query.prepare("insert into healSpell values(?,?,?,?)");
+    for (int i = 0; i < 4; i++)
         List[i].clear();
     List[0] << 1001 << 1000;
     List[1] << 3 << 2;
     List[2] << 3 << 2;
     List[3] << 3 << 2;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 4; i++)
         query.addBindValue(List[i]);
-    query.execBatch();*/
+    query.execBatch();
 
     spelldb.close();
 
@@ -189,9 +189,9 @@ void DataManager::createDb()
             //ui.spellTable->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
     }*/
 }
-std::vector<DamageSpell*> DamageSpellList;
-std::vector<HealSpell*>HealSpellList;
-std::vector<Spell*> SpellList;
+std::vector<DamageSpell*> DamageSpell::DamageSpellList;
+std::vector<HealSpell*>HealSpell::HealSpellList;
+std::vector<Spell*> Spell::SpellList;
 void DataManager::download()
 {
     //法术
@@ -207,6 +207,7 @@ void DataManager::download()
     {
         QSqlQuery query2;
         query2.exec("select * from Spell where ID = "+query1.value(0).toString());
+        qDebug() << query2.value(0);
         DamageSpell *ds = new DamageSpell(query2.value(0).toInt(), query2.value(1).toString().toStdString(), query2.value(2).toString().toStdString(),
             query2.value(3).toInt(),query2.value(4).toInt(), query2.value(5).toBool(), query2.value(6).toInt(), query2.value(7).toString().toStdString(), 
             query2.value(8).toInt(),query2.value(9).toBool(), query2.value(10).toBool(), query2.value(11).toBool(), query2.value(12).toBool(), 
@@ -217,7 +218,7 @@ void DataManager::download()
         DamageSpell::DamageSpellList.push_back(ds);
     }
 
-    //治疗
+    /*//治疗
     query1.exec("select * from healSpell");
     while (query1.next())
     {
@@ -229,7 +230,7 @@ void DataManager::download()
             query2.value(13).toString().toStdString(), query2.value(14).toBool(), query2.value(15).toInt(), query2.value(16).toString().toStdString(),
             query2.value(17).toBool(), query2.value(18).toInt(), query2.value(19).toInt(), query2.value(20).toInt(), query2.value(21).toString().toStdString(),
             query1.value(1).toInt(), query1.value(2).toInt(), query1.value(3).toInt());
-        HealSpellList.push_back(hs);
+        HealSpell::HealSpellList.push_back(hs);
     }
 
     //普通
@@ -242,8 +243,10 @@ void DataManager::download()
             query2.value(8).toInt(), query2.value(9).toBool(), query2.value(10).toBool(), query2.value(11).toBool(), query2.value(12).toBool(),
             query2.value(13).toString().toStdString(), query2.value(14).toBool(), query2.value(15).toInt(), query2.value(16).toString().toStdString(),
             query2.value(17).toBool(), query2.value(18).toInt(), query2.value(19).toInt(), query2.value(20).toInt(), query2.value(21).toString().toStdString());
-        SpellList.push_back(s);
+        Spell::SpellList.push_back(s);
     }
+    */
+    spelldb.close();
 }
 
 
