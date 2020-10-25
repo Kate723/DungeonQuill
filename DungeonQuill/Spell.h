@@ -85,5 +85,5 @@ public:
 	std::string getRangeString();
 	std::string getComponentString();
 	std::string getDurationString();
-	
+	static std::vector<Spell*> SpellList;
 };

@@ -52,7 +52,6 @@ void DataManager::createDb()
     //伤害法术表
     query.exec("create table damageSpell(ID  int primary key, attackRollNeed int, savingThrowNeed int, savingThrowTypeID int, damageType int," 
         "DiceRollTypediceNum int, DiceRollTypediceNumDependence int,DiceRollTypediceSideNum int)");
-    qDebug() << query.lastError();
     /*qs = "insert into Spell values (";
     for (int i = 0; i < 8; i++)
         qs = qs + "?";
@@ -190,23 +189,62 @@ void DataManager::createDb()
             //ui.spellTable->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
     }*/
 }
-/*std::vector<DamageSpell*> DamageSpell::DamageSpellList;
+std::vector<DamageSpell*> DamageSpellList;
+std::vector<HealSpell*>HealSpellList;
+std::vector<Spell*> SpellList;
 void DataManager::download()
 {
-    QSqlQuery query;
-    query.exec("select * from DamageSpell");
-    while (query.next())
+    //法术
+    QSqlDatabase spelldb = QSqlDatabase::addDatabase("QSQLITE");
+    spelldb.setDatabaseName("spell.db");
+    if (!spelldb.open())
+        exit(-1);
+
+    //伤害
+    QSqlQuery query1;
+    query1.exec("select * from damageSpell");
+    while (query1.next())
     {
-        DamageSpell *ds = new DamageSpell(query.value(0).toInt(), query.value(1).toString().toStdString(), query.value(2).toString().toStdString(),
-            query.value(4).toInt(),query.value(5).toInt(), query.value(6).toBool(), query.value(7).toInt(), query.value(8).toString().toStdString(), 
-            query.value(9).toInt(),query.value(10).toBool(), query.value(11).toBool(), query.value(12).toBool(), query.value(13).toBool(), 
-            query.value(14).toString().toStdString(), query.value(15).toBool(), query.value(16).toInt(), query.value(17).toString().toStdString(), 
-            query.value(18).toBool(), query.value(19).toInt(),query.value(20).toInt(), query.value(21).toInt(), query.value(22).toString().toStdString(), 
-            query.value(23).toBool(), query.value(24).toBool(),query.value(25).toInt(), query.value(26).toInt(), query.value(27).toInt(), 
-            query.value(28).toInt(), query.value(29).toInt());
+        QSqlQuery query2;
+        query2.exec("select * from Spell where ID = "+query1.value(0).toString());
+        DamageSpell *ds = new DamageSpell(query2.value(0).toInt(), query2.value(1).toString().toStdString(), query2.value(2).toString().toStdString(),
+            query2.value(3).toInt(),query2.value(4).toInt(), query2.value(5).toBool(), query2.value(6).toInt(), query2.value(7).toString().toStdString(), 
+            query2.value(8).toInt(),query2.value(9).toBool(), query2.value(10).toBool(), query2.value(11).toBool(), query2.value(12).toBool(), 
+            query2.value(13).toString().toStdString(), query2.value(14).toBool(), query2.value(15).toInt(), query2.value(16).toString().toStdString(), 
+            query2.value(17).toBool(), query2.value(18).toInt(),query2.value(19).toInt(), query2.value(20).toInt(), query2.value(21).toString().toStdString(), 
+            query1.value(1).toInt(), query1.value(2).toInt(),query1.value(3).toInt(), query1.value(4).toInt(), query1.value(5).toInt(),
+            query1.value(6).toInt(), query1.value(7).toInt());
         DamageSpell::DamageSpellList.push_back(ds);
     }
-}*/
+
+    //治疗
+    query1.exec("select * from healSpell");
+    while (query1.next())
+    {
+        QSqlQuery query2;
+        query2.exec("select * from Spell where ID = " + query1.value(0).toString());
+        HealSpell* hs = new HealSpell(query2.value(0).toInt(), query2.value(1).toString().toStdString(), query2.value(2).toString().toStdString(),
+            query2.value(3).toInt(), query2.value(4).toInt(), query2.value(5).toBool(), query2.value(6).toInt(), query2.value(7).toString().toStdString(),
+            query2.value(8).toInt(), query2.value(9).toBool(), query2.value(10).toBool(), query2.value(11).toBool(), query2.value(12).toBool(),
+            query2.value(13).toString().toStdString(), query2.value(14).toBool(), query2.value(15).toInt(), query2.value(16).toString().toStdString(),
+            query2.value(17).toBool(), query2.value(18).toInt(), query2.value(19).toInt(), query2.value(20).toInt(), query2.value(21).toString().toStdString(),
+            query1.value(1).toInt(), query1.value(2).toInt(), query1.value(3).toInt());
+        HealSpellList.push_back(hs);
+    }
+
+    //普通
+    QSqlQuery query2;
+    query2.exec("select * from Spell where ID not in (selest ID from damageSpell) and ID not in (selest ID from healSpell)");
+    while (query2.next())
+    {
+        Spell* s = new Spell(query2.value(0).toInt(), query2.value(1).toString().toStdString(), query2.value(2).toString().toStdString(),
+            query2.value(3).toInt(), query2.value(4).toInt(), query2.value(5).toBool(), query2.value(6).toInt(), query2.value(7).toString().toStdString(),
+            query2.value(8).toInt(), query2.value(9).toBool(), query2.value(10).toBool(), query2.value(11).toBool(), query2.value(12).toBool(),
+            query2.value(13).toString().toStdString(), query2.value(14).toBool(), query2.value(15).toInt(), query2.value(16).toString().toStdString(),
+            query2.value(17).toBool(), query2.value(18).toInt(), query2.value(19).toInt(), query2.value(20).toInt(), query2.value(21).toString().toStdString());
+        SpellList.push_back(s);
+    }
+}
 
 
 /*
