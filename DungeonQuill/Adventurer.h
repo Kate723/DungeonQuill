@@ -36,14 +36,37 @@ public:
     static int adventurerNum;                           //冒险者数目
     static std::vector<Adventurer*> adventurerList;     //冒险者列表
 
-    Adventurer(int ttid, std::string ttname, int tspeed, int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint, int texp, bool tsex, int tage, 
-        int feet, int inch, int tweight, std::string tideal, std::string tbond, std::string tflaw,std::string tapperance, std::string tbgStory,
-        std::string ttttname, int ttttid, std::string tsubName, int tsubID,int tid, std::string tname, std::string tremarks, int tttid, 
-        std::string tttname, std::string ttremarks, int tlevel,std::string tspecialAbilityName, int tcurSpecialPoint, int tmaxSpecialPoint,
-        int tcurHitDice,int tmaxHitDice,QString ticonPath, int cp, int sp, int ep, int gp, int pp):
-    CombatCharacter(ttid, ttname, tspeed, tmaxHitPoint, tcurHitPoint, ttempHitPoint), exp(texp),details(tsex, tage,feet,inch,tweight, tideal, tbond,
-        tflaw, tapperance, tbgStory), race(ttttname,ttttid,  tsubName, tsubID),_class(tid, tname, tremarks, tttid,  tttname, ttremarks, tlevel,
-            tspecialAbilityName,tcurSpecialPoint,tmaxSpecialPoint), curHitDice(tcurHitDice), maxHitDice(tmaxHitDice), iconPath(ticonPath),
+    Adventurer(int ttid, std::string ttname, //1
+        int tspeed, //2
+        int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint, //5
+
+        int texp, //6
+
+        bool tsex, int tage, //8
+        int feet, int inch, int tweight, //11
+        std::string tideal, std::string tbond, std::string tflaw,
+        std::string tapperance, std::string tbgStory,//16
+
+        std::string ttttname, int ttttid, std::string tsubName, int tsubID,//20
+
+        int tid, std::string tname, std::string tremarks, int tttid, //24
+        std::string tttname, std::string ttremarks, int tlevel,//27
+        std::string tspecialAbilityName, int tcurSpecialPoint, int tmaxSpecialPoint,//30
+
+        int tcurHitDice,int tmaxHitDice,
+        QString ticonPath, 
+
+        int cp, int sp, int ep, int gp, int pp):
+
+        CombatCharacter(ttid, ttname, tspeed, tmaxHitPoint, tcurHitPoint, ttempHitPoint), 
+        exp(texp),
+        details(tsex, tage,feet,inch,tweight, 
+            tideal, tbond, tflaw, tapperance, tbgStory), 
+        race(ttttname,ttttid,  tsubName, tsubID),
+        _class(tid, tname, tremarks, tttid,  tttname, ttremarks, tlevel,
+            tspecialAbilityName,tcurSpecialPoint,tmaxSpecialPoint), 
+        curHitDice(tcurHitDice), maxHitDice(tmaxHitDice), 
+        iconPath(ticonPath),
         characterWealth (cp, sp, ep, gp, pp){}
 };
 

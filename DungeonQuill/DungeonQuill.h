@@ -14,7 +14,7 @@ class DungeonQuill : public QMainWindow
     Q_OBJECT
 
 public:
-    DungeonQuill(QWidget *parent = Q_NULLPTR);
+    DungeonQuill();
 
 private:
     Ui::DungeonQuillClass ui;
