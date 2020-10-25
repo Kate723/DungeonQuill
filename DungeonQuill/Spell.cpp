@@ -2,6 +2,10 @@
 
 std::string Spell::schoolName[] = {"防护", "咒法", "预言", "附魔" ,"塑能" ,"幻术" ,"死灵" ,"变化" };
 
+int Spell::getID() {
+	return ID;
+}
+
 std::string Spell::getNameCH() {
 	return this->nameCh;
 }

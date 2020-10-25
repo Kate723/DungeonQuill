@@ -11,6 +11,8 @@ SpellDisplay::SpellDisplay(Spell* displaySpell) : spell(displaySpell)
 	ui.setupUi(this);
 
 	initFormat();
+
+	this->setWindowTitle(QString::fromLocal8Bit(spell->getNameCH().c_str()));
 }
 
 SpellDisplay::~SpellDisplay()

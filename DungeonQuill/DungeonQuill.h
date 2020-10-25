@@ -20,4 +20,5 @@ private:
     Ui::DungeonQuillClass ui;
 
     void initSpellTab();
+    Spell* findNextSpell(bool resetFlag);
 };

@@ -35,6 +35,7 @@ class Adventurer :
 public:
     static int adventurerNum;                           //冒险者数目
     static std::vector<Adventurer*> adventurerList;     //冒险者列表
+
     Adventurer(int ttid, std::string ttname, int tspeed, int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint, int texp, bool tsex, int tage, 
         int feet, int inch, int tweight, std::string tideal, std::string tbond, std::string tflaw,std::string tapperance, std::string tbgStory,
         std::string ttttname, int ttttid, std::string tsubName, int tsubID,int tid, std::string tname, std::string tremarks, int tttid, 

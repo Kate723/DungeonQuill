@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1013</width>
-    <height>609</height>
+    <width>1022</width>
+    <height>579</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>960</width>
+    <height>540</height>
+   </size>
   </property>
   <property name="baseSize">
    <size>
@@ -20,8 +26,8 @@
    <string>DungeonQuill</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="mainTab">
       <property name="font">
        <font>
@@ -57,6 +63,12 @@
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QScrollArea" name="scrollArea_3">
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContents</enum>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -65,29 +77,44 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>961</width>
-             <height>517</height>
+             <width>970</width>
+             <height>487</height>
             </rect>
            </property>
-           <widget class="QToolButton" name="toolButton">
-            <property name="geometry">
-             <rect>
-              <x>440</x>
-              <y>210</y>
-              <width>180</width>
-              <height>120</height>
-             </rect>
+           <layout class="QGridLayout" name="gridLayout_4">
+            <property name="leftMargin">
+             <number>0</number>
             </property>
-            <property name="minimumSize">
-             <size>
-              <width>180</width>
-              <height>120</height>
-             </size>
+            <property name="topMargin">
+             <number>0</number>
             </property>
-            <property name="text">
-             <string>...</string>
+            <property name="rightMargin">
+             <number>0</number>
             </property>
-           </widget>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item row="0" column="0">
+             <layout class="QGridLayout" name="characterLayout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QToolButton" name="toolButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>180</width>
+                  <height>120</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>+</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
@@ -104,8 +131,29 @@
         <string>战斗系统</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="1">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QScrollArea" name="scrollArea_2">
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarAlwaysOff</enum>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContents</enum>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
@@ -114,10 +162,32 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>961</width>
-             <height>517</height>
+             <width>992</width>
+             <height>509</height>
             </rect>
            </property>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <layout class="QGridLayout" name="mapLayout">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <item row="0" column="0">
+               <widget class="QToolButton" name="toolButton_2">
+                <property name="minimumSize">
+                 <size>
+                  <width>180</width>
+                  <height>120</height>
+                 </size>
+                </property>
+                <property name="text">
+                 <string>+</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
@@ -352,8 +422,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>961</width>
-             <height>468</height>
+             <width>970</width>
+             <height>438</height>
             </rect>
            </property>
           </widget>
@@ -365,7 +435,7 @@
        <attribute name="title">
         <string>骰子系统</string>
        </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="3,1">
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
@@ -614,6 +684,9 @@
               <height>150</height>
              </size>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+            </property>
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
             </property>
@@ -630,6 +703,9 @@ p, li { white-space: pre-wrap; }
         </item>
         <item>
          <widget class="QGraphicsView" name="graphicsView">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+          </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
