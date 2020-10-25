@@ -12,5 +12,7 @@ class HealSpell :
     public Spell
 {
     DiceRollType healDice;
+public:
+    static std::vector<HealSpell*>HealSpellList;
 };
 
