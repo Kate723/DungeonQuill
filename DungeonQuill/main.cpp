@@ -1,11 +1,12 @@
-#include "DungeonQuill.h"
+ï»¿#include "DungeonQuill.h"
+#include "CharacterDisplay.h"
 #include "AbilityScore.h"
 #include <QtWidgets/QApplication>
 #include <qfile.h>
 #include <iostream>
 #include "DataManager.h"
 
-//ÉèÖÃ¸ñÊ½
+//è®¾ç½®æ ¼å¼
 void setQss() {
     QFile qssFile(":/qss/Source/Ubuntu.qss");
     qssFile.open(QFile::ReadOnly);
@@ -22,7 +23,7 @@ int main(int argc, char *argv[])
 
     setQss();
 
-    //¶¨ÒåÖ÷´°¿Ú²¢´ò¿ª
+    //å®šä¹‰ä¸»çª—å£å¹¶æ‰“å¼€
     DungeonQuill w;
     w.show();
 

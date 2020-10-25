@@ -1,16 +1,22 @@
-/*´´½¨ÈÕÆÚ£º2020/9/18
-* ÀàÃû³Æ£ºÇøÓò
-* ÀàÓÃÍ¾£º´æ´¢·¨ÊõÓ°Ïì/½ÇÉ«Õ¼¾ÝÇøÓò
-* ×÷Õß£ºÎâÍ®
+ï»¿/*åˆ›å»ºæ—¥æœŸï¼š2020/9/18
+* ç±»åç§°ï¼šåŒºåŸŸ
+* ç±»ç”¨é€”ï¼šå­˜å‚¨æ³•æœ¯å½±å“/è§’è‰²å æ®åŒºåŸŸ
+* ä½œè€…ï¼šå´å½¤
 */
 
 #pragma once
 class Area
 {
-	int shapeID;	//ÐÎ×´±àºÅ£¬0×¶×´£¬1Á¢·½£¬2Öù×´£¬3Ïß×´£¬4Çò×´
-	int size;		//ÇøÓò´óÐ¡£¬ÒÔ³ßÎªµ¥Î»
+	enum AreaShape {
+		CONE,		//é”¥çŠ¶
+		CUBE,		//ç«‹æ–¹
+		CYLINDER,	//æŸ±çŠ¶
+		LINE,		//çº¿çŠ¶
+		SPHERE		//çƒçŠ¶
+	}shape;
+	int size;		//åŒºåŸŸå¤§å°ï¼Œä»¥å°ºä¸ºå•ä½
 public:
 	Area(int sI, int s):
-		shapeID(sI),size(s){}
+		shape((AreaShape)sI),size(s){}
 };
 

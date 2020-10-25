@@ -15,8 +15,8 @@
 #pragma once
 struct CastingTime			//施法时间
 {
-	int length;				//长度标记，0：1反应，1：1附赠，2：1动作，3：更长
-	std::string remarks;	//备注，长于1动作将被标记在这里
+	int length;				//长度标记，0：瞬发，1：1反应，2：1附赠，3：1动作，4：更长
+	std::string remarks;	//备注，时间具体标记
 	CastingTime(int length, std::string& remark) :
 		length(length), remarks(remark) {}
 
@@ -26,7 +26,7 @@ struct Duration				//法术持续时间
 {
 	bool concentrationNeed;	//是否需要专注
 	int time;				//持续时间，0：即时，1：1轮，2：更长
-	std::string remarks;	//备注，标记更长时间
+	std::string remarks;	//标记具体时间
 	Duration(bool concentarte, int time, std::string& remark) :
 		concentrationNeed(concentarte), time(time), remarks(remark) {}
 };

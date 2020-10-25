@@ -11,7 +11,7 @@ class CharacterDisplay : public QWidget
 	Q_OBJECT
 
 public:
-	CharacterDisplay(Adventurer* dispalyCharacter);
+	CharacterDisplay();
 	~CharacterDisplay();
 
 private:

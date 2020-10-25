@@ -13,6 +13,8 @@ DungeonQuill::DungeonQuill(QWidget* parent)
 void DungeonQuill::initSpellTab() {
     QGridLayout* grid = new QGridLayout();
     
+    int
+    for(int i = 0;i <= )
     auto p = new Spell(1000, std::string("酸液飞溅"), std::string("Acid Splash"), 1, 0, 0, 1, std::string("1动作"), 60, 0, 1, 1, 0, std::string(""), 0, 0, std::string("立即"), 1, 1, 0, 0,
         std::string("111"));
     auto test = new SpellBotton(p);
