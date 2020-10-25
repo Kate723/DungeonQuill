@@ -7,6 +7,7 @@
 #include<Qlist>
 #include<QVariant>
 #include "DamageSpell.h"
+#include"HealSpell.h"
 #define vnum 30
 class DataManager
 {
