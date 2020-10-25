@@ -5,13 +5,13 @@
 void DataManager::createDb()
 {
     //法术数据库
-    QSqlDatabase spelldb = QSqlDatabase::addDatabase("QSQLITE");
+    QSqlDatabase spelldb = QSqlDatabase::addDatabase("QSQLITE","spellConnection");
     spelldb.setDatabaseName("spell.db");
     if (!spelldb.open())
         exit(-1);
    
     //普通法术表
-    QSqlQuery query;
+    QSqlQuery query(spelldb);
     query.exec("create table Spell(ID  int primary key, nameCh varchar(20), nameEn varchar(20), schoolID int, level int, isRitual bool,"
         "CastingTimelength int, CastingTimeremarks varchar(1000), range int, isSelfOnly bool, SpellComponmentsverbalNeed bool,"
         "SpellComponmentssomaticNeed bool, SpellComponmentsmaterialNeed bool, SpellComponmentsremark varchar(1000), DurationconcentrationNeed bool,"
@@ -99,7 +99,7 @@ void DataManager::createDb()
   
    
     //装备数据库
-    QSqlDatabase equdb = QSqlDatabase::addDatabase("QSQLITE");
+    QSqlDatabase equdb = QSqlDatabase::addDatabase("QSQLITE","equConnection");
     spelldb.setDatabaseName("equ.db");
     if (!equdb.open())
         exit(-1);
@@ -157,7 +157,7 @@ void DataManager::createDb()
     equdb.close();
 
     //冒险者数据库
-    QSqlDatabase advdb = QSqlDatabase::addDatabase("QSQLITE");
+    QSqlDatabase advdb = QSqlDatabase::addDatabase("QSQLITE","advConnection");
     spelldb.setDatabaseName("adv.db");
     if (!advdb.open())
         exit(-1);
@@ -189,25 +189,29 @@ void DataManager::createDb()
             //ui.spellTable->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
     }*/
 }
+
 std::vector<DamageSpell*> DamageSpell::DamageSpellList;
 std::vector<HealSpell*>HealSpell::HealSpellList;
 std::vector<Spell*> Spell::SpellList;
+int Spell::spellNum;
+int DamageSpell::damageSpellNum;
+int HealSpell::healSpellNum;
 void DataManager::download()
 {
     //法术
-    QSqlDatabase spelldb = QSqlDatabase::addDatabase("QSQLITE");
-    spelldb.setDatabaseName("spell.db");
+    QSqlDatabase spelldb = QSqlDatabase::database("spellConnection");
     if (!spelldb.open())
         exit(-1);
-
-    /*//伤害
-    QSqlQuery query1;
+   
+    //伤害
+    QSqlQuery query1(spelldb);
+    QSqlQuery query2(spelldb);
     query1.exec("select * from damageSpell");
     while (query1.next())
     {
-        QSqlQuery query2;
-        query2.exec("select * from Spell where ID = "+query1.value(0).toString());
-        qDebug() << query2.value(0);
+        DamageSpell::damageSpellNum++;
+        query2.exec("select * from Spell where ID ="+query1.value(0).toString());
+        query2.next();
         DamageSpell *ds = new DamageSpell(query2.value(0).toInt(), query2.value(1).toString().toStdString(), query2.value(2).toString().toStdString(),
             query2.value(3).toInt(),query2.value(4).toInt(), query2.value(5).toBool(), query2.value(6).toInt(), query2.value(7).toString().toStdString(), 
             query2.value(8).toInt(),query2.value(9).toBool(), query2.value(10).toBool(), query2.value(11).toBool(), query2.value(12).toBool(), 
@@ -222,8 +226,9 @@ void DataManager::download()
     query1.exec("select * from healSpell");
     while (query1.next())
     {
-        QSqlQuery query2;
+        HealSpell::healSpellNum++;
         query2.exec("select * from Spell where ID = " + query1.value(0).toString());
+        query2.next();
         HealSpell* hs = new HealSpell(query2.value(0).toInt(), query2.value(1).toString().toStdString(), query2.value(2).toString().toStdString(),
             query2.value(3).toInt(), query2.value(4).toInt(), query2.value(5).toBool(), query2.value(6).toInt(), query2.value(7).toString().toStdString(),
             query2.value(8).toInt(), query2.value(9).toBool(), query2.value(10).toBool(), query2.value(11).toBool(), query2.value(12).toBool(),
@@ -234,10 +239,10 @@ void DataManager::download()
     }
 
     //普通
-    QSqlQuery query2;
     query2.exec("select * from Spell where ID not in (selest ID from damageSpell) and ID not in (selest ID from healSpell)");
     while (query2.next())
     {
+        Spell::spellNum++;
         Spell* s = new Spell(query2.value(0).toInt(), query2.value(1).toString().toStdString(), query2.value(2).toString().toStdString(),
             query2.value(3).toInt(), query2.value(4).toInt(), query2.value(5).toBool(), query2.value(6).toInt(), query2.value(7).toString().toStdString(),
             query2.value(8).toInt(), query2.value(9).toBool(), query2.value(10).toBool(), query2.value(11).toBool(), query2.value(12).toBool(),
@@ -245,7 +250,7 @@ void DataManager::download()
             query2.value(17).toBool(), query2.value(18).toInt(), query2.value(19).toInt(), query2.value(20).toInt(), query2.value(21).toString().toStdString());
         Spell::SpellList.push_back(s);
     }
-    */
+    
     spelldb.close();
 }
 
