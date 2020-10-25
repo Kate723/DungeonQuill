@@ -76,6 +76,7 @@ public:
 		duration(concentration, time, durationRemark),
 		targetNeed(target), targetNum(tNum), effectArea(areaShape, areaSize), remarks(remark) {}
 
+	int getID();
 	std::string getNameCH();
 	std::string getNameEN();
 	std::string getSchoolName();
@@ -88,5 +89,4 @@ public:
 	std::string getRangeString();
 	std::string getComponentString();
 	std::string getDurationString();
-	static std::vector<Spell*> SpellList;
 };

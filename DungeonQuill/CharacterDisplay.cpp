@@ -1,6 +1,7 @@
 ﻿#include "CharacterDisplay.h"
 
-CharacterDisplay::CharacterDisplay() 
+CharacterDisplay::CharacterDisplay(Adventurer* _character) : 
+	character(_character)
 {
 	ui.setupUi(this);
 
