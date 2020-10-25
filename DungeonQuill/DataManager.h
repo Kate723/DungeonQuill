@@ -12,6 +12,6 @@ class DataManager
 {
 public:
 	void createDb();
-	void download();
+	//void download();
 };
 
