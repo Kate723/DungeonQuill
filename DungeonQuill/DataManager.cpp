@@ -276,7 +276,7 @@ void DataManager::download()
             query1.value(6).toInt(), query1.value(7).toInt());
         DamageSpell::DamageSpellList.push_back(ds);
     }
-
+    qDebug()<< DamageSpell::damageSpellNum;
     //治疗
     query1.exec("select * from healSpell");
     while (query1.next())
@@ -323,7 +323,7 @@ void DataManager::download()
             aquery.value(17).toString().toStdString(), aquery.value(18).toInt(), aquery.value(19).toString().toStdString(), aquery.value(20).toInt(), aquery.value(21).toInt(),
             aquery.value(22).toString().toStdString(), aquery.value(23).toString().toStdString(), aquery.value(24).toInt(),
             aquery.value(25).toString().toStdString(), aquery.value(26).toString().toStdString(), aquery.value(27).toInt(), aquery.value(28).toString().toStdString(), aquery.value(29).toInt(),
-            aquery.value(30).toInt(), aquery.value(31).toInt(), aquery.value(32).toInt(), aquery.value(33).toString().toStdString(), aquery.value(34).toInt(),
+            aquery.value(30).toInt(), aquery.value(31).toInt(), aquery.value(32).toInt(), aquery.value(33).toString(), aquery.value(34).toInt(),
             aquery.value(35).toInt(), aquery.value(36).toInt(), aquery.value(37).toInt(), aquery.value(38).toInt());
         
         Adventurer::adventurerList.push_back(a);
