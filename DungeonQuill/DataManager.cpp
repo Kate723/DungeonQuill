@@ -170,15 +170,23 @@ void DataManager::createDb()
         "tid int , tname varchar(20), tremarks varchar(1000),tttid  int ,tttname varchar(20), ttremarks varchar(1000),tlevel  int ,"
         "tspecialAbilityName varchar(20),tcurSpecialPoint  int , tmaxSpecialPoint int,tcurHitDice int ,tmaxHitDice  int ,ticonPath varchar(1000),"
         "cp int , sp int,ep  int ,gp  int ,pp  int";
-    for (int i = 0; i < 3*vnum; i++)
+    for (int i = 0; i < vnum; i++)
     {
-        qs = qs + ",v"+QString::number(i,10)+" int";
+        qs = qs + ",equipment"+QString::number(i,10)+" int";
+    }
+    for (int i = 0; i < vnum; i++)
+    {
+        qs = qs + ",weapon" + QString::number(i, 10) + " int";
+    }
+    for (int i = 0; i < vnum; i++)
+    {
+        qs = qs + ",amour" + QString::number(i, 10) + " int";
     }
     qs = qs + ")";
     aquery.exec(qs);
     qs = "insert into Adventurer (ID, ttname,tspeed, tmaxHitPoint, tcurHitPoint ,ttempHitPoint, texp, tsex, tage, feet, inch , tweight, tideal, tbond,"
         "tflaw ,tapperance , tbgStory,ttttname ,ttttid ,tsubName ,tsubID,tid , tname , tremarks ,tttid  ,tttname, ttremarks ,tlevel,"
-        "tspecialAbilityName,tcurSpecialPoint , tmaxSpecialPoint,tcurHitDice,tmaxHitDice  ,ticonPath ,cp , sp ,ep   ,gp   ,pp )values (";
+        "tspecialAbilityName,tcurSpecialPoint , tmaxSpecialPoint,tcurHitDice,tmaxHitDice  ,ticonPath ,cp, sp ,ep,gp ,pp )values (";
     for (int i = 0; i < 38; i++)
         qs = qs + "?,";
     qs = qs + "?)";
@@ -229,19 +237,6 @@ void DataManager::createDb()
     aquery.execBatch();
 
     advdb.close();
-   /*query.exec("select * from spellBard");
-    while (query.next())
-    {
-            qDebug() << query.value(0);
-    }*/
-    
-    
-    /*for (int i = 0; query.next(); i++)
-    {
-        for (int j = 1; j < 5; j++)
-            qDebug()<< query.value(j);
-            //ui.spellTable->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
-    }*/
 }
 
 std::vector<DamageSpell*> DamageSpell::DamageSpellList;
@@ -316,29 +311,15 @@ void DataManager::download()
     aquery.exec("select * from Adventurer");
     while (aquery.next())
     {
-        Adventurer* a = new Adventurer(aquery.value(0).toInt(), 
-            aquery.value(1).toString().toStdString(), 
-            aquery.value(2).toInt(),aquery.value(3).toInt(), 
-            aquery.value(4).toInt(), aquery.value(5).toInt(), aquery.value(6).toInt(), 
-            aquery.value(7).toBool(),
-            aquery.value(8).toInt(), aquery.value(9).toInt(), 
-            aquery.value(10).toInt(), aquery.value(11).toInt(), 
-            aquery.value(12).toString().toStdString(),aquery.value(13).toString().toStdString(),
-            aquery.value(14).toString().toStdString(), aquery.value(15).toString().toStdString(), 
-            aquery.value(16).toString().toStdString(),aquery.value(17).toString().toStdString(), 
-            aquery.value(18).toInt(), 
-            aquery.value(19).toString().toStdString(), 
-            aquery.value(20).toInt(), aquery.value(21).toInt(),
-            aquery.value(22).toString().toStdString(), aquery.value(23).toString().toStdString(), 
-            aquery.value(24).toInt(),
-            aquery.value(25).toString().toStdString(), aquery.value(26).toString().toStdString(), 
-            aquery.value(27).toInt(), 
-            aquery.value(28).toString().toStdString(), 
-            aquery.value(29).toInt(),aquery.value(30).toInt(), aquery.value(31).toInt(), aquery.value(32).toInt(), 
-            aquery.value(33).toString(), 
-            aquery.value(34).toInt(), aquery.value(35).toInt(), 
-            aquery.value(36).toInt(), aquery.value(37).toInt(), aquery.value(38).toInt());
-        
+        Adventurer* a = new Adventurer(aquery.value(0).toInt(), aquery.value(1).toString().toStdString(), aquery.value(2).toInt(),
+            aquery.value(3).toInt(), aquery.value(4).toInt(), aquery.value(5).toInt(), aquery.value(6).toInt(), aquery.value(7).toBool(),
+            aquery.value(8).toInt(), aquery.value(9).toInt(), aquery.value(10).toInt(), aquery.value(11).toInt(), aquery.value(12).toString().toStdString(),
+            aquery.value(13).toString().toStdString(), aquery.value(14).toString().toStdString(), aquery.value(15).toString().toStdString(), aquery.value(16).toString().toStdString(),
+            aquery.value(17).toString().toStdString(), aquery.value(18).toInt(), aquery.value(19).toString().toStdString(), aquery.value(20).toInt(), aquery.value(21).toInt(),
+            aquery.value(22).toString().toStdString(), aquery.value(23).toString().toStdString(), aquery.value(24).toInt(),
+            aquery.value(25).toString().toStdString(), aquery.value(26).toString().toStdString(), aquery.value(27).toInt(), aquery.value(28).toString().toStdString(), aquery.value(29).toInt(),
+            aquery.value(30).toInt(), aquery.value(31).toInt(), aquery.value(32).toInt(), aquery.value(33).toString(), aquery.value(34).toInt(),
+            aquery.value(35).toInt(), aquery.value(36).toInt(), aquery.value(37).toInt(), aquery.value(38).toInt());
         Adventurer::adventurerList.push_back(a);
     }
 
@@ -346,28 +327,4 @@ void DataManager::download()
 }
 
 
-/*
-//查询
-void DungeonQuill::queryClick()
-{
-    int qlevel = ui.comboBox_level->currentIndex();
-    int qjob = ui.comboBox_job->currentIndex();
-    QString q = "select * from";
-    if (qjob == 0)
-        q = q + "sysobjects";
-    else
-        q = q + "spell_" + QString::number(qjob);
-    if (qlevel == 0)
-        q = q;
-    else
-        q = q + "where level==" + QString::number(qlevel);
-    QSqlQuery query;
-    query.prepare(q);
-    for(int i = 0;query.next();i++)
-    {
-        for (int j = 1; j < 5; j++)
-            ui.spellTable->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
-    }
-}
 
-*/
