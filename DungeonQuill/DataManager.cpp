@@ -200,7 +200,7 @@ void DataManager::download()
     if (!spelldb.open())
         exit(-1);
 
-    //伤害
+    /*//伤害
     QSqlQuery query1;
     query1.exec("select * from damageSpell");
     while (query1.next())
@@ -218,7 +218,7 @@ void DataManager::download()
         DamageSpell::DamageSpellList.push_back(ds);
     }
 
-    /*//治疗
+    //治疗
     query1.exec("select * from healSpell");
     while (query1.next())
     {
