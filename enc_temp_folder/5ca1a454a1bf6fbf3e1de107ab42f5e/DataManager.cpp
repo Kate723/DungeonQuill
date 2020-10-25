@@ -227,6 +227,9 @@ void DataManager::createDb()
     for (int i = 0; i < 39; i++)
         aquery.addBindValue(List[i]);
     aquery.execBatch();
+    aquery.exec("select ID from Adventurer");
+    aquery.next();
+    qDebug() << aquery.value(0);
 
     advdb.close();
    /*query.exec("select * from spellBard");
@@ -247,7 +250,6 @@ void DataManager::createDb()
 std::vector<DamageSpell*> DamageSpell::DamageSpellList;
 std::vector<HealSpell*>HealSpell::HealSpellList;
 std::vector<Spell*> Spell::SpellList;
-std::vector<Adventurer*>Adventurer:: adventurerList;
 int Spell::spellNum;
 int DamageSpell::damageSpellNum;
 int HealSpell::healSpellNum;
@@ -307,29 +309,6 @@ void DataManager::download()
     }
     
     spelldb.close();
-
-    //冒险者
-    QSqlDatabase advdb = QSqlDatabase::database("advConnection");
-    if (!advdb.open())
-        exit(-1);
-    QSqlQuery aquery(advdb);
-    aquery.exec("select * from Adventurer");
-    while (aquery.next())
-    {
-        Adventurer* a = new Adventurer(aquery.value(0).toInt(), aquery.value(1).toString().toStdString(), aquery.value(2).toInt(),
-            aquery.value(3).toInt(), aquery.value(4).toInt(), aquery.value(5).toInt(), aquery.value(6).toInt(), aquery.value(7).toBool(),
-            aquery.value(8).toInt(), aquery.value(9).toInt(), aquery.value(10).toInt(), aquery.value(11).toInt(), aquery.value(12).toString().toStdString(),
-            aquery.value(13).toString().toStdString(), aquery.value(14).toString().toStdString(), aquery.value(15).toString().toStdString(), aquery.value(16).toString().toStdString(),
-            aquery.value(17).toString().toStdString(), aquery.value(18).toInt(), aquery.value(19).toString().toStdString(), aquery.value(20).toInt(), aquery.value(21).toInt(),
-            aquery.value(22).toString().toStdString(), aquery.value(23).toString().toStdString(), aquery.value(24).toInt(),
-            aquery.value(25).toString().toStdString(), aquery.value(26).toString().toStdString(), aquery.value(27).toInt(), aquery.value(28).toString().toStdString(), aquery.value(29).toInt(),
-            aquery.value(30).toInt(), aquery.value(31).toInt(), aquery.value(32).toInt(), aquery.value(33).toString().toStdString(), aquery.value(34).toInt(),
-            aquery.value(35).toInt(), aquery.value(36).toInt(), aquery.value(37).toInt(), aquery.value(38).toInt());
-        
-        Adventurer::adventurerList.push_back(a);
-    }
-
-    advdb.close();
 }
 
 
