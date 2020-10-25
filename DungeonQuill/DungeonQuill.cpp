@@ -1,7 +1,6 @@
 ﻿#include "DungeonQuill.h"
 
-DungeonQuill::DungeonQuill(QWidget* parent)
-    : QMainWindow(parent)
+DungeonQuill::DungeonQuill()
 {
     ui.setupUi(this);
     initSpellTab();
@@ -14,6 +13,7 @@ void DungeonQuill::initSpellTab() {
     QGridLayout* grid = new QGridLayout();
     
     int spellNum = Spell::spellNum + DamageSpell::damageSpellNum + HealSpell::healSpellNum;
+    qDebug() << spellNum;
     for (int i = 1; i <= spellNum; i++) {
         auto pSpell = findNextSpell(i == spellNum);
         auto newButton = new SpellBotton(pSpell);
@@ -36,18 +36,18 @@ Spell* DungeonQuill::findNextSpell(bool resetFlag) {
         nextSpell = Spell::spellList[p];
         lowestID = nextSpell->getID();
     }
-    if (pDamage > DamageSpell::damageSpellNum && DamageSpell::DamageSpellList[pDamage]->getID() < lowestID) {
+    if (pDamage < DamageSpell::damageSpellNum && DamageSpell::DamageSpellList[pDamage]->getID() < lowestID) {
         nextSpell = DamageSpell::DamageSpellList[pDamage];
         lowestID = nextSpell->getID();
     }
-    if (pHeal > HealSpell::healSpellNum && HealSpell::HealSpellList[pHeal]->getID() < lowestID) {
+    if (pHeal < HealSpell::healSpellNum && HealSpell::HealSpellList[pHeal]->getID() < lowestID) {
         nextSpell = HealSpell::HealSpellList[pHeal++];
         lowestID = nextSpell->getID();
     }
-    else if (nextSpell == DamageSpell::DamageSpellList[pDamage]) {
+    else if (pDamage < DamageSpell::damageSpellNum && nextSpell == DamageSpell::DamageSpellList[pDamage]) {
         pDamage++;
     }
-    else if (nextSpell == Spell::spellList[p]) {
+    else if (p < Spell::spellNum && nextSpell == Spell::spellList[p]) {
         p++;
     }
 

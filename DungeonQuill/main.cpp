@@ -19,6 +19,10 @@ void setQss() {
 
 int main(int argc, char *argv[])
 {
+    DataManager dataManager;
+    dataManager.createDb();
+    dataManager.download();
+    
     QApplication a(argc, argv);
 
     setQss();
@@ -27,8 +31,6 @@ int main(int argc, char *argv[])
     DungeonQuill w;
     w.show();
 
-    DataManager dataManager;
-    dataManager.createDb();
-    dataManager.download();
+    
     return a.exec();
 }
