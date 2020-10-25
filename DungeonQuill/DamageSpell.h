@@ -16,7 +16,7 @@ class DamageSpell :
 	DiceRollType damageDice;	//伤害骰
 
 public:
-	static int DamageSpellNum;
+	static int damageSpellNum;
 	static std::vector<DamageSpell*> DamageSpellList;
 	
 	DamageSpell(int i, std::string& nC, std::string& nE, int sI, int l, bool iR, int cl, std::string& cr, int r, bool iSO, bool vN, bool sN, bool mN,
