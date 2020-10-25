@@ -17,7 +17,8 @@ void DataManager::createDb()
         "SpellComponmentssomaticNeed bool, SpellComponmentsmaterialNeed bool, SpellComponmentsremark varchar(1000), DurationconcentrationNeed bool,"
         "Durationtime int, Durationremarks varchar(1000), targetNeed bool, targetNum int, AreashapeID int, Areasize int, remarks varchar(1000))");
     
-    QString qs = "insert into Spell values (";
+    QString qs;
+    /*qs = "insert into Spell values (";
     for (int i = 0; i < 21; i++)
         qs = qs + "?,";
     qs = qs + "?)";
@@ -47,12 +48,12 @@ void DataManager::createDb()
     List[21] << "test2" << "test1";
     for (int i = 0; i < 22; i++)
         squery.addBindValue(List[i]);
-    squery.execBatch();
+    squery.execBatch();*/
    
     //伤害法术表
     squery.exec("create table damageSpell(ID  int primary key, attackRollNeed int, savingThrowNeed int, savingThrowTypeID int, damageType int," 
         "DiceRollTypediceNum int, DiceRollTypediceNumDependence int,DiceRollTypediceSideNum int)");
-    qs = "insert into damageSpell values (";
+    /*qs = "insert into damageSpell values (";
     for (int i = 0; i < 7; i++)
         qs = qs + "?,";
     qs = qs + "?)";
@@ -69,12 +70,12 @@ void DataManager::createDb()
     List[7] << 3 << 2;
     for (int i = 0; i < 8; i++)
         squery.addBindValue(List[i]);
-    squery.execBatch();
+    squery.execBatch();*/
     
     //治愈法术表
     squery.exec("create table healSpell(ID  int primary key, DiceRollTypediceNum int, DiceRollTypediceNumDependence int,"
         "DiceRollTypediceSideNum int)");
-    squery.prepare("insert into healSpell values(?,?,?,?)");
+    /*squery.prepare("insert into healSpell values(?,?,?,?)");
     for (int i = 0; i < 4; i++)
         List[i].clear();
     List[0] << 1001 << 1000;
@@ -83,7 +84,7 @@ void DataManager::createDb()
     List[3] << 3 << 2;
     for (int i = 0; i < 4; i++)
         squery.addBindValue(List[i]);
-    squery.execBatch();
+    squery.execBatch();*/
 
     spelldb.close();
 
@@ -107,7 +108,7 @@ void DataManager::createDb()
     //普通装备表
     QSqlQuery equery(equdb);
     equery.exec("create table equipment (ID int primary key,name varchar(20),remark varchar(1000), type int)");
-    equery.prepare("insert into equipment values (?,?,?,?)");
+    /*equery.prepare("insert into equipment values (?,?,?,?)");
     for (int i = 0; i < 4; i++)
         List[i].clear();
     List[0] << 101 << 100;
@@ -116,12 +117,12 @@ void DataManager::createDb()
     List[3] << 0 << 0;
     for (int i = 0; i < 4; i++)
         equery.addBindValue(List[i]);
-    equery.execBatch();
+    equery.execBatch();*/
 
     //武器表
     equery.exec("create table weapon (ID int primary key,dN int ,dND  int ,dSN int ,tneedAmmunition  bool ,tisFinesse bool , type int,range int,"
        " tregularRange int , tmaxRange int)");
-    qs = "insert into weapon values (";
+    /*qs = "insert into weapon values (";
     for (int i = 0; i < 9; i++)
         qs = qs + "?,";
     qs = qs + "?)";
@@ -140,11 +141,11 @@ void DataManager::createDb()
     List[9] << 3 << 2;
     for (int i = 0; i < 10; i++)
         equery.addBindValue(List[i]);
-    equery.execBatch();
+    equery.execBatch();*/
 
     //防御表
     equery.exec("create table amour(ID int primary key,basicAC int,type int,strength  int) ");
-    equery.prepare("insert into amour values (?,?,?,?)");
+    /*equery.prepare("insert into amour values (?,?,?,?)");
     for (int i = 0; i < 4; i++)
         List[i].clear();
     List[0] << 101 << 100;
@@ -153,7 +154,7 @@ void DataManager::createDb()
     List[3] << 3 << 2;
     for (int i = 0; i < 4; i++)
         equery.addBindValue(List[i]);
-    equery.execBatch();
+    equery.execBatch();*/
 
     equdb.close();
 
@@ -184,7 +185,7 @@ void DataManager::createDb()
     }
     qs = qs + ")";
     aquery.exec(qs);
-    qs = "insert into Adventurer (ID, ttname,tspeed, tmaxHitPoint, tcurHitPoint ,ttempHitPoint, texp, tsex, tage, feet, inch , tweight, tideal, tbond,"
+    /*qs = "insert into Adventurer (ID, ttname,tspeed, tmaxHitPoint, tcurHitPoint ,ttempHitPoint, texp, tsex, tage, feet, inch , tweight, tideal, tbond,"
         "tflaw ,tapperance , tbgStory,ttttname ,ttttid ,tsubName ,tsubID,tid , tname , tremarks ,tttid  ,tttname, ttremarks ,tlevel,"
         "tspecialAbilityName,tcurSpecialPoint , tmaxSpecialPoint,tcurHitDice,tmaxHitDice  ,ticonPath ,cp, sp ,ep,gp ,pp )values (";
     for (int i = 0; i < 38; i++)
@@ -234,7 +235,7 @@ void DataManager::createDb()
     List[38] << 3 << 2;
     for (int i = 0; i < 39; i++)
         aquery.addBindValue(List[i]);
-    aquery.execBatch();
+    aquery.execBatch();*/
 
     advdb.close();
 }
