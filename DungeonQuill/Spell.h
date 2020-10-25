@@ -57,6 +57,9 @@ class Spell
 
 	static std::string schoolName[10];
 public:
+	static int spellNum;
+	static std::vector<Spell*> spellList;
+
 	Spell(int id, std::string& nameC, std::string& nameE, int schoolID, int lv, bool ritual,
 		int castingLength, std::string& castingRemarks,
 		int range, bool selfOnly,

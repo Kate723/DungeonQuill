@@ -4,6 +4,8 @@
 #include <qtoolbutton.h>
 #include "qtablewidget.h"
 #include "SpellBotton.h"
+#include "DamageSpell.h"
+#include "HealSpell.h"
 #include "DataManager.h"
 #include "ui_DungeonQuill.h"
 
