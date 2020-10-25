@@ -5,12 +5,12 @@
 */
 
 #pragma once
-enum Shape {					//形状
-	Cone,
-	Cube,
-	Cylinder,
-	Line,
-	Sphere
+enum AreaShape {				//形状
+	CONE,		//锥状
+	CUBE,		//立方
+	CYLINDER,	//柱状
+	LINE,		//线状
+	SPHERE		//球状
 };
 
 enum EquipemntType {			//装备类型
@@ -113,6 +113,7 @@ enum Skill {					//技能
 };
 
 enum DamageType {				//伤害类型
+	Other_D,
 	Blunt,
 	Slash,
 	Puncture,

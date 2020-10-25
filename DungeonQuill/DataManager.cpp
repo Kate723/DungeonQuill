@@ -50,7 +50,7 @@ void DataManager::createDb()
     query.execBatch();*/
    
     //伤害法术表
-    query.exec("create table damageSpell(ID  int primary key, attackRollNeed bool, savingThrowNeed bool, savingThrowTypeID int, damageType int," 
+    query.exec("create table damageSpell(ID  int primary key, attackRollNeed int, savingThrowNeed int, savingThrowTypeID int, damageType int," 
         "DiceRollTypediceNum int, DiceRollTypediceNumDependence int,DiceRollTypediceSideNum int)");
     qDebug() << query.lastError();
     /*qs = "insert into Spell values (";

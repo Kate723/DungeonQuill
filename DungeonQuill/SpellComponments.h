@@ -3,10 +3,9 @@
 * 类用途：存储法术成分数据，供法术类使用
 * 作者：吴彤
 */
-
+#pragma once
 #include <string>
 
-#pragma once
 class SpellComponments
 {
 public:
@@ -14,7 +13,7 @@ public:
 	bool somaticNeed;		//是否需要姿势
 	bool materialNeed;		//是否需要材料
 	std::string remark;		//备注，多描述具体材料
-	SpellComponments(bool vN,bool sN,bool mN,std::string& r):
-		verbalNeed(vN), somaticNeed(sN), materialNeed(mN), remark(r){}
+	SpellComponments(bool _verbalNeed,bool _somaticNeed,bool _materialNeed,std::string& _remark):
+		verbalNeed(_verbalNeed), somaticNeed(_somaticNeed), materialNeed(_materialNeed), remark(_remark){}
 };
 

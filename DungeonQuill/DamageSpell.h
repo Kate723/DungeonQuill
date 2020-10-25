@@ -1,7 +1,7 @@
-/*´´½¨ÈÕÆÚ£º2020/10/2
-* ÀàÃû³Æ£º¹¥»÷·¨Êõ
-* ÀàÓÃÍ¾£º´æ´¢¹¥»÷·¨ÊõÊı¾İ£¬ÔÚ½¨Á¢½ÇÉ«ÓëÕ½¶·Á÷³ÌÖĞÌá¹©Êı¾İ²éÑ¯
-* ×÷Õß£ºÎâÍ®
+ï»¿/*åˆ›å»ºæ—¥æœŸï¼š2020/10/2
+* ç±»åç§°ï¼šæ”»å‡»æ³•æœ¯
+* ç±»ç”¨é€”ï¼šå­˜å‚¨æ”»å‡»æ³•æœ¯æ•°æ®ï¼Œåœ¨å»ºç«‹è§’è‰²ä¸æˆ˜æ–—æµç¨‹ä¸­æä¾›æ•°æ®æŸ¥è¯¢
+* ä½œè€…ï¼šå´å½¤
 */
 
 #pragma once
@@ -9,11 +9,11 @@
 class DamageSpell :
     public Spell
 {
-	AttackRollType rollType;		//¹¥»÷¼ì¶¨ÀàĞÍ
-	STSuccess decrease;				//»íÃâ³É¹¦¼õÃâÉËº¦Êı
-	AbilityType STType;				//»íÃâÊôĞÔ
-	DamageType damageType;			//ÉËº¦ÀàĞÍ
-	DiceRollType damageDice;	//ÉËº¦÷»
+	AttackRollType rollType;		//æ”»å‡»æ£€å®šç±»å‹
+	STSuccess decrease;				//è±å…æˆåŠŸå‡å…ä¼¤å®³æ•°
+	AbilityType STType;				//è±å…å±æ€§
+	DamageType damageType;			//ä¼¤å®³ç±»å‹
+	DiceRollType damageDice;	//ä¼¤å®³éª°
 
 public:
 	static int DamageSpellNum;
