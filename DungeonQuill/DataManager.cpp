@@ -170,15 +170,23 @@ void DataManager::createDb()
         "tid int , tname varchar(20), tremarks varchar(1000),tttid  int ,tttname varchar(20), ttremarks varchar(1000),tlevel  int ,"
         "tspecialAbilityName varchar(20),tcurSpecialPoint  int , tmaxSpecialPoint int,tcurHitDice int ,tmaxHitDice  int ,ticonPath varchar(1000),"
         "cp int , sp int,ep  int ,gp  int ,pp  int";
-    for (int i = 0; i < 3*vnum; i++)
+    for (int i = 0; i < vnum; i++)
     {
-        qs = qs + ",v"+QString::number(i,10)+" int";
+        qs = qs + ",equipment"+QString::number(i,10)+" int";
+    }
+    for (int i = 0; i < vnum; i++)
+    {
+        qs = qs + ",weapon" + QString::number(i, 10) + " int";
+    }
+    for (int i = 0; i < vnum; i++)
+    {
+        qs = qs + ",amour" + QString::number(i, 10) + " int";
     }
     qs = qs + ")";
     aquery.exec(qs);
     qs = "insert into Adventurer (ID, ttname,tspeed, tmaxHitPoint, tcurHitPoint ,ttempHitPoint, texp, tsex, tage, feet, inch , tweight, tideal, tbond,"
         "tflaw ,tapperance , tbgStory,ttttname ,ttttid ,tsubName ,tsubID,tid , tname , tremarks ,tttid  ,tttname, ttremarks ,tlevel,"
-        "tspecialAbilityName,tcurSpecialPoint , tmaxSpecialPoint,tcurHitDice,tmaxHitDice  ,ticonPath ,cp , sp ,ep   ,gp   ,pp )values (";
+        "tspecialAbilityName,tcurSpecialPoint , tmaxSpecialPoint,tcurHitDice,tmaxHitDice  ,ticonPath ,cp, sp ,ep,gp ,pp )values (";
     for (int i = 0; i < 38; i++)
         qs = qs + "?,";
     qs = qs + "?)";
@@ -229,24 +237,11 @@ void DataManager::createDb()
     aquery.execBatch();
 
     advdb.close();
-   /*query.exec("select * from spellBard");
-    while (query.next())
-    {
-            qDebug() << query.value(0);
-    }*/
-    
-    
-    /*for (int i = 0; query.next(); i++)
-    {
-        for (int j = 1; j < 5; j++)
-            qDebug()<< query.value(j);
-            //ui.spellTable->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
-    }*/
 }
 
 std::vector<DamageSpell*> DamageSpell::DamageSpellList;
 std::vector<HealSpell*>HealSpell::HealSpellList;
-std::vector<Spell*> Spell::SpellList;
+std::vector<Spell*> Spell::spellList;
 std::vector<Adventurer*>Adventurer:: adventurerList;
 int Spell::spellNum;
 int DamageSpell::damageSpellNum;
@@ -276,7 +271,7 @@ void DataManager::download()
             query1.value(6).toInt(), query1.value(7).toInt());
         DamageSpell::DamageSpellList.push_back(ds);
     }
-    qDebug()<< DamageSpell::damageSpellNum;
+
     //治疗
     query1.exec("select * from healSpell");
     while (query1.next())
@@ -303,7 +298,7 @@ void DataManager::download()
             query2.value(8).toInt(), query2.value(9).toBool(), query2.value(10).toBool(), query2.value(11).toBool(), query2.value(12).toBool(),
             query2.value(13).toString().toStdString(), query2.value(14).toBool(), query2.value(15).toInt(), query2.value(16).toString().toStdString(),
             query2.value(17).toBool(), query2.value(18).toInt(), query2.value(19).toInt(), query2.value(20).toInt(), query2.value(21).toString().toStdString());
-        Spell::SpellList.push_back(s);
+        Spell::spellList.push_back(s);
     }
     
     spelldb.close();
@@ -325,7 +320,6 @@ void DataManager::download()
             aquery.value(25).toString().toStdString(), aquery.value(26).toString().toStdString(), aquery.value(27).toInt(), aquery.value(28).toString().toStdString(), aquery.value(29).toInt(),
             aquery.value(30).toInt(), aquery.value(31).toInt(), aquery.value(32).toInt(), aquery.value(33).toString(), aquery.value(34).toInt(),
             aquery.value(35).toInt(), aquery.value(36).toInt(), aquery.value(37).toInt(), aquery.value(38).toInt());
-        
         Adventurer::adventurerList.push_back(a);
     }
 
@@ -333,28 +327,4 @@ void DataManager::download()
 }
 
 
-/*
-//查询
-void DungeonQuill::queryClick()
-{
-    int qlevel = ui.comboBox_level->currentIndex();
-    int qjob = ui.comboBox_job->currentIndex();
-    QString q = "select * from";
-    if (qjob == 0)
-        q = q + "sysobjects";
-    else
-        q = q + "spell_" + QString::number(qjob);
-    if (qlevel == 0)
-        q = q;
-    else
-        q = q + "where level==" + QString::number(qlevel);
-    QSqlQuery query;
-    query.prepare(q);
-    for(int i = 0;query.next();i++)
-    {
-        for (int j = 1; j < 5; j++)
-            ui.spellTable->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
-    }
-}
 
-*/
