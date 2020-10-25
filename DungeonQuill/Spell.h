@@ -6,6 +6,7 @@
 
 #include <string>
 #include <vector>
+#include "EnumType.h"
 #include "SpellComponments.h"
 #include "Area.h"
 #include "DiceRollType.h"
@@ -16,8 +17,8 @@ struct CastingTime			//施法时间
 {
 	int length;				//长度标记，0：1反应，1：1附赠，2：1动作，3：更长
 	std::string remarks;	//备注，长于1动作将被标记在这里
-	CastingTime(int l, std::string& r) :
-		length(l), remarks(r) {}
+	CastingTime(int length, std::string& remark) :
+		length(length), remarks(remark) {}
 
 };
 
@@ -26,8 +27,8 @@ struct Duration				//法术持续时间
 	bool concentrationNeed;	//是否需要专注
 	int time;				//持续时间，0：即时，1：1轮，2：更长
 	std::string remarks;	//备注，标记更长时间
-	Duration(bool c, int t, std::string& r) :
-		concentrationNeed(c), time(t), remarks(r) {}
+	Duration(bool concentarte, int time, std::string& remark) :
+		concentrationNeed(concentarte), time(time), remarks(remark) {}
 };
 
 class Spell
@@ -38,7 +39,7 @@ class Spell
 	int level;					//法术环阶
 	bool isRitual;				//是否为仪式法术
 
-	CastingTime castingTime;	//施法时间
+	CastingTime castingTime;				//施法时间
 
 	int range;					//施法距离，单位为尺，0即为触及或自身
 	bool isSelfOnly;			//是否只能对自身使用
@@ -53,13 +54,13 @@ class Spell
 	Area effectArea;			//法术影响区域
 
 	std::string remarks;		//备注，法术文字描述
-public:
-	static std::string schoolName[10];
 
+	static std::string schoolName[10];
+public:
 	Spell(int id, std::string& nameC, std::string& nameE, int schoolID, int lv, bool ritual,
 		int castingLength, std::string& castingRemarks,
 		int range, bool selfOnly,
-		bool verbal, bool somatic, bool material, std::string& compRemark,
+		bool verbal, bool somatic, bool material,std::string& compRemark,
 		bool concentration, int time, std::string& durationRemark,
 		bool target, int tNum,
 		int areaShape, int areaSize,
@@ -70,9 +71,19 @@ public:
 		range(range), isSelfOnly(selfOnly),
 		componments(verbal, somatic, material, compRemark),
 		duration(concentration, time, durationRemark),
-		targetNeed(target), targetNum(tNum), effectArea(areaShape, areaSize), remarks(remark) {};
+		targetNeed(target), targetNum(tNum), effectArea(areaShape, areaSize), remarks(remark) {}
 
 	std::string getNameCH();
 	std::string getNameEN();
 	std::string getSchoolName();
+	int getLevel();
+	std::string getLevelString();
+	bool spellIsRitual();
+	std::string getRemarks();
+
+	std::string getCastingTimeRemarks();
+	std::string getRangeString();
+	std::string getComponentString();
+	std::string getDurationString();
+	
 };

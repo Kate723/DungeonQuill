@@ -1,17 +1,17 @@
-/*´´½¨ÈÕÆÚ£º2020/9/18
-* ÀàÃû³Æ£ºÖÀ÷»ÀàĞÍ
-* ÀàÓÃÍ¾£º´æ´¢ËùĞèÍ¶ÖÀµÄ÷»×ÓÀàĞÍ
-* ×÷Õß£ºÎâÍ®
+ï»¿/*åˆ›å»ºæ—¥æœŸï¼š2020/9/18
+* ç±»åç§°ï¼šæ·éª°ç±»å‹
+* ç±»ç”¨é€”ï¼šå­˜å‚¨æ‰€éœ€æŠ•æ·çš„éª°å­ç±»å‹
+* ä½œè€…ï¼šå´å½¤
 */
 
 #pragma once
 class DiceRollType
 {
-	int diceNum;				//÷»×ÓÊıÁ¿
-	int diceNumDependence;		//÷»×ÓÊıÁ¿¾ö¶¨Öµ
-	int diceSideNum;			//÷»×ÓÃæÊı
+	int diceNum;				//éª°å­æ•°é‡
+	int diceNumDependence;		//éª°å­æ•°é‡å†³å®šå€¼
+	int diceSideNum;			//éª°å­é¢æ•°
 public:
-	DiceRollType(int dN,int dND,int dSN):
-		diceNum(dN),diceNumDependence(dND),diceSideNum(dSN){}
+	DiceRollType(int _diceNum,int _diceNumDependence,int _diceSideNum):
+		diceNum(_diceNum),diceNumDependence(_diceNumDependence),diceSideNum(_diceSideNum){}
 };
 

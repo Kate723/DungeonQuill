@@ -1,7 +1,7 @@
-/*´´½¨ÈÕÆÚ£º2020/9/18
-* ÀàÃû³Æ£º·¨Êõ³É·Ö
-* ÀàÓÃÍ¾£º´æ´¢·¨Êõ³É·ÖÊı¾İ£¬¹©·¨ÊõÀàÊ¹ÓÃ
-* ×÷Õß£ºÎâÍ®
+ï»¿/*åˆ›å»ºæ—¥æœŸï¼š2020/9/18
+* ç±»åç§°ï¼šæ³•æœ¯æˆåˆ†
+* ç±»ç”¨é€”ï¼šå­˜å‚¨æ³•æœ¯æˆåˆ†æ•°æ®ï¼Œä¾›æ³•æœ¯ç±»ä½¿ç”¨
+* ä½œè€…ï¼šå´å½¤
 */
 
 #include <string>
@@ -9,11 +9,11 @@
 #pragma once
 class SpellComponments
 {
-	bool verbalNeed;		//ÊÇ·ñĞèÒªÑÔÓï
-	bool somaticNeed;		//ÊÇ·ñĞèÒª×ËÊÆ
-	bool materialNeed;		//ÊÇ·ñĞèÒª²ÄÁÏ
-	std::string remark;		//±¸×¢£¬¶àÃèÊö¾ßÌå²ÄÁÏ
 public:
+	bool verbalNeed;		//æ˜¯å¦éœ€è¦è¨€è¯­
+	bool somaticNeed;		//æ˜¯å¦éœ€è¦å§¿åŠ¿
+	bool materialNeed;		//æ˜¯å¦éœ€è¦ææ–™
+	std::string remark;		//å¤‡æ³¨ï¼Œå¤šæè¿°å…·ä½“ææ–™
 	SpellComponments(bool vN,bool sN,bool mN,std::string& r):
 		verbalNeed(vN), somaticNeed(sN), materialNeed(mN), remark(r){}
 };

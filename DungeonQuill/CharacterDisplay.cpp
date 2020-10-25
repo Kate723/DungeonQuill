@@ -1,7 +1,7 @@
 ﻿#include "CharacterDisplay.h"
 
-CharacterDisplay::CharacterDisplay(QWidget *parent)
-	: QWidget(parent)
+CharacterDisplay::CharacterDisplay(Adventurer* dispalyCharacter) : 
+	character(dispalyCharacter)
 {
 	ui.setupUi(this);
 
