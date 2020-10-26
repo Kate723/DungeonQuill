@@ -24,6 +24,14 @@ void CharacterDisplay::initBasicInfo()
 {
 	QComboBox* raceBox = new QComboBox();
 	raceBox->addItem(QString::fromLocal8Bit("矮人"));
+	raceBox->addItem(QString::fromLocal8Bit("精灵"));
+	raceBox->addItem(QString::fromLocal8Bit("半身人"));
+	raceBox->addItem(QString::fromLocal8Bit("人类"));
+	raceBox->addItem(QString::fromLocal8Bit("龙裔"));
+	raceBox->addItem(QString::fromLocal8Bit("侏儒"));
+	raceBox->addItem(QString::fromLocal8Bit("半精灵"));
+	raceBox->addItem(QString::fromLocal8Bit("半兽人"));
+	raceBox->addItem(QString::fromLocal8Bit("提夫林"));
 	ui.raceTable->setCellWidget(0, 0, raceBox);
 
 	QComboBox* genderBox = new QComboBox();
@@ -183,7 +191,6 @@ void CharacterDisplay::initBgTab()
 		item->setFlags(item->flags() & ~Qt::ItemIsEditable);
 	}
 	
-	initTableFormat(ui.bgTable);
 	initTableFormat(ui.characterDetailsTable);
 
 	ui.characterDetailsTable->horizontalHeader()->setSectionResizeMode(0,QHeaderView::ResizeToContents);

@@ -20,6 +20,6 @@ private:
 	Spell* spell;
 
 	void initFormat();
-	QTableWidgetItem* tableItem(const char* str,QFont font,QColor color = QColor(0,0,0));
+	QTableWidgetItem* tableItem(QString str, QFont font,QColor color = QColor(0,0,0),int codeType = 0);
 	void initTableFormat(const QTableWidget* table);
 };

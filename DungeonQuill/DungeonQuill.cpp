@@ -3,7 +3,33 @@
 DungeonQuill::DungeonQuill()
 {
     ui.setupUi(this);
+
+    connect(ui.comboBox_level, SIGNAL(currentIndexChanged(int)), this, SLOT(spellInquiry(int)));
+    connect(ui.comboBox_school, SIGNAL(currentIndexChanged(int)), this, SLOT(spellInquiry(int)));
+
+    initCombatTab();
     initSpellTab();
+}
+
+void DungeonQuill::initCombatTab() {
+    QGridLayout* grid = new QGridLayout();
+    auto newMapButton = new NewMapButton();
+    grid->addWidget(newMapButton, 0, 0);
+
+    CombatMap::mapList.push_back(new CombatMap());
+
+    int row = 0;
+    int col = 1;
+    for (auto i = CombatMap::mapList.begin(); i != CombatMap::mapList.end(); i++) {
+        auto curMap = (CombatMap*)*i;
+        auto newButton = new MapButton(curMap);
+        grid->addWidget(newButton, row, col++);
+
+        row += col / 5;
+        col %= 5;
+    }
+
+    ui.mapArea->setLayout(grid);
 }
 
 /// <summary>
@@ -11,18 +37,26 @@ DungeonQuill::DungeonQuill()
 /// </summary>
 void DungeonQuill::initSpellTab() {
     QGridLayout* grid = new QGridLayout();
-    
+
     int spellNum = Spell::spellNum + DamageSpell::damageSpellNum + HealSpell::healSpellNum;
     qDebug() << spellNum;
+
+    int row = 0;
+    int col = 0;
     for (int i = 1; i <= spellNum; i++) {
+        qDebug() << i;
         auto pSpell = findNextSpell(i == spellNum);
         auto newButton = new SpellBotton(pSpell);
-        grid->addWidget(newButton);
+        grid->addWidget(newButton, row, col + 1);
+
+        row += ++col / 5;
+        col %= 5;
     }
-    
-    //grid->setColumnStretch(1, 1);   // 在第 n 列增加一个弹簧，比例为 1   
-    //grid->setRowStretch(1, 1);      // 在第 n 行增加一个弹簧，比例为 1
-    ui.SpellArea->setLayout(grid);
+    grid->setColumnStretch(0, 0);
+    grid->setColumnStretch(6, 1);
+    grid->setRowStretch(row + 1, 1);
+    grid->setSpacing(20);
+    ui.spellListContents->setLayout(grid);
 }
 
 Spell* DungeonQuill::findNextSpell(bool resetFlag) {
@@ -56,4 +90,49 @@ Spell* DungeonQuill::findNextSpell(bool resetFlag) {
     }
 
     return nextSpell;
+}
+
+void DungeonQuill::spellInquiry(int x)
+{
+    //清除当前layout及其内容
+    int itemCount = ui.spellListContents->layout()->count(); 
+    for (int i = (itemCount - 1); i >= 0; --i) 
+    {
+        QLayoutItem* item = ui.spellListContents->layout()->takeAt(i);
+        if (item != 0)
+        {
+            ui.spellListContents->layout()->removeWidget(item->widget());
+            delete item->widget(); 
+        }
+    }
+    delete ui.spellListContents->layout();
+
+    int selectedLV = ui.comboBox_level->currentIndex();
+    int selectedSchool = ui.comboBox_school->currentIndex();
+    
+    //重新筛选建立
+    QGridLayout* grid = new QGridLayout();
+    int spellNum = Spell::spellNum + DamageSpell::damageSpellNum + HealSpell::healSpellNum;
+    qDebug() << spellNum;
+
+    int row = 0;
+    int col = 0;
+    for (int i = 1; i <= spellNum; i++) {
+        auto pSpell = findNextSpell(i == spellNum);
+        if (selectedLV && pSpell->getLevel() != selectedLV - 1) continue;
+        if (selectedSchool && pSpell->getSchoolID() != selectedSchool - 1) continue;
+
+        qDebug() << i;
+        auto newButton = new SpellBotton(pSpell);
+        grid->addWidget(newButton, row, col++);
+
+        row += col / 5;
+        col %= 5;
+    }
+
+    grid->setColumnStretch(0, 0);
+    grid->setColumnStretch(6, 1);
+    grid->setRowStretch(row + 1, 1);
+    grid->setSpacing(20);
+    ui.spellListContents->setLayout(grid);
 }

@@ -119,7 +119,10 @@
     <ClCompile Include="DiceRollType.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="HealSpell.cpp" />
+    <ClCompile Include="MapButton.cpp" />
+    <ClCompile Include="MapEditor.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="NewMapButton.cpp" />
     <ClCompile Include="Race.cpp" />
     <ClCompile Include="Spell.cpp" />
     <ClCompile Include="SpellBotton.cpp" />
@@ -133,6 +136,8 @@
     <QtMoc Include="DungeonQuill.h" />
     <ClCompile Include="DungeonQuill.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="MapEditor.ui" />
+    <QtUic Include="NewMapButton.ui" />
     <QtUic Include="SpellDisplay.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +152,9 @@
     <QtMoc Include="CharacterButton.h" />
     <ClInclude Include="CharacterDetails.h" />
     <QtMoc Include="SpellBotton.h" />
+    <QtMoc Include="MapEditor.h" />
+    <QtMoc Include="NewMapButton.h" />
+    <QtMoc Include="MapButton.h" />
     <ClInclude Include="Wealth.h" />
     <ClInclude Include="Weapon.h" />
     <QtMoc Include="SpellDisplay.h" />
