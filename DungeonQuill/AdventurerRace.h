@@ -19,6 +19,6 @@ class AdventurerRace
 
 	std::vector<BasicInfo> traitList;	//种族特性列表
 public:
-	AdventurerRace(std::string tname,int tid, std::string tsubName,int tsubID):
-		name(tname), id(tid), subName(tsubName),subID(tsubID){}
+	AdventurerRace(std::string tname,int tid, std::string tsubName,int tsubID, std::vector<BasicInfo> ttraitList):
+		name(tname), id(tid), subName(tsubName),subID(tsubID), traitList(ttraitList){}
 };

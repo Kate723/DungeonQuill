@@ -15,12 +15,12 @@ struct Height{
 };
 
 struct Characteristics {
-	std::string trait[3];	//特点
+	std::string trait[2];	//特点
 	std::string ideal;		//理想
 	std::string bond;		//羁绊
 	std::string flaw;		//缺点
-	Characteristics(std::string tideal,	std::string tbond,std::string tflaw):
-	ideal(tideal),bond(tbond),flaw(tflaw){}
+	Characteristics(std::string trait1, std::string trait2, std::string tideal, std::string tbond,std::string tflaw):
+		trait{trait1,trait2}, ideal(tideal), bond(tbond), flaw(tflaw){}
 };
 
 class CharacterDetails
@@ -33,15 +33,15 @@ class CharacterDetails
 
 	Aligment alignment;			//角色阵营
 
-	std::vector<std::string> languageList;		//语言列表
+	std::vector<std::string> languageList;		//语言列表20
 
 	Characteristics characteristics;			//角色性格
 
 	std::string apperance;		//外貌描写
 	std::string bgStory;		//背景故事
 public:
-	CharacterDetails(bool tsex, int tage, int feet, int inch, int tweight, std::string tideal, std::string tbond, std::string tflaw,
-		std::string tapperance,std::string tbgStory) :
-		sex(tsex), age(tage), height(feet, inch),weight(tweight),alignment(), characteristics(tideal,tbond,tflaw),apperance(tapperance),
-		bgStory(tbgStory) {}
+	CharacterDetails(bool tsex, int tage, int feet, int inch, int tweight, int talignment, std::vector<std::string> tlanguageList,
+		std::string trait1, std::string trait2, std::string tideal, std::string tbond, std::string tflaw,std::string tapperance,std::string tbgStory):
+		sex(tsex), age(tage), height(feet, inch),weight(tweight),alignment((Aligment)talignment), languageList(tlanguageList),
+		characteristics(trait1, trait2, tideal,tbond,tflaw),apperance(tapperance),bgStory(tbgStory) {}
 };
