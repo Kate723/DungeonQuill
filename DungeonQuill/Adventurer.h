@@ -43,15 +43,19 @@ public:
         int texp, //6
 
         bool tsex, int tage, //8
-        int feet, int inch, int tweight, //11
-        std::string tideal, std::string tbond, std::string tflaw,
+        int feet, int inch, int tweight, int talignment, std::vector<std::string> tlanguageList,//11
+        std::string trait1, std::string trait2, std::string tideal, std::string tbond, std::string tflaw,
         std::string tapperance, std::string tbgStory,//16
 
-        std::string ttttname, int ttttid, std::string tsubName, int tsubID,//20
+        std::string ttttname, int ttttid, std::string tsubName, int tsubID, std::vector<BasicInfo> ttraitList,//20
 
         int tid, std::string tname, std::string tremarks, int tttid, //24
         std::string tttname, std::string ttremarks, int tlevel,//27
-        std::string tspecialAbilityName, int tcurSpecialPoint, int tmaxSpecialPoint,//30
+        std::string tspecialAbilityName, int tcurSpecialPoint, int tmaxSpecialPoint,
+        int m0, int m1, int m2, int m3, int m4, int m5,
+        int m6, int m7, int m8, int m9, int c0, int c1, int c2, int c3, int c4, int c5, int c6, int c7, int c8, int c9,
+        std::vector<BasicInfo> tspellList,
+        std::vector<BasicInfo> traitList,//30
 
         int tcurHitDice,int tmaxHitDice,
         QString ticonPath, 
@@ -60,11 +64,12 @@ public:
 
         CombatCharacter(ttid, ttname, tspeed, tmaxHitPoint, tcurHitPoint, ttempHitPoint), 
         exp(texp),
-        details(tsex, tage,feet,inch,tweight, 
-            tideal, tbond, tflaw, tapperance, tbgStory), 
-        race(ttttname,ttttid,  tsubName, tsubID),
+        details(tsex, tage,feet,inch,tweight,talignment, tlanguageList,
+            trait1, trait2, tideal, tbond, tflaw, tapperance, tbgStory),
+        race(ttttname,ttttid,  tsubName, tsubID, ttraitList),
         _class(tid, tname, tremarks, tttid,  tttname, ttremarks, tlevel,
-            tspecialAbilityName,tcurSpecialPoint,tmaxSpecialPoint), 
+            tspecialAbilityName,tcurSpecialPoint,tmaxSpecialPoint, m0, m1, m2, m3, m4, m5, m6, m7, m8, m9,
+            c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, tspellList, traitList),
         curHitDice(tcurHitDice), maxHitDice(tmaxHitDice), 
         iconPath(ticonPath),
         characterWealth (cp, sp, ep, gp, pp){}
