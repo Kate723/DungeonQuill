@@ -36,19 +36,15 @@ public:
     static int adventurerNum;                           //冒险者数目
     static std::vector<Adventurer*> adventurerList;     //冒险者列表
 
-    Adventurer(int ttid, std::string ttname, //1
-        int tspeed, //2
-        int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint, //5
+    Adventurer(int ttid, std::string ttname, int tspeed, int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint, //6
 
-        int texp, //6
+        int texp, //7
 
-        bool tsex, int tage, //8
-        int feet, int inch, int tweight, int talignment, std::vector<std::string> tlanguageList,//11
-        std::string trait1, std::string trait2, std::string tideal, std::string tbond, std::string tflaw,
-        std::string tapperance, std::string tbgStory,//16
+        bool tsex, int tage, int feet, int inch, int tweight, int talignment, //13
+        std::vector<std::string> tlanguageList,std::string trait1, std::string trait2, //16
+        std::string tideal, std::string tbond, std::string tflaw,std::string tapperance, std::string tbgStory,//16
 
-        std::string ttttname, int ttttid, std::string tsubName, int tsubID, std::vector<BasicInfo> ttraitList,//20
-
+        std::string ttttname, int ttttid, std::string tsubName, int tsubID, std::vector<BasicInfo> ttraitList,
         int tid, std::string tname, std::string tremarks, int tttid, //24
         std::string tttname, std::string ttremarks, int tlevel,//27
         std::string tspecialAbilityName, int tcurSpecialPoint, int tmaxSpecialPoint,

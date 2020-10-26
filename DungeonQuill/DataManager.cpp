@@ -166,7 +166,8 @@ void DataManager::createDb()
 
     QSqlQuery aquery(advdb);
     qs = "create table Adventurer(ID int primary key, ttname varchar(20),tspeed  int,tmaxHitPoint  int,tcurHitPoint  int ,"
-        "ttempHitPoint int,texp  int ,tsex  bool , tage int ,feet  int ,inch  int , tweight int , tideal varchar(1000), tbond varchar(1000), "
+        "ttempHitPoint int,texp  int ,tsex  bool , tage int ,feet  int ,inch  int , tweight int ,talignment int,"
+        "trait1 varchar(1000), trait2 varchar(1000),tideal varchar(1000), tbond varchar(1000), "
         "tflaw varchar(1000),tapperance varchar(1000), tbgStory varchar(1000),ttttname varchar(20),ttttid  int,tsubName varchar(20),tsubID  int ,"
         "tid int , tname varchar(20), tremarks varchar(1000),tttid  int ,tttname varchar(20), ttremarks varchar(1000),tlevel  int ,"
         "tspecialAbilityName varchar(20),tcurSpecialPoint int ,tmaxSpecialPoint int, m0 int, m1 int, m2 int,m3 int , m4 int,m5 int,"
