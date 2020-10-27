@@ -54,7 +54,7 @@ public:
         std::vector<BasicInfo> traitList,//30
 
         int tcurHitDice,int tmaxHitDice,
-        QString ticonPath, 
+        QString ticonPath, std::vector<Equipment> tequipmentList,std::vector<Weapon> tweaponList,std::vector<Amour> tamourList,
 
         int cp, int sp, int ep, int gp, int pp):
 
@@ -68,6 +68,7 @@ public:
             c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, tspellList, traitList),
         curHitDice(tcurHitDice), maxHitDice(tmaxHitDice), 
         iconPath(ticonPath),
+        equipmentList(tequipmentList), weaponList(tweaponList), amourList(tamourList),
         characterWealth (cp, sp, ep, gp, pp){}
 };
 

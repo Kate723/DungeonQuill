@@ -25,13 +25,12 @@ class CombatMap
 	}grid[MAX_SIZE][MAX_SIZE];			//格子标记
 
 	int piecesNum;						//棋子数目
-	std::vector<CombatPiece*> piecesList;	//棋子列表
+	std::vector<CombatPiece*> piecesList;	//数据库不存！！！棋子列表
 
 public:
-	static int mapNum;					//存储地图数量
 	static std::vector<CombatMap*> mapList;	//存储地图列表
 
 	CombatMap(int id, std::string& name, std::string& remark,						//构造函数
-		GridTag mapGrid[MAX_SIZE][MAX_SIZE], int num, std::vector<int> picecs);		
+		GridTag mapGrid[MAX_SIZE][MAX_SIZE], int num = 0, std::vector<CombatPiece*> picecs = std::vector<CombatPiece*>());
 };
 

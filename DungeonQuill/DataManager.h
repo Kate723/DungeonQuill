@@ -10,6 +10,7 @@
 #include"HealSpell.h"
 #include"Adventurer.h"
 #define vnum 30
+#define vnumc 10
 class DataManager
 {
 public:

@@ -186,6 +186,25 @@ void DataManager::createDb()
     {
         qs = qs + ",amour" + QString::number(i, 10) + " int";
     }
+    for (int i = 0; i < vnumc; i++)
+    {
+            qs = qs + ",languageList" + QString::number(i, 10) + " int";
+    }
+    for (int i = 0; i < vnumc; i++)
+    {
+        for (int j = 0; j < 3; j++)
+            qs = qs + ",spellList" + QString::number(i, 10) + QString::number(j, 10) + " int";
+    }
+    for (int i = 0; i < vnumc; i++)
+    {
+        for (int j = 0; j < 3; j++)
+            qs = qs + ",ttraitList" + QString::number(i, 10) + QString::number(j, 10) + " int";
+    }
+    for (int i = 0; i < vnumc; i++)
+    {
+        for (int j = 0; j < 3; j++)
+            qs = qs + ",traitList" + QString::number(i, 10) + QString::number(j, 10) + " int";
+    }
     qs = qs + ")";
     aquery.exec(qs);
     /*qs = "insert into Adventurer (ID, ttname,tspeed, tmaxHitPoint, tcurHitPoint ,ttempHitPoint, texp, tsex, tage, feet, inch , tweight, tideal, tbond,"
@@ -312,9 +331,17 @@ void DataManager::download()
     if (!advdb.open())
         exit(-1);
     QSqlQuery aquery(advdb);
+    std::vector<std::string> languageList;
+    std::vector<BasicInfo> ttraitList;
+    std::vector<BasicInfo> spellList;
+    std::vector<BasicInfo> traitList;
+    std::vector<Equipment> equipmentList;       
+    std::vector<Weapon> weaponList;             
+    std::vector<Amour> amourList;              
     aquery.exec("select * from Adventurer");
-    while (aquery.next())
+    /*while (aquery.next())
     {
+        for(int i = 0;i<vnum;i++)
         Adventurer* a = new Adventurer(aquery.value(0).toInt(), aquery.value(1).toString().toStdString(), aquery.value(2).toInt(),
             aquery.value(3).toInt(), aquery.value(4).toInt(), aquery.value(5).toInt(), aquery.value(6).toInt(), aquery.value(7).toBool(),
             aquery.value(8).toInt(), aquery.value(9).toInt(), aquery.value(10).toInt(), aquery.value(11).toInt(), aquery.value(12).toString().toStdString(),
@@ -325,7 +352,7 @@ void DataManager::download()
             aquery.value(30).toInt(), aquery.value(31).toInt(), aquery.value(32).toInt(), aquery.value(33).toString(), aquery.value(34).toInt(),
             aquery.value(35).toInt(), aquery.value(36).toInt(), aquery.value(37).toInt(), aquery.value(38).toInt());
         Adventurer::adventurerList.push_back(a);
-    }
+    }*/
 
     advdb.close();
 }
