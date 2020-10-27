@@ -23,6 +23,6 @@ public slots:
 	void displayCharacter();
 
 public:
-	CharacterButton(CombatCharacter* _chatacter);
+	CharacterButton(CombatCharacter* _character);
 	~CharacterButton();
 };

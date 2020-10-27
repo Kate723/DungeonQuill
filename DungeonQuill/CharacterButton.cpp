@@ -1,6 +1,7 @@
 ﻿#include "CharacterButton.h"
 
-CharacterButton::CharacterButton(CombatCharacter* _chatacter)
+CharacterButton::CharacterButton(CombatCharacter* _character) :
+	character(_character)
 {
 	connect(this, SIGNAL(clicked()), this, SLOT(displayCharacter()));
 
@@ -8,10 +9,10 @@ CharacterButton::CharacterButton(CombatCharacter* _chatacter)
 
 	setCharacterText();
 
-	QHBoxLayout* hLayout = new QHBoxLayout();
-	hLayout->addWidget(characterText);
+	QGridLayout* gLayout = new QGridLayout();
+	gLayout->addWidget(characterText);
 
-	this->setLayout(hLayout);
+	this->setLayout(gLayout);
 }
 
 CharacterButton::~CharacterButton()

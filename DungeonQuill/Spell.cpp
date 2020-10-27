@@ -6,76 +6,80 @@ int Spell::getID() {
 	return ID;
 }
 
-std::string Spell::getNameCH() {
-	return this->nameCh;
+int Spell::getSchoolID() {
+	return schoolID;
 }
 
-std::string Spell::getNameEN() {
-	return this->nameEn;
+QString Spell::getNameCH() {
+	return QString::fromUtf8(nameCh.c_str());
 }
 
-std::string Spell::getSchoolName() {
-	return this->schoolName[schoolID];
+QString Spell::getNameEN() {
+	return QString::fromUtf8(nameEn.c_str());
+}
+
+QString Spell::getSchoolName() {
+	return QString::fromLocal8Bit(schoolName[schoolID].c_str());
 }
 
 int Spell::getLevel() {
 	return level;
 }
 
-std::string Spell::getLevelString() {
+QString Spell::getLevelString() {
 	std::string levelString[] = { "戏法", "一环", "二环", "三环", "四环", "五环",
 		"六环", "七环", "八环", "九环", };
-	return levelString[level];
+	return QString::fromLocal8Bit(levelString[level].c_str());
 }
 
 bool Spell::spellIsRitual() {
 	return isRitual;
 }
 
-std::string Spell::getRemarks() {
-	return remarks;
+QString Spell::getRemarks() {
+	return QString::fromUtf8(remarks.c_str());
 }
 
-std::string Spell::getCastingTimeRemarks() {
-	return castingTime.remarks;
+QString Spell::getCastingTimeRemarks() {
+	return QString::fromUtf8(castingTime.remarks.c_str());
 }
 
-std::string Spell::getRangeString() {
+QString Spell::getRangeString() {
 	if (range)
 	{
-		return std::to_string(range) + "尺";
+		return QString::number(range) + QString::fromLocal8Bit("尺");
 	}
 	if (isSelfOnly)
 	{
-		return std::string("自身");
+		return QString::fromLocal8Bit("自身");
 	}
 	else
-		return std::string("触及");
+		return QString::fromLocal8Bit("触及");
 }
 
-std::string Spell::getComponentString() {
-	std::string compomentString;
+QString Spell::getComponentString() {
+	QString compomentString;
 	if (componments.verbalNeed) {
-		compomentString += 'V';
+		compomentString += QString::fromLocal8Bit("V");
 	}
 	if (componments.somaticNeed) {
-		if(!compomentString.empty())
-			compomentString += '、';
-		compomentString += 'S';
+		if(!compomentString.isEmpty())
+			compomentString += QString::fromLocal8Bit("、");
+		compomentString += QString::fromLocal8Bit("S");
 	}
 	if (componments.materialNeed) {
-		if (!compomentString.empty())
-			compomentString += '、';
-		compomentString += "M（" + componments.remark + "）";
+		if (!compomentString.isEmpty())
+			compomentString += QString::fromLocal8Bit("、");
+		compomentString += QString::fromLocal8Bit("M（") + QString::fromUtf8(componments.remark.c_str()) + QString::fromLocal8Bit("）");
 	}
 	return compomentString;
 }
 
-std::string Spell::getDurationString() {
-	std::string durationString;
+QString Spell::getDurationString() {
+	QString durationString;
 	if (duration.concentrationNeed) {
-		durationString += "专注，";
+		durationString += QString::fromLocal8Bit("专注，");
 	}
-	durationString += duration.remarks;
+	durationString += QString::fromUtf8(duration.remarks.c_str());
 	return durationString;
 }

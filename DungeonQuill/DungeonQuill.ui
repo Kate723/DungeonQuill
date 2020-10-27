@@ -42,7 +42,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideNone</enum>
@@ -61,6 +61,18 @@
         <string>角色信息</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QScrollArea" name="scrollArea_3">
           <property name="horizontalScrollBarPolicy">
@@ -77,8 +89,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>970</width>
-             <height>487</height>
+             <width>996</width>
+             <height>519</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_4">
@@ -94,6 +106,9 @@
             <property name="bottomMargin">
              <number>0</number>
             </property>
+            <property name="spacing">
+             <number>0</number>
+            </property>
             <item row="0" column="0">
              <layout class="QGridLayout" name="characterLayout">
               <property name="spacing">
@@ -106,6 +121,9 @@
                   <width>180</width>
                   <height>120</height>
                  </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font: 75 48pt &quot;Times New Roman&quot;;</string>
                 </property>
                 <property name="text">
                  <string>+</string>
@@ -147,7 +165,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QScrollArea" name="scrollArea_2">
+         <widget class="QScrollArea" name="mapScrollArea">
           <property name="horizontalScrollBarPolicy">
            <enum>Qt::ScrollBarAlwaysOff</enum>
           </property>
@@ -162,32 +180,10 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>992</width>
-             <height>509</height>
+             <width>996</width>
+             <height>519</height>
             </rect>
            </property>
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <item>
-             <layout class="QGridLayout" name="mapLayout">
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <item row="0" column="0">
-               <widget class="QToolButton" name="toolButton_2">
-                <property name="minimumSize">
-                 <size>
-                  <width>180</width>
-                  <height>120</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>+</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
           </widget>
          </widget>
         </item>
@@ -197,9 +193,9 @@
        <attribute name="title">
         <string>法术查询</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0">
+       <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_12">
+         <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QComboBox" name="comboBox_job">
             <property name="sizePolicy">
@@ -373,6 +369,86 @@
            </widget>
           </item>
           <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_school">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>180</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font: 16pt &quot;汉仪南宫体简&quot;;</string>
+            </property>
+            <property name="maxVisibleItems">
+             <number>20</number>
+            </property>
+            <item>
+             <property name="text">
+              <string>不限学派</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>防护</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>咒法</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>预言</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>附魔</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>塑能</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>幻术</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>死灵</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>变化</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
            <spacer name="horizontalSpacer_5">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -413,17 +489,17 @@
          </layout>
         </item>
         <item>
-         <widget class="QScrollArea" name="scrollArea">
+         <widget class="QScrollArea" name="spellScrollArea">
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <widget class="QWidget" name="SpellArea">
+          <widget class="QWidget" name="spellListContents">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>970</width>
-             <height>438</height>
+             <width>978</width>
+             <height>453</height>
             </rect>
            </property>
           </widget>
@@ -694,8 +770,8 @@
              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'汉仪南宫体简'; font-size:20pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'良怀行书'; color:#550000;&quot;&gt;你好，冒险者！&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'良怀行书'; font-size:20pt; color:#550000;&quot;&gt;你好，冒险者！&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -723,4 +799,7 @@ p, li { white-space: pre-wrap; }
   <include location="DungeonQuill.qrc"/>
  </resources>
  <connections/>
+ <slots>
+  <slot>spellInquiry()</slot>
+ </slots>
 </ui>

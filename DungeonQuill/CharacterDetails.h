@@ -27,7 +27,7 @@ class CharacterDetails
 {
 	bool sex;					//0为男性，1为女性
 	int age;					//年龄
-	Height height;					//身高
+	Height height;				//身高
 
 	int weight;					//体重，磅为单位
 

@@ -7,10 +7,13 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <qstring.h>
 #include "EnumType.h"
 #include "AbilityScore.h"
 #include "CombatAction.h"
 #include "Buff.h"
+
+class CombatPiece;
 
 class CombatCharacter
 {
@@ -51,5 +54,9 @@ public:
 	CombatCharacter(int tid, std::string tname,int tspeed, int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint):
 		id(tid),name(tname),abilityScore(),skillPro(),speed(tspeed),maxHitPoint(tmaxHitPoint),curHitPoint(tcurHitPoint),
 		tempHitPoint(ttempHitPoint){}
+
+	QString getName();
+
+	friend CombatPiece;
 };
 

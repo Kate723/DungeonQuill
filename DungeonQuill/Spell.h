@@ -6,6 +6,7 @@
 
 #include <string>
 #include <vector>
+#include <qstring.h>
 #include "EnumType.h"
 #include "SpellComponments.h"
 #include "Area.h"
@@ -77,16 +78,17 @@ public:
 		targetNeed(target), targetNum(tNum), effectArea(areaShape, areaSize), remarks(remark) {}
 
 	int getID();
-	std::string getNameCH();
-	std::string getNameEN();
-	std::string getSchoolName();
+	int getSchoolID();
+	QString getNameCH();
+	QString getNameEN();
+	QString getSchoolName();
 	int getLevel();
-	std::string getLevelString();
+	QString getLevelString();
 	bool spellIsRitual();
-	std::string getRemarks();
+	QString getRemarks();
 
-	std::string getCastingTimeRemarks();
-	std::string getRangeString();
-	std::string getComponentString();
-	std::string getDurationString();
+	QString getCastingTimeRemarks();
+	QString getRangeString();
+	QString getComponentString();
+	QString getDurationString();
 };

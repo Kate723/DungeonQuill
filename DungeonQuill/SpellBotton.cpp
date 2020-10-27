@@ -10,9 +10,10 @@ SpellBotton::SpellBotton(Spell* _spell) : spell(_spell)
 	setSpellText();
 
 	//将文本显示器插入按钮中
-	QHBoxLayout* hLayout = new QHBoxLayout();
-	hLayout->addWidget(spellText);
-	this->setLayout(hLayout);
+	QGridLayout* gLayout = new QGridLayout();
+	gLayout->addWidget(spellText);
+
+	this->setLayout(gLayout);
 }
 
 SpellBotton::~SpellBotton()
@@ -27,13 +28,14 @@ void SpellBotton::setSpellText() {
 	spellText->setAttribute(Qt::WA_TransparentForMouseEvents, true);	//不接受鼠标事件
 
 	//设置内容
-	std::string spellInfo = spell->getLevelString() + ' ' + spell->getSchoolName();
+	QString spellInfo = spell->getLevelString() + ' ' + spell->getSchoolName();
 	spellText->setText( 
 		tr("<h3><font color = brown>%1<br>%2</font>"
 		"<h4>%3")
-		.arg(QString::fromLocal8Bit(spell->getNameCH().c_str()))
-		.arg(QString::fromLocal8Bit(spell->getNameEN().c_str()))
-		.arg(QString::fromLocal8Bit(spellInfo.c_str())) );
+		.arg(spell->getNameCH())
+		.arg(spell->getNameEN())
+		.arg(spellInfo));
+	spellText->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 }
 
 //槽函数，弹出法术信息窗口
