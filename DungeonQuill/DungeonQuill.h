@@ -2,6 +2,7 @@
 #include <string>
 #include <QtWidgets/QMainWindow>
 #include <qtoolbutton.h>
+#include <qscrollarea.h>
 #include "SpellBotton.h"
 #include "MapButton.h"
 #include "NewMapButton.h"
@@ -18,12 +19,18 @@ public slots:
 
 public:
     DungeonQuill();
+    static void renewMapList();
+    static void combatStart(CombatMap* _map);
 
 private:
     Ui::DungeonQuillClass ui;
-
+    static DungeonQuill* instance;
+    static void deleteLayout(QLayout* layout);
+    
     void initCombatTab();
+    QTableWidget* showMap(CombatMap* map);
+    QTableWidgetItem* tableItem(QColor gridColor, QString& str);
 
     void initSpellTab();
-    Spell* findNextSpell(bool resetFlag);
+    Spell* findNextSpell(bool resetFlag);    
 };

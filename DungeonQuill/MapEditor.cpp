@@ -13,21 +13,23 @@ MapEditor::MapEditor(CombatMap* _map) :
 	connect(ui.mapTable, SIGNAL(currentItemChanged(QTableWidgetItem*, QTableWidgetItem*)), 
 		this, SLOT(selectedItemChanged(QTableWidgetItem*, QTableWidgetItem*)));
 	connect(ui.blockButton, SIGNAL(clicked()), this, SLOT(setBarrier()));
-	connect(ui.characterButton, SIGNAL(clicked()), this, SLOT(setCharacter()));
 	connect(ui.saveButton, SIGNAL(clicked()), this, SLOT(onSaveButtonClicked()));
 
 	if (!map) {
 		map = new CombatMap();
 	}
+	setWindowTitle(map->mapInfo.getName());
 
 	showMap();
+	setText();
 }
 
 MapEditor::~MapEditor()
 {
 }
 
-void MapEditor::showMap() {
+void MapEditor::showMap() 
+{
 	for (int i = 0; i < MAX_SIZE; i++) {
 		for (int j = 0; j < MAX_SIZE; j++) {
 			QTableWidgetItem* gridItem = NULL;
@@ -47,24 +49,6 @@ void MapEditor::showMap() {
 		}
 	}
 
-	for (auto i = map->piecesList.begin(); i != map->piecesList.end(); i++) {
-		auto piece = (CombatPiece*)*i;
-		QTableWidgetItem *gridItem = NULL;
-		switch (piece->type)
-		{
-		case 1:
-			gridItem = tableItem(piecesColor, piece->character->getName());
-			ui.mapTable->setItem(piece->x, piece->y, gridItem); 
-			break;
-		case 2:
-			gridItem = tableItem(piecesColor, piece->pieceInfo.getName());
-			ui.mapTable->setItem(piece->x, piece->y, gridItem);
-			break;
-		default:
-			break;
-		}
-	}
-
 	ui.mapTable->verticalHeader()->setMinimumWidth(40);							//行表头宽度
 
 	ui.mapTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
@@ -76,7 +60,14 @@ void MapEditor::showMap() {
 	ui.mapTable->setStyleSheet("QTableWidget::item:selected { background-color: rgb(166, 27, 41) }");
 }
 
-QTableWidgetItem* MapEditor::tableItem(QColor gridColor, QString& str) {
+void MapEditor::setText()
+{
+	ui.mapNameTextEdit->setPlainText(map->mapInfo.getName());
+	ui.mapRemarksTextEdit->setPlainText(QString::fromUtf8(map->mapInfo.remarks.c_str()));
+}
+
+QTableWidgetItem* MapEditor::tableItem(QColor gridColor, QString& str) 
+{
 	auto item = new QTableWidgetItem(str);
 	item->setFlags(item->flags() & ~Qt::ItemIsEditable);
 	item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
@@ -85,7 +76,8 @@ QTableWidgetItem* MapEditor::tableItem(QColor gridColor, QString& str) {
 	return item;
 }
 
-void MapEditor::selectedItemChanged(QTableWidgetItem* current, QTableWidgetItem* previous) {
+void MapEditor::selectedItemChanged(QTableWidgetItem* current, QTableWidgetItem* previous) 
+{
 	QString selectGrid = "(" + QString::number(current->row() + 1) + ", " + QString::number(current->column() + 1) + ")";
 	ui.selectGridText->setText(selectGrid);
 	ui.selectGridText->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
@@ -98,31 +90,30 @@ void MapEditor::setBarrier() {
 	for (auto itor = selectedList.begin();itor != selectedList.end();itor++)
 	{
 		auto selected = *itor;
-		auto gridItem = tableItem(barrierColor, QString());
-		ui.mapTable->setItem(selected->row(), selected->column(), gridItem);
+		QTableWidgetItem* gridItem = NULL;
+		switch (map->grid[selected->row()][selected->column()])
+		{
+		case CombatMap::GridTag::Barrier:
+			map->grid[selected->row()][selected->column()] = CombatMap::GridTag::Flat;
+			gridItem = tableItem(flatColor, QString());
+			ui.mapTable->setItem(selected->row(), selected->column(), gridItem);
+			break;
+		case CombatMap::GridTag::Flat:
+			map->grid[selected->row()][selected->column()] = CombatMap::GridTag::Barrier;
+			gridItem = tableItem(barrierColor, QString());
+			ui.mapTable->setItem(selected->row(), selected->column(), gridItem);
+			break;
+		default:
+			break;
+		}		
 	}
-}
-
-void MapEditor::setCharacter() {
-	auto selectedList = ui.mapTable->selectedItems();
-	if (selectedList.isEmpty()) return;
-
-	int characterNum = Adventurer::adventurerList.size() + Monster::monsterList.size();
-	if (!characterNum) {
-		QMessageBox::critical(NULL, QString::fromLocal8Bit("错误"), QString::fromLocal8Bit("无可选角色"), QMessageBox::Ok, QMessageBox::Ok);
-		return;
-	}
-
-	auto characterChooseWin = new QWidget();
-	characterChooseWin->setWindowModality(Qt::ApplicationModal);
-	characterChooseWin->show();
-	
-	auto selected = selectedList.at(0);
-	auto gridItem = tableItem(piecesColor, QString());
-	ui.mapTable->setItem(selected->row(), selected->column(), gridItem);
 }
 
 void MapEditor::onSaveButtonClicked() {
-	
+	map->mapInfo.name = ui.mapNameTextEdit->toPlainText().toStdString();
+	map->mapInfo.remarks = ui.mapRemarksTextEdit->toPlainText().toStdString();
+	CombatMap::mapList.push_back(map);
+
 	this->close();
+	DungeonQuill::renewMapList();
 }

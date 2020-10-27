@@ -1,7 +1,16 @@
 ﻿#include "DungeonQuill.h"
 
+DungeonQuill* DungeonQuill::instance = nullptr;
+
 DungeonQuill::DungeonQuill()
 {
+    if (instance) {
+        delete this;
+        return;
+    }
+
+    instance = this;
+
     ui.setupUi(this);
 
     connect(ui.comboBox_level, SIGNAL(currentIndexChanged(int)), this, SLOT(spellInquiry(int)));
@@ -15,8 +24,6 @@ void DungeonQuill::initCombatTab() {
     QGridLayout* grid = new QGridLayout();
     auto newMapButton = new NewMapButton();
     grid->addWidget(newMapButton, 0, 0);
-
-    CombatMap::mapList.push_back(new CombatMap());
 
     int row = 0;
     int col = 1;
@@ -49,11 +56,11 @@ void DungeonQuill::initSpellTab() {
         auto newButton = new SpellBotton(pSpell);
         grid->addWidget(newButton, row, col + 1);
 
-        row += ++col / 5;
-        col %= 5;
+        row += ++col / 4;
+        col %= 4;
     }
     grid->setColumnStretch(0, 0);
-    grid->setColumnStretch(6, 1);
+    grid->setColumnStretch(5, 0);
     grid->setRowStretch(row + 1, 1);
     grid->setSpacing(20);
     ui.spellListContents->setLayout(grid);
@@ -94,18 +101,7 @@ Spell* DungeonQuill::findNextSpell(bool resetFlag) {
 
 void DungeonQuill::spellInquiry(int x)
 {
-    //清除当前layout及其内容
-    int itemCount = ui.spellListContents->layout()->count(); 
-    for (int i = (itemCount - 1); i >= 0; --i) 
-    {
-        QLayoutItem* item = ui.spellListContents->layout()->takeAt(i);
-        if (item != 0)
-        {
-            ui.spellListContents->layout()->removeWidget(item->widget());
-            delete item->widget(); 
-        }
-    }
-    delete ui.spellListContents->layout();
+    deleteLayout(ui.spellListContents->layout());
 
     int selectedLV = ui.comboBox_level->currentIndex();
     int selectedSchool = ui.comboBox_school->currentIndex();
@@ -126,13 +122,96 @@ void DungeonQuill::spellInquiry(int x)
         auto newButton = new SpellBotton(pSpell);
         grid->addWidget(newButton, row, col++);
 
-        row += col / 5;
-        col %= 5;
+        row += col / 4;
+        col %= 4;
     }
 
     grid->setColumnStretch(0, 0);
-    grid->setColumnStretch(6, 1);
+    grid->setColumnStretch(5, 0);
     grid->setRowStretch(row + 1, 1);
     grid->setSpacing(20);
     ui.spellListContents->setLayout(grid);
+}
+
+void DungeonQuill::renewMapList() {
+    instance->deleteLayout(instance->ui.mapArea->layout());
+
+    instance->initCombatTab();
+}
+
+void DungeonQuill::deleteLayout(QLayout* layout) {
+    int itemCount = layout->count();
+    for (int i = (itemCount - 1); i >= 0; --i)
+    {
+        QLayoutItem* item = layout->takeAt(i);
+        if (item != 0)
+        {
+            layout->removeWidget(item->widget());
+            delete item->widget();
+        }
+    }
+    delete layout;
+}
+
+void DungeonQuill::combatStart(CombatMap* _map) {
+    auto combatWin = new MapEditor(_map);
+    instance->deleteLayout(combatWin->ui.editorLayout);
+    auto combatQueueArea = new QScrollArea();
+    combatQueueArea->setFrameStyle(0);
+    combatWin->ui.groupBox->layout()->addWidget(combatQueueArea);
+    combatWin->show();
+}
+
+QTableWidget* DungeonQuill::showMap(CombatMap* map)
+{
+    QColor barrierColor = QColor(138, 105, 19);
+    QColor flatColor = QColor(249, 241, 219);
+    QColor piecesColor = QColor(130, 107, 72);
+
+    auto mapTable = new QTableWidget();
+    mapTable->setRowCount(300);
+    mapTable->setColumnCount(300);
+
+    for (int i = 0; i < MAX_SIZE; i++) {
+        for (int j = 0; j < MAX_SIZE; j++) {
+            QTableWidgetItem* gridItem = NULL;
+            switch (map->grid[i][j])
+            {
+            case CombatMap::GridTag::Barrier:
+                gridItem = tableItem(barrierColor, QString());
+                mapTable->setItem(i, j, gridItem);
+                break;
+            case CombatMap::GridTag::Flat:
+                gridItem = tableItem(flatColor, QString());
+                mapTable->setItem(i, j, gridItem);
+                break;
+            default:
+                break;
+            }
+        }
+    }
+
+    mapTable->verticalHeader()->setMinimumWidth(40);							//行表头宽度
+
+    mapTable->horizontalHeader()->setDefaultSectionSize(50);
+    mapTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    mapTable->horizontalHeader()->setDefaultAlignment(Qt::AlignHCenter | Qt::AlignVCenter);		//表头内容居中
+
+    mapTable->verticalHeader()->setDefaultSectionSize(50);
+    mapTable->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    mapTable->verticalHeader()->setDefaultAlignment(Qt::AlignHCenter | Qt::AlignVCenter);		//表头内容居中
+
+    mapTable->setStyleSheet("QTableWidget::item:selected { background-color: rgb(166, 27, 41) }");
+
+    return mapTable;
+}
+
+QTableWidgetItem* DungeonQuill::tableItem(QColor gridColor, QString& str)
+{
+    auto item = new QTableWidgetItem(str);
+    item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+    item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+    item->setBackgroundColor(gridColor);
+
+    return item;
 }

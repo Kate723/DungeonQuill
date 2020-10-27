@@ -9,6 +9,7 @@
 #include <qtoolbutton.h>
 #include <qtextbrowser.h>
 #include <qlayout.h>
+#include <qmessagebox.h>
 #include "CombatMap.h"
 #include "MapEditor.h"
 

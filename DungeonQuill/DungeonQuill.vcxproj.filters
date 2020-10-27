@@ -152,13 +152,13 @@
     <ClCompile Include="CharacterButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MapEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="NewMapButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MapButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapEditor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -258,10 +258,10 @@
     <QtUic Include="CharacterDisplay.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="MapEditor.ui">
+    <QtUic Include="NewMapButton.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="NewMapButton.ui">
+    <QtUic Include="MapEditor.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -275,12 +275,6 @@
     <QtMoc Include="DungeonQuill.h">
       <Filter>Header Files\ui</Filter>
     </QtMoc>
-    <QtMoc Include="MapEditor.h">
-      <Filter>Header Files\ui</Filter>
-    </QtMoc>
-    <QtMoc Include="NewMapButton.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="CharacterButton.h">
       <Filter>Header Files\ui\Button</Filter>
     </QtMoc>
@@ -288,6 +282,12 @@
       <Filter>Header Files\ui\Button</Filter>
     </QtMoc>
     <QtMoc Include="SpellBotton.h">
+      <Filter>Header Files\ui\Button</Filter>
+    </QtMoc>
+    <QtMoc Include="NewMapButton.h">
+      <Filter>Header Files\ui\Button</Filter>
+    </QtMoc>
+    <QtMoc Include="MapEditor.h">
       <Filter>Header Files\ui\Button</Filter>
     </QtMoc>
   </ItemGroup>

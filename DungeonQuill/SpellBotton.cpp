@@ -5,7 +5,7 @@ SpellBotton::SpellBotton(Spell* _spell) : spell(_spell)
 {
 	connect(this, SIGNAL(clicked()), this, SLOT(displaySpell()));
 	
-	this->setMinimumSize(QSize(180,120));
+	this->setMinimumSize(QSize(210, 140));
 
 	setSpellText();
 

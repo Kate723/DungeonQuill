@@ -315,7 +315,7 @@ void DataManager::download()
     aquery.exec("select * from Adventurer");
     while (aquery.next())
     {
-        Adventurer* a = new Adventurer(aquery.value(0).toInt(), aquery.value(1).toString().toStdString(), aquery.value(2).toInt(),
+        /*Adventurer* a = new Adventurer(aquery.value(0).toInt(), aquery.value(1).toString().toStdString(), aquery.value(2).toInt(),
             aquery.value(3).toInt(), aquery.value(4).toInt(), aquery.value(5).toInt(), aquery.value(6).toInt(), aquery.value(7).toBool(),
             aquery.value(8).toInt(), aquery.value(9).toInt(), aquery.value(10).toInt(), aquery.value(11).toInt(), aquery.value(12).toString().toStdString(),
             aquery.value(13).toString().toStdString(), aquery.value(14).toString().toStdString(), aquery.value(15).toString().toStdString(), aquery.value(16).toString().toStdString(),
@@ -324,7 +324,7 @@ void DataManager::download()
             aquery.value(25).toString().toStdString(), aquery.value(26).toString().toStdString(), aquery.value(27).toInt(), aquery.value(28).toString().toStdString(), aquery.value(29).toInt(),
             aquery.value(30).toInt(), aquery.value(31).toInt(), aquery.value(32).toInt(), aquery.value(33).toString(), aquery.value(34).toInt(),
             aquery.value(35).toInt(), aquery.value(36).toInt(), aquery.value(37).toInt(), aquery.value(38).toInt());
-        Adventurer::adventurerList.push_back(a);
+        Adventurer::adventurerList.push_back(a);*/
     }
 
     advdb.close();

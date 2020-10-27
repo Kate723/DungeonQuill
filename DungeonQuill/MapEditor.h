@@ -11,6 +11,7 @@
 #include <qmessagebox.h>
 #include <qstring.h>
 #include "ui_MapEditor.h"
+#include "DungeonQuill.h"
 #include "CombatMap.h"
 #include "Adventurer.h"
 #include "Monster.h"
@@ -23,7 +24,6 @@ class MapEditor : public QWidget
 public slots:
 	void selectedItemChanged(QTableWidgetItem* current, QTableWidgetItem* previous);
 	void setBarrier();
-	void setCharacter();
 	void onSaveButtonClicked();
 
 public:
@@ -33,5 +33,8 @@ public:
 private:
 	Ui::MapEditor ui;
 	void showMap();
+	void setText();
 	QTableWidgetItem* tableItem(QColor gridColor, QString& str);
+
+	friend DungeonQuill;
 };
