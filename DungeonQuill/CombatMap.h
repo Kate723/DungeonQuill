@@ -12,9 +12,11 @@
 
 constexpr auto MAX_SIZE = 300;
 
+class MapEditor;
+
 class CombatMap
 {
-	BasicInfo mapInfo;					//地图基本信息
+	
 
 	enum GridTag {
 		Barrier,
@@ -24,13 +26,18 @@ class CombatMap
 		Tag
 	}grid[MAX_SIZE][MAX_SIZE];			//格子标记
 
-	int piecesNum;						//棋子数目
-	std::vector<CombatPiece*> piecesList;	//数据库不存！！！棋子列表
+	int piecesNum;							//棋子数目
+	std::vector<CombatPiece*> piecesList;	//棋子列表
 
 public:
+	BasicInfo mapInfo;					//地图基本信息
+	static int mapNum;					//存储地图数量
 	static std::vector<CombatMap*> mapList;	//存储地图列表
 
+	CombatMap();
 	CombatMap(int id, std::string& name, std::string& remark,						//构造函数
-		GridTag mapGrid[MAX_SIZE][MAX_SIZE], int num = 0, std::vector<CombatPiece*> picecs = std::vector<CombatPiece*>());
+		GridTag mapGrid[MAX_SIZE][MAX_SIZE], int num, std::vector<int> picecs);	
+
+	friend MapEditor;
 };
 
