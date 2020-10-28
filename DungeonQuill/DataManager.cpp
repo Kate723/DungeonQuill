@@ -331,6 +331,12 @@ void DataManager::download()
     if (!advdb.open())
         exit(-1);
     QSqlQuery aquery(advdb);
+
+    QSqlDatabase equdb = QSqlDatabase::database("equConnection");
+    if (!equdb.open())
+        exit(-1);
+    QSqlQuery equery(equdb);
+    QSqlQuery wquery(equdb);
     aquery.exec("select * from Adventurer");
     while (aquery.next())
     {
@@ -341,11 +347,56 @@ void DataManager::download()
         std::vector<Equipment> equipmentList;
         std::vector<Weapon> weaponList;
         std::vector<Amour> amourList;
-        for (int i = 61; aquery.value(i).isNull(); i++)
+        QSqlQuery equery(equdb);
+        for (int i = 61; aquery.value(i).isValid()&&i<61+vnum; i++)
         {
-
+            equery.exec("select * from equipment where ID = "+ aquery.value(i).toString());
+            Equipment* e = new Equipment(equery.value(0).toInt(), equery.value(1).toString().toStdString(), 
+                equery.value(2).toString().toStdString(), (EquipemntType)equery.value(3).toInt());
+            equipmentList.push_back(*e);
         }
-        Adventurer* a = new Adventurer(aquery.value(0).toInt(), aquery.value(1).toString().toStdString(), aquery.value(2).toInt(),
+        for (int i = 61+vnum; aquery.value(i).isValid() && i < 61 + 2*vnum; i++)
+        {
+            equery.exec("select * from weapon where ID = " + aquery.value(i).toString());
+            wquery.exec("selsect * from equipment where ID = "+ aquery.value(i).toString());
+            Weapon* w = new Weapon(equery.value(0).toInt(), wquery.value(1).toString().toStdString(),
+                wquery.value(2).toString().toStdString(), (EquipemntType)wquery.value(3).toInt(),equery.value(1).toInt(),
+                equery.value(2).toInt(), equery.value(3).toInt(), equery.value(4).toBool(), equery.value(5).toBool(),
+                equery.value(6).toInt(), equery.value(7).toInt());
+            weaponList.push_back(*w);
+        }
+        for (int i = 61 + 2*vnum; aquery.value(i).isValid() && i < 61 + 3 * vnum; i++)
+        {
+            equery.exec("select * from amour where ID = " + aquery.value(i).toString());
+            wquery.exec("selsect * from equipment where ID = " + aquery.value(i).toString());
+            Amour* a = new Amour(equery.value(0).toInt(), wquery.value(1).toString().toStdString(),
+                wquery.value(2).toString().toStdString(),  
+                (AmourType)equery.value(2).toInt(), equery.value(1).toInt(),equery.value(3).toInt());
+           amourList.push_back(*a);
+        }
+        for (int i = 61 + 3 * vnum; aquery.value(i).isValid() && i < 61 + 3 * vnum+vnumc; i++)
+        {
+            languageList.push_back(aquery.value(i).toString().toStdString());
+        }
+        for (int i = 61 + 3 * vnum+vnumc; aquery.value(i).isValid() && i < 61 + 3 * vnum + 4*vnumc; i = i+3)
+        {
+            BasicInfo* b = new BasicInfo(aquery.value(i).toInt(), aquery.value(i+1).toString().toStdString(),
+                aquery.value(i+2).toString().toStdString() );
+            spellList.push_back(*b);
+        }
+        for (int i = 61 + 3 * vnum + 4 * vnumc; aquery.value(i).isValid() && i < 61 + 3 * vnum + 7 * vnumc; i = i + 3)
+        {
+            BasicInfo* b = new BasicInfo(aquery.value(i).toInt(), aquery.value(i + 1).toString().toStdString(),
+                aquery.value(i + 2).toString().toStdString());
+            ttraitList.push_back(*b);
+        }
+        for (int i = 61 + 3 * vnum + 7 * vnumc; aquery.value(i).isValid() && i < 61 + 3 * vnum + 10 * vnumc; i = i + 3)
+        {
+            BasicInfo* b = new BasicInfo(aquery.value(i).toInt(), aquery.value(i + 1).toString().toStdString(),
+                aquery.value(i + 2).toString().toStdString());
+            traitList.push_back(*b);
+        }
+        Adventurer* adv = new Adventurer(aquery.value(0).toInt(), aquery.value(1).toString().toStdString(), aquery.value(2).toInt(),
             aquery.value(3).toInt(), aquery.value(4).toInt(), aquery.value(5).toInt(), aquery.value(6).toInt(), aquery.value(7).toBool(),
             aquery.value(8).toInt(), aquery.value(9).toInt(), aquery.value(10).toInt(), aquery.value(11).toInt(), aquery.value(12).toInt(),
             languageList, aquery.value(12).toString().toStdString(),aquery.value(13).toString().toStdString(),
@@ -363,41 +414,11 @@ void DataManager::download()
             spellList, traitList,aquery.value(53).toInt(), aquery.value(54).toInt(), aquery.value(55).toString(),
             equipmentList, weaponList, amourList, aquery.value(56).toInt(), aquery.value(57).toInt(), aquery.value(58).toInt(), 
             aquery.value(59).toInt(), aquery.value(60).toInt());
-        Adventurer::adventurerList.push_back(a);
+        Adventurer::adventurerList.push_back(adv);
     }
-    /* 
-    for (int i = 0; i < vnum; i++)
-    {
-        qs = qs + ",equipment"+QString::number(i,10)+" int";
-    }
-    for (int i = 0; i < vnum; i++)
-    {
-        qs = qs + ",weapon" + QString::number(i, 10) + " int";
-    }
-    for (int i = 0; i < vnum; i++)
-    {
-        qs = qs + ",amour" + QString::number(i, 10) + " int";
-    }
-    for (int i = 0; i < vnumc; i++)
-    {
-            qs = qs + ",languageList" + QString::number(i, 10) + " int";
-    }
-    for (int i = 0; i < vnumc; i++)
-    {
-        for (int j = 0; j < 3; j++)
-            qs = qs + ",spellList" + QString::number(i, 10) + QString::number(j, 10) + " int";
-    }
-    for (int i = 0; i < vnumc; i++)
-    {
-        for (int j = 0; j < 3; j++)
-            qs = qs + ",ttraitList" + QString::number(i, 10) + QString::number(j, 10) + " int";
-    }
-    for (int i = 0; i < vnumc; i++)
-    {
-        for (int j = 0; j < 3; j++)
-            qs = qs + ",traitList" + QString::number(i, 10) + QString::number(j, 10) + " int";
-    }*/
+    
     advdb.close();
+    equdb.close();
 }
 
 
