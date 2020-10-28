@@ -1,37 +1,28 @@
 ﻿#include "CharacterButton.h"
 
-CharacterButton::CharacterButton(CombatCharacter* _character) :
-	character(_character)
+CharacterButton::CharacterButton(Adventurer* _character) :
+	adventurer(_character)
 {
 	connect(this, SIGNAL(clicked()), this, SLOT(displayCharacter()));
 
-	this->setMinimumSize(QSize(210, 140));
-
-	setCharacterText();
-
-	QGridLayout* gLayout = new QGridLayout();
-	gLayout->addWidget(characterText);
-
-	this->setLayout(gLayout);
+	setDisplayText();
 }
 
 CharacterButton::~CharacterButton()
 {
 }
 
-void CharacterButton::setCharacterText() 
+void CharacterButton::setDisplayText()
 {
-	characterText = new QTextBrowser();
-	characterText->setStyleSheet("background-color:transparent");
-	characterText->setAttribute(Qt::WA_TransparentForMouseEvents, true);
-
-	characterText->setText(
+	displayText->setText(
 		tr("<h3><font color = brown>%1<br>")
-		.arg(character->getName()) 
+		.arg(adventurer->getName()) 
 	);	
 }
 
 void CharacterButton::displayCharacter()
 {
-	
+	auto characterWindow = CharacterDisplay(adventurer);
+	characterWindow.setWindowModality(Qt::ApplicationModal);
+	characterWindow.show();
 }

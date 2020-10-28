@@ -6,7 +6,6 @@ CharacterDisplay::CharacterDisplay(Adventurer* _character) :
 	ui.setupUi(this);
 
 	initFormat();
-	
 }
 
 CharacterDisplay::~CharacterDisplay()
