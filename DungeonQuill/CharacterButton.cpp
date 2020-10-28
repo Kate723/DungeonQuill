@@ -25,8 +25,10 @@ void CharacterButton::setCharacterText()
 	characterText->setStyleSheet("background-color:transparent");
 	characterText->setAttribute(Qt::WA_TransparentForMouseEvents, true);
 
-	//characterText->setText(
-		//tr());	
+	characterText->setText(
+		tr("<h3><font color = brown>%1<br>")
+		.arg(character->getName()) 
+	);	
 }
 
 void CharacterButton::displayCharacter()

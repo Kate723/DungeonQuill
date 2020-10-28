@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
     w.show();
 
     auto dicemaid = new DiceMaid();
+    auto combatManager = new CombatManager();
 
     return a.exec();
 }

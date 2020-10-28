@@ -164,6 +164,9 @@
     <ClCompile Include="DiceMaid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DisplayButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Area.h">
@@ -247,12 +250,6 @@
     <ClInclude Include="HealSpell.h">
       <Filter>Header Files\Info\Spell</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -262,9 +259,6 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="CharacterDisplay.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="NewMapButton.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="MapEditor.ui">
@@ -301,6 +295,9 @@
     </QtMoc>
     <QtMoc Include="DiceMaid.h">
       <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="DisplayButton.h">
+      <Filter>Header Files\ui\Button</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

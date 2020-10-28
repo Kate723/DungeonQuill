@@ -16,9 +16,6 @@ CombatManager::~CombatManager()
 }
 
 void CombatManager::combatStart(CombatMap* _map, MapEditor* _combatWin) {
-	if (!instance) {
-		instance = new CombatManager();
-	}
 	instance->map = _map;
 	instance->combatWin = _combatWin;
 

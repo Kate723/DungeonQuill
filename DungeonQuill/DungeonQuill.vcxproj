@@ -43,7 +43,8 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>D:\Software\Qt\5.14.2\msvc2017_64\include\QtSql;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um;D:\Software\Qt\5.14.2\msvc2017_64\include\QtSql;$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
@@ -118,6 +119,7 @@
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DiceMaid.cpp" />
     <ClCompile Include="DiceRollType.cpp" />
+    <ClCompile Include="DisplayButton.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="HealSpell.cpp" />
     <ClCompile Include="MapButton.cpp" />
@@ -138,7 +140,6 @@
     <ClCompile Include="DungeonQuill.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="MapEditor.ui" />
-    <QtUic Include="NewMapButton.ui" />
     <QtUic Include="SpellDisplay.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -158,8 +159,7 @@
     <QtMoc Include="MapEditor.h" />
     <QtMoc Include="CombatManager.h" />
     <QtMoc Include="DiceMaid.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="resource1.h" />
+    <QtMoc Include="DisplayButton.h" />
     <ClInclude Include="Wealth.h" />
     <ClInclude Include="Weapon.h" />
     <QtMoc Include="SpellDisplay.h" />

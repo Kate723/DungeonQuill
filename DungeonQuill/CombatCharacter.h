@@ -56,6 +56,7 @@ public:
 		tempHitPoint(ttempHitPoint){}
 
 	QString getName();
+	virtual QString getRaceName();
 
 	friend CombatPiece;
 };

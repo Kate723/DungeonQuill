@@ -1,19 +1,15 @@
 ﻿#pragma once
 
-#include <qtoolbutton.h>
-#include <qtextbrowser.h>
-#include <qlayout.h>
+#include "DisplayButton.h"
 #include "Spell.h"
 #include "SpellDisplay.h"
 
-class SpellBotton : public QToolButton
+class SpellBotton : public DisplayButton
 {
 	Spell* spell;
-	QTextBrowser* spellText;
-
 	Q_OBJECT
 
-	void setSpellText();
+	virtual void setDisplayText();
 		
 public slots:
 	void displaySpell();

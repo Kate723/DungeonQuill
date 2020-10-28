@@ -6,6 +6,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <qstring.h>
 #include "EnumType.h"
 
 struct Height{
@@ -25,7 +26,7 @@ struct Characteristics {
 
 class CharacterDetails
 {
-	bool sex;					//0为男性，1为女性
+	bool sex;					//1为男性，0为女性
 	int age;					//年龄
 	Height height;				//身高
 
@@ -40,8 +41,18 @@ class CharacterDetails
 	std::string apperance;		//外貌描写
 	std::string bgStory;		//背景故事
 public:
-	CharacterDetails(bool tsex, int tage, int feet, int inch, int tweight, int talignment, std::vector<std::string> tlanguageList,
-		std::string trait1, std::string trait2, std::string tideal, std::string tbond, std::string tflaw,std::string tapperance,std::string tbgStory):
-		sex(tsex), age(tage), height(feet, inch),weight(tweight),alignment((Aligment)talignment), languageList(tlanguageList),
-		characteristics(trait1, trait2, tideal,tbond,tflaw),apperance(tapperance),bgStory(tbgStory) {}
+	CharacterDetails(bool tsex, int tage, int feet, int inch, int tweight, int talignment, 
+		std::vector<std::string> tlanguageList,
+		std::string trait1, std::string trait2, 
+		std::string tideal, std::string tbond, std::string tflaw,
+		std::string tapperance,std::string tbgStory):
+
+		sex(tsex), age(tage), height(feet, inch), weight(tweight),alignment((Aligment)talignment), 
+		languageList(tlanguageList),
+		characteristics(trait1, trait2, tideal,tbond,tflaw),
+		apperance(tapperance),bgStory(tbgStory) {}
+
+	QString getGender();
+	QString getAge();
+	QString getAlignment();
 };

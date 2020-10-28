@@ -21,4 +21,7 @@ class AdventurerRace
 public:
 	AdventurerRace(std::string tname,int tid, std::string tsubName,int tsubID, std::vector<BasicInfo> ttraitList):
 		name(tname), id(tid), subName(tsubName),subID(tsubID), traitList(ttraitList){}
+
+	QString getRaceName();
+	QString getSubRaceName();
 };

@@ -6,3 +6,7 @@ std::string CombatCharacter::conditionName[] = {"目盲", "魅惑" , "耳聋", "
 QString CombatCharacter::getName() {
 	return QString::fromUtf8(name.c_str());
 }
+
+QString CombatCharacter::getRaceName() {
+	return NULL;
+}

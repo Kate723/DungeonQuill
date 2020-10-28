@@ -6,20 +6,17 @@
 
 #pragma once
 
-#include <qtoolbutton.h>
-#include <qtextbrowser.h>
-#include <qlayout.h>
+#include "DisplayButton.h"
 #include <qmessagebox.h>
 #include "CombatMap.h"
 #include "MapEditor.h"
 
-class MapButton : public QToolButton
+class MapButton : public DisplayButton
 {
 	CombatMap* map;
-	QTextBrowser* mapText;
 	Q_OBJECT
 
-	void setMaptext();
+	virtual void setDisplayText();
 
 public slots:
 	void selectMap();

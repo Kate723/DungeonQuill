@@ -3,6 +3,7 @@
         <file>Source/Dice_default.png</file>
         <file>Source/Quill_Black.png</file>
         <file>Source/Quill_White.png</file>
+        <file>Source/QuillSprite.png</file>
     </qresource>
     <qresource prefix="/qss">
         <file>Source/AMOLED.qss</file>

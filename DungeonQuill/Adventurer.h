@@ -20,41 +20,46 @@ class Adventurer :
     public CombatCharacter
 {
     int exp;                    //角色经验
-    CharacterDetails details;   //角色细节
-    AdventurerRace race;         //角色种族
-    AdventurerClass _class;       //角色职业
+    
 
     int curHitDice;				//当前生命骰
     int maxHitDice;				//最大生命骰
 
     QString iconPath;           //头像路径
+    
+public:
+    CharacterDetails details;   //角色细节
+    AdventurerRace race;         //角色种族
+    AdventurerClass _class;       //角色职业
     std::vector<Equipment> equipmentList;       //装备列表
     std::vector<Weapon> weaponList;             //武器列表
     std::vector<Amour> amourList;               //护甲列表
     Wealth characterWealth;                     //角色财富
-public:
+
     static int adventurerNum;                           //冒险者数目
     static std::vector<Adventurer*> adventurerList;     //冒险者列表
 
-    Adventurer(int ttid, std::string ttname, int tspeed, int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint, //6
+    Adventurer(int ttid, std::string ttname, int tspeed, 
+        int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint, 
 
-        int texp, //7
+        int texp, 
 
-        bool tsex, int tage, int feet, int inch, int tweight, int talignment, //13
-        std::vector<std::string> tlanguageList,std::string trait1, std::string trait2, //16
-        std::string tideal, std::string tbond, std::string tflaw,std::string tapperance, std::string tbgStory,//16
+        bool tsex, int tage, int feet, int inch, int tweight, int talignment,
+        std::vector<std::string> tlanguageList,std::string trait1, std::string trait2,
+        std::string tideal, std::string tbond, std::string tflaw,std::string tapperance, std::string tbgStory,
 
         std::string ttttname, int ttttid, std::string tsubName, int tsubID, std::vector<BasicInfo> ttraitList,
-        int tid, std::string tname, std::string tremarks, int tttid, //24
-        std::string tttname, std::string ttremarks, int tlevel,//27
+        int tid, std::string tname, std::string tremarks, int tttid, 
+        std::string tttname, std::string ttremarks, int tlevel,
         std::string tspecialAbilityName, int tcurSpecialPoint, int tmaxSpecialPoint,
-        int m0, int m1, int m2, int m3, int m4, int m5,
-        int m6, int m7, int m8, int m9, int c0, int c1, int c2, int c3, int c4, int c5, int c6, int c7, int c8, int c9,
+        int m0, int m1, int m2, int m3, int m4, int m5, int m6, int m7, int m8, int m9, 
+        int c0, int c1, int c2, int c3, int c4, int c5, int c6, int c7, int c8, int c9,
         std::vector<BasicInfo> tspellList,
-        std::vector<BasicInfo> traitList,//30
+        std::vector<BasicInfo> traitList,
 
         int tcurHitDice,int tmaxHitDice,
-        QString ticonPath, std::vector<Equipment> tequipmentList,std::vector<Weapon> tweaponList,std::vector<Amour> tamourList,
+        QString ticonPath, 
+        std::vector<Equipment> tequipmentList,std::vector<Weapon> tweaponList,std::vector<Amour> tamourList,
 
         int cp, int sp, int ep, int gp, int pp):
 
@@ -70,5 +75,8 @@ public:
         iconPath(ticonPath),
         equipmentList(tequipmentList), weaponList(tweaponList), amourList(tamourList),
         characterWealth (cp, sp, ep, gp, pp){}
+
+    virtual QString getRaceName();
+    QString getClassName();
 };
 

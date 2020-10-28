@@ -24,6 +24,9 @@ DiceMaid::~DiceMaid()
 void DiceMaid::initDiceTab() {
 	ui->diceMaidText->setAlignment(Qt::AlignCenter);
 	ui->diceRollText->setAlignment(Qt::AlignCenter);
+
+	ui->diceNumSpinBox->setValue(1);
+	ui->diceSideSpinBox->setValue(20);
 }
 
 void DiceMaid::diceRollButtonClicked() {
@@ -31,19 +34,33 @@ void DiceMaid::diceRollButtonClicked() {
 	int diceSide = ui->diceSideSpinBox->value();
 	if (diceNum <= 0 ||diceSide <= 0) return;
 
-	auto dice = new DiceRollType(diceNum, 0, diceSide);
-	auto rollResult = diceRoll(dice);
-
-	QString resString = QString::number(*rollResult);
-	for (int i = 1; i < diceNum; i++) {
-		resString += QString::fromLocal8Bit("+") + QString::number(rollResult[i]);
+	QString resString = QString();
+	int resSum = 0;
+	for (int i = 0; i < diceNum; i++) {
+		auto dice = new DiceRollType(10, 0, diceSide);
+		auto rollResult = diceRoll(dice);
+		
+		for (int j = 0; j < 10; j++) {
+			ui->diceRollText->setText(resString + QString::number(rollResult[j]));
+			ui->diceRollText->setAlignment(Qt::AlignCenter);
+			sleep(50);
+		}
+		resSum += rollResult[9];
+		resString += QString::number(rollResult[9]);
+		if(i != (diceNum - 1))
+			resString += QString::fromLocal8Bit("+");
 	}
 	if (diceNum > 1) {
-		resString += QString::fromLocal8Bit("=") + QString::number(rollResult[diceNum]);
-	}
+		resString += QString::fromLocal8Bit("=");
+		sleep(100);
+		ui->diceRollText->setText(resString);
+		ui->diceRollText->setAlignment(Qt::AlignCenter);
 
-	ui->diceRollText->setText(resString);
-	ui->diceRollText->setAlignment(Qt::AlignCenter);
+		resString += QString::number(resSum);
+		sleep(100);
+		ui->diceRollText->setText(resString);
+		ui->diceRollText->setAlignment(Qt::AlignCenter);
+	}
 }
 
 int* DiceMaid::diceRoll(DiceRollType* dice) {
