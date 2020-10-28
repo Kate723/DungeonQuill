@@ -1,12 +1,12 @@
 ﻿#pragma once
 
-#include <qtoolbutton.h>
+#include "DisplayButton.h"
 #include "MapEditor.h"
-#include "ui_NewMapButton.h"
 
-class NewMapButton : public QToolButton
+class NewMapButton : public DisplayButton
 {
 	Q_OBJECT
+	virtual void setDisplayText();
 
 public slots:
 	void newMapEditor();
@@ -14,7 +14,4 @@ public slots:
 public:
 	NewMapButton();
 	~NewMapButton();
-
-private:
-	Ui::NewMapButton ui;
 };

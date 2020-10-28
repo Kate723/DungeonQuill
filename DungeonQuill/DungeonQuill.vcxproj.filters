@@ -125,9 +125,6 @@
     <ClCompile Include="Class.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CombatManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Equipment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -159,6 +156,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MapEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DiceMaid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -204,9 +210,6 @@
     </ClInclude>
     <ClInclude Include="CharacterDetails.h">
       <Filter>Header Files\Character\Adventurer</Filter>
-    </ClInclude>
-    <ClInclude Include="CombatManager.h">
-      <Filter>Header Files\Combat</Filter>
     </ClInclude>
     <ClInclude Include="CombatMap.h">
       <Filter>Header Files\Combat</Filter>
@@ -258,9 +261,6 @@
     <QtUic Include="CharacterDisplay.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="NewMapButton.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="MapEditor.ui">
       <Filter>Form Files</Filter>
     </QtUic>
@@ -288,6 +288,15 @@
       <Filter>Header Files\ui\Button</Filter>
     </QtMoc>
     <QtMoc Include="MapEditor.h">
+      <Filter>Header Files\ui\Button</Filter>
+    </QtMoc>
+    <QtMoc Include="CombatManager.h">
+      <Filter>Header Files\Combat</Filter>
+    </QtMoc>
+    <QtMoc Include="DiceMaid.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="DisplayButton.h">
       <Filter>Header Files\ui\Button</Filter>
     </QtMoc>
   </ItemGroup>

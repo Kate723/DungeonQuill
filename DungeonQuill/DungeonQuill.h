@@ -7,8 +7,11 @@
 #include "MapButton.h"
 #include "NewMapButton.h"
 #include "qtablewidget.h"
+#include "CombatManager.h"
 #include "DataManager.h"
 #include "ui_DungeonQuill.h"
+
+class DiceMaid;
 
 class DungeonQuill : public QMainWindow
 {
@@ -32,5 +35,7 @@ private:
     QTableWidgetItem* tableItem(QColor gridColor, QString& str);
 
     void initSpellTab();
-    Spell* findNextSpell(bool resetFlag);    
+    Spell* findNextSpell(bool resetFlag);
+
+    friend DiceMaid;
 };

@@ -8,7 +8,6 @@ DungeonQuill::DungeonQuill()
         delete this;
         return;
     }
-
     instance = this;
 
     ui.setupUi(this);
@@ -32,8 +31,8 @@ void DungeonQuill::initCombatTab() {
         auto newButton = new MapButton(curMap);
         grid->addWidget(newButton, row, col++);
 
-        row += col / 5;
-        col %= 5;
+        row += col / 4;
+        col %= 4;
     }
 
     ui.mapArea->setLayout(grid);
@@ -156,10 +155,8 @@ void DungeonQuill::deleteLayout(QLayout* layout) {
 void DungeonQuill::combatStart(CombatMap* _map) {
     auto combatWin = new MapEditor(_map);
     instance->deleteLayout(combatWin->ui.editorLayout);
-    auto combatQueueArea = new QScrollArea();
-    combatQueueArea->setFrameStyle(0);
-    combatWin->ui.groupBox->layout()->addWidget(combatQueueArea);
-    combatWin->show();
+
+    CombatManager::combatStart(_map, combatWin);
 }
 
 QTableWidget* DungeonQuill::showMap(CombatMap* map)

@@ -5,13 +5,19 @@
 */
 
 #pragma once
+
+class DiceMaid;
+
 class DiceRollType
 {
+public:
 	int diceNum;				//骰子数量
 	int diceNumDependence;		//骰子数量决定值
 	int diceSideNum;			//骰子面数
-public:
+
 	DiceRollType(int _diceNum,int _diceNumDependence,int _diceSideNum):
 		diceNum(_diceNum),diceNumDependence(_diceNumDependence),diceSideNum(_diceSideNum){}
+
+	friend DiceMaid;
 };
 

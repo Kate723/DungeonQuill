@@ -5,6 +5,7 @@
 #include <qfile.h>
 #include <iostream>
 #include "DataManager.h"
+#include "DiceMaid.h"
 
 //设置格式
 void setQss() {
@@ -24,13 +25,14 @@ int main(int argc, char *argv[])
     dataManager.download();
     
     QApplication a(argc, argv);
-
     setQss();
 
     //定义主窗口并打开
     DungeonQuill w;
     w.show();
 
-    
+    auto dicemaid = new DiceMaid();
+    auto combatManager = new CombatManager();
+
     return a.exec();
 }

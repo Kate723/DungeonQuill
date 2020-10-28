@@ -39,7 +39,7 @@ class CombatCharacter
 	bool isConsentrating;			//是否处于专注
 	bool isInCondition[15];			//状态标签
 
-	enum CombatCondition conditon;	//人物状态
+	CharacterCondition conditon;	//人物状态
 
 	int attackTime;                 //攻击次数
 	int maxAttackTime;              //最大攻击次数
@@ -56,6 +56,7 @@ public:
 		tempHitPoint(ttempHitPoint){}
 
 	QString getName();
+	virtual QString getRaceName();
 
 	friend CombatPiece;
 };

@@ -18,5 +18,7 @@ public:
     Monster(int ttid, std::string ttname, int tspeed, int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint,int tid, std::string tname, 
         std::string tremarks):
     CombatCharacter(ttid,ttname,tspeed, tmaxHitPoint, tcurHitPoint, ttempHitPoint),raceInfo(tid, tname, tremarks),actionList(){}
+
+    virtual QString getRaceName();
 };
 
