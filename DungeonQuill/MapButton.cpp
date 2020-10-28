@@ -5,7 +5,7 @@ MapButton::MapButton(CombatMap* _map) :
 {
 	connect(this, SIGNAL(clicked()), this, SLOT(selectMap()));
 
-	this->setMinimumSize(QSize(180, 120));
+	this->setMinimumSize(QSize(210, 140));
 
 	setMaptext();
 
@@ -35,7 +35,11 @@ void MapButton::setMaptext()
 }
 
 void MapButton::selectMap() {
-	auto editWindow = new MapEditor(map);
-	editWindow->setWindowModality(Qt::ApplicationModal);
-	editWindow->show();
+	auto option = QMessageBox::question(NULL, 
+		map->mapInfo.getName(), QString::fromLocal8Bit("开始战斗？"), 
+		QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
+
+	if (option == QMessageBox::Yes) {
+		DungeonQuill::combatStart(map);
+	}
 }

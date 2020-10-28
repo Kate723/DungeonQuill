@@ -5,7 +5,7 @@ CharacterButton::CharacterButton(CombatCharacter* _character) :
 {
 	connect(this, SIGNAL(clicked()), this, SLOT(displayCharacter()));
 
-	this->setMinimumSize(QSize(180, 120));
+	this->setMinimumSize(QSize(210, 140));
 
 	setCharacterText();
 

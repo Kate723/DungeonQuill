@@ -12,7 +12,7 @@ SpellDisplay::SpellDisplay(Spell* displaySpell) : spell(displaySpell)
 
 	initFormat();
 
-	this->setWindowTitle(spell->getNameCH());
+	setWindowTitle(spell->getNameCH());
 }
 
 SpellDisplay::~SpellDisplay()
@@ -22,10 +22,10 @@ SpellDisplay::~SpellDisplay()
 
 void SpellDisplay::initFormat() {
 	//生成所需格式
-	QFont emphasize("SimHei", 12, QFont::Bold);
-	QFont default("Times New Roman", 10);
-	QFont bold("Times New Roman", 10, QFont::Bold);
-	QFont italicBold("Times New Roman", 8, QFont::Bold, true);
+	QFont emphasize("SimHei", 16, QFont::Bold);
+	QFont default("Times New Roman", 12);
+	QFont bold("SimHei", 12, QFont::Bold);
+	QFont italicBold("Times New Roman", 10, QFont::Bold, true);
 	QColor brown(124, 60, 33);
 
 	//显示法术名称

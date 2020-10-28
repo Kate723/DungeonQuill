@@ -4,7 +4,7 @@ int CombatMap::mapNum = 0;
 std::vector<CombatMap*> CombatMap::mapList = std::vector<CombatMap*>();
 
 CombatMap::CombatMap() :
-	mapInfo(0, "新地图", std::string()), piecesNum(0), piecesList(NULL)
+	mapInfo(0, "New Map", std::string()), piecesNum(0), piecesList(NULL)
 {
 	if (!mapList.empty())
 		mapInfo.id = mapList.back()->mapInfo.id++;

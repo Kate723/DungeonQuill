@@ -152,9 +152,9 @@
     <QtMoc Include="CharacterButton.h" />
     <ClInclude Include="CharacterDetails.h" />
     <QtMoc Include="SpellBotton.h" />
-    <QtMoc Include="MapEditor.h" />
     <QtMoc Include="NewMapButton.h" />
     <QtMoc Include="MapButton.h" />
+    <QtMoc Include="MapEditor.h" />
     <ClInclude Include="Wealth.h" />
     <ClInclude Include="Weapon.h" />
     <QtMoc Include="SpellDisplay.h" />

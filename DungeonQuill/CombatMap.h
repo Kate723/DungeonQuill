@@ -13,11 +13,10 @@
 constexpr auto MAX_SIZE = 300;
 
 class MapEditor;
+class DungeonQuill;
 
 class CombatMap
 {
-	
-
 	enum GridTag {
 		Barrier,
 		Flat,
@@ -39,5 +38,6 @@ public:
 		GridTag mapGrid[MAX_SIZE][MAX_SIZE], int num, std::vector<int> picecs);	
 
 	friend MapEditor;
+	friend DungeonQuill;
 };
 
