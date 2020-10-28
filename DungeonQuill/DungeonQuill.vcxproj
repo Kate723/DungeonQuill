@@ -116,6 +116,7 @@
     <ClCompile Include="CombatPiece.cpp" />
     <ClCompile Include="DamageSpell.cpp" />
     <ClCompile Include="DataManager.cpp" />
+    <ClCompile Include="DiceMaid.cpp" />
     <ClCompile Include="DiceRollType.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="HealSpell.cpp" />
@@ -155,6 +156,10 @@
     <QtMoc Include="NewMapButton.h" />
     <QtMoc Include="MapButton.h" />
     <QtMoc Include="MapEditor.h" />
+    <QtMoc Include="CombatManager.h" />
+    <QtMoc Include="DiceMaid.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="Wealth.h" />
     <ClInclude Include="Weapon.h" />
     <QtMoc Include="SpellDisplay.h" />
@@ -163,7 +168,6 @@
     <ClInclude Include="Class.h" />
     <ClInclude Include="CombatAction.h" />
     <ClInclude Include="CombatCharacter.h" />
-    <ClInclude Include="CombatManager.h" />
     <ClInclude Include="CombatMap.h" />
     <ClInclude Include="CombatPiece.h" />
     <ClInclude Include="DamageSpell.h" />

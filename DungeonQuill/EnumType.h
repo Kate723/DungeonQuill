@@ -64,7 +64,7 @@ enum CharacterType {			//角色类型
 	MONSTER
 };
 
-enum CombatCondition {			//人物状态
+enum CharacterCondition {			//人物状态
 	NORM,
 	DEAD,
 	NEED_DEATH_ST,
@@ -138,4 +138,10 @@ enum STSuccess {				//豁免成功
 	FullDamageDecrease,
 	HalfDamageDecrease,
 	BuffRemove,
+};
+
+enum CombatCondition {			//战斗状态
+	IDIE,
+	CHARACTER_CHOOSE,
+	ACTION_ROUND
 };

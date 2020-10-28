@@ -125,9 +125,6 @@
     <ClCompile Include="Class.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CombatManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Equipment.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -159,6 +156,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MapEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DiceMaid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -205,9 +208,6 @@
     <ClInclude Include="CharacterDetails.h">
       <Filter>Header Files\Character\Adventurer</Filter>
     </ClInclude>
-    <ClInclude Include="CombatManager.h">
-      <Filter>Header Files\Combat</Filter>
-    </ClInclude>
     <ClInclude Include="CombatMap.h">
       <Filter>Header Files\Combat</Filter>
     </ClInclude>
@@ -246,6 +246,12 @@
     </ClInclude>
     <ClInclude Include="HealSpell.h">
       <Filter>Header Files\Info\Spell</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +295,12 @@
     </QtMoc>
     <QtMoc Include="MapEditor.h">
       <Filter>Header Files\ui\Button</Filter>
+    </QtMoc>
+    <QtMoc Include="CombatManager.h">
+      <Filter>Header Files\Combat</Filter>
+    </QtMoc>
+    <QtMoc Include="DiceMaid.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

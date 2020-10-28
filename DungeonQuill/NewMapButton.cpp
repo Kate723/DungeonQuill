@@ -4,7 +4,6 @@
 NewMapButton::NewMapButton()
 {
 	ui.setupUi(this);
-	qDebug() << "button set up";
 	connect(this, SIGNAL(clicked()), this, SLOT(newMapEditor()));
 }
 

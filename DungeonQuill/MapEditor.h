@@ -16,6 +16,8 @@
 #include "Adventurer.h"
 #include "Monster.h"
 
+class CombatManager;
+
 class MapEditor : public QWidget
 {
 	CombatMap* map;
@@ -37,4 +39,5 @@ private:
 	QTableWidgetItem* tableItem(QColor gridColor, QString& str);
 
 	friend DungeonQuill;
+	friend CombatManager;
 };
