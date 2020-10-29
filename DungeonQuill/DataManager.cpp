@@ -166,7 +166,7 @@ void DataManager::createDb()
 
     QSqlQuery aquery(advdb);
     qs = "create table Adventurer(ID int primary key, ttname varchar(20),ttype int,as0 int, as1 int, as2 int, as3 int, as4 int,"
-        "as5 int, ap0 bool, ap1 bool, ap2 bool, ap3 bool, ap4 bool, ap5 bool"
+        "as5 int, ap0 bool, ap1 bool, ap2 bool, ap3 bool, ap4 bool, ap5 bool,"
         " s0 bool, s1 bool ,s2 bool, s3  bool, s4  bool,s5  bool , s6  bool, s7  bool, s8  bool, s9  bool, s10  bool,"
         "s11 bool , s12  bool, s13  bool,  s14  bool, s15  bool, s16  bool, s17  bool, s18  bool, s19  bool,tsize int," 
         "tspeed  int,tmaxHitPoint  int,tcurHitPoint  int ,"
