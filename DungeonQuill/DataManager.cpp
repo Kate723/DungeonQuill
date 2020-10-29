@@ -188,22 +188,22 @@ void DataManager::createDb()
     }
     for (int i = 0; i < vnumc; i++)
     {
-            qs = qs + ",languageList" + QString::number(i, 10) + " int";
+            qs = qs + ",languageList" + QString::number(i, 10) + " varchar(20)";
     }
     for (int i = 0; i < vnumc; i++)
     {
-        for (int j = 0; j < 3; j++)
-            qs = qs + ",spellList" + QString::number(i, 10) + QString::number(j, 10) + " int";
+            qs = qs + ",spellList0" + QString::number(i, 10) + " int"+ ",spellList1" + QString::number(i, 10) + " varchar(20)"
+                + ",spellList2" + QString::number(i, 10) + " varchar(1000)";
+    }
+    for(int i = 0; i < vnumc; i++)
+    {
+        qs = qs + ",ttraitList0" + QString::number(i, 10) + " int" + ",ttraitList1" + QString::number(i, 10) + " varchar(20)"
+            + ",ttraitList2" + QString::number(i, 10) + " varchar(1000)";
     }
     for (int i = 0; i < vnumc; i++)
     {
-        for (int j = 0; j < 3; j++)
-            qs = qs + ",ttraitList" + QString::number(i, 10) + QString::number(j, 10) + " int";
-    }
-    for (int i = 0; i < vnumc; i++)
-    {
-        for (int j = 0; j < 3; j++)
-            qs = qs + ",traitList" + QString::number(i, 10) + QString::number(j, 10) + " int";
+        qs = qs + ",traitList0" + QString::number(i, 10) + " int" + ",traitList1" + QString::number(i, 10) + " varchar(20)"
+            + ",traitList2" + QString::number(i, 10) + " varchar(1000)";
     }
     qs = qs + ")";
     aquery.exec(qs);
