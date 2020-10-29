@@ -21,11 +21,10 @@ class Adventurer :
 {
     int exp;                    //角色经验
     
-
     int curHitDice;				//当前生命骰
     int maxHitDice;				//最大生命骰
 
-    QString iconPath;           //头像路径
+    QString playerName;           //玩家名称
     
 public:
     CharacterDetails details;   //角色细节
@@ -40,8 +39,9 @@ public:
     static std::vector<Adventurer*> adventurerList;     //冒险者列表
 
     Adventurer(int ttid, std::string ttname, CharacterType ttype, AbilityScore tabilityScore, 
-        bool s0, bool s1, bool s2, bool s3, bool  s4, bool  s5, bool  s6, bool  s7, bool  s8, bool s9, bool  s10,
-        bool  s11, bool  s12, bool s13, bool  s14, bool  s15, bool s16, bool s17, bool s18, bool  s19, std::vector<std::string> tequipmentProList,
+        bool s0, bool s1, bool s2, bool s3, bool s4, bool s5, bool s6, bool s7, bool s8, bool s9, bool s10,
+        bool s11, bool s12, bool s13, bool s14, bool s15, bool s16, bool s17, bool s18, bool s19, 
+        std::vector<std::string> tequipmentProList, 
         Size tsize, int tspeed,
         int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint, 
 
@@ -61,7 +61,7 @@ public:
         std::vector<BasicInfo> traitList,
 
         int tcurHitDice,int tmaxHitDice,
-        QString ticonPath, 
+        QString tplayername,
         std::vector<Equipment> tequipmentList,std::vector<Weapon> tweaponList,std::vector<Amour> tamourList,
 
         int cp, int sp, int ep, int gp, int pp):
@@ -76,13 +76,15 @@ public:
             tspecialAbilityName,tcurSpecialPoint,tmaxSpecialPoint, m0, m1, m2, m3, m4, m5, m6, m7, m8, m9,
             c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, tspellList, traitList),
         curHitDice(tcurHitDice), maxHitDice(tmaxHitDice), 
-        iconPath(ticonPath),
+        playerName(tplayername),
         equipmentList(tequipmentList), weaponList(tweaponList), amourList(tamourList),
         characterWealth (cp, sp, ep, gp, pp){}
 
     virtual QString getRaceName();
+    QString getSubRaceName();
     QString getClassName();
-
+    QString getPlayerName();
+    int getEXP();
     int getSkillProBonus(int x);
 };
 

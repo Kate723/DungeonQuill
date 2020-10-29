@@ -32,10 +32,13 @@ private:
 	void initTableFormat(const QTableWidget* table, const int HeaderWidth = 50);
 
 	void initContent();
+	void initBasicContent();
 	void initGenderBox(int index = 0);
 	void initRaceBox(int index = 0);
 	void initAligBox(int index = 0);
 	void setProBox();
 	void initHPContent();
 	void initAbilityContent();
+	void initBGContent();
+	void initWealthTable();
 };

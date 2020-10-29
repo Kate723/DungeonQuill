@@ -20,5 +20,6 @@ public:
 	static int coinWeight[6];												//币种权值（换算使用）
 
 	Wealth(int cp = 0, int sp = 0, int ep = 0, int gp = 0, int pp = 0);		//构造函数
+	int* getWealth();
 };
 

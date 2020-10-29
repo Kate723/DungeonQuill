@@ -1,13 +1,26 @@
 ﻿#include "Adventurer.h"
 
 QString Adventurer::getRaceName() {
+	return race.getRaceName();
+}
+
+QString Adventurer::getSubRaceName() {
 	if (!race.getSubRaceName().isEmpty())
 		return race.getSubRaceName();
-	return race.getRaceName();
+	else
+		return QString::fromLocal8Bit("-");
 }
 
 QString Adventurer::getClassName() {
 	return _class._classInfo.getName();
+}
+
+QString Adventurer::getPlayerName() {
+	return playerName;
+}
+
+int Adventurer::getEXP() {
+	return exp;
 }
 
 int Adventurer::getSkillProBonus(int x) {

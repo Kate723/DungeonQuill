@@ -43,10 +43,10 @@ void CharacterDisplay::initMainTab() {
 	initTableFormat(ui.skillTable);
 }
 
-int skillFamilyNameRow[] = { 0,1,5,11,17 };
-std::string skillFamilyName[] = { "","敏捷系","智力系","感知系","魅力系" };
-
 void CharacterDisplay::initSkillTable() {
+	int skillFamilyNameRow[] = { 0,1,5,11,17 };
+	std::string skillFamilyName[] = { "","敏捷系","智力系","感知系","魅力系" };
+
 	//合并技能类型名单元格
 	for (int i = 1; i < 5; i++) {
 		ui.skillTable->setSpan(skillFamilyNameRow[i], 0, 1, 3);
@@ -170,10 +170,10 @@ void CharacterDisplay::initSkillTable() {
 void CharacterDisplay::initBgTab()
 {
 	ui.characterDetailsTable->setSpan(0, 0, 2, 1);
-	ui.characterDetailsTable->setItem(0, 0, new QTableWidgetItem(QString::fromLocal8Bit("个性")));
-	ui.characterDetailsTable->setItem(2, 0, new QTableWidgetItem(QString::fromLocal8Bit("理念")));
-	ui.characterDetailsTable->setItem(3, 0, new QTableWidgetItem(QString::fromLocal8Bit("羁绊")));
-	ui.characterDetailsTable->setItem(4, 0, new QTableWidgetItem(QString::fromLocal8Bit("缺点")));
+	ui.characterDetailsTable->setItem(0, 0, tableItem("个性"));
+	ui.characterDetailsTable->setItem(2, 0, tableItem("理念"));
+	ui.characterDetailsTable->setItem(3, 0, tableItem("羁绊"));
+	ui.characterDetailsTable->setItem(4, 0, tableItem("缺点"));
 
 	for (int i = 0; i <= 4; i++) {
 		auto item = ui.characterDetailsTable->item(i, 0);
@@ -181,7 +181,6 @@ void CharacterDisplay::initBgTab()
 	}
 	
 	initTableFormat(ui.characterDetailsTable);
-
 	ui.characterDetailsTable->horizontalHeader()->setSectionResizeMode(0,QHeaderView::ResizeToContents);
 }
 
@@ -237,6 +236,10 @@ void CharacterDisplay::initTableFormat(const QTableWidget* table, const int Head
 	((QAbstractItemView*)table)->setSelectionMode(QAbstractItemView::NoSelection);		//取消选择功能
 }
 
+/// <summary>
+/// 初始化内容函数
+/// </summary>
+
 void CharacterDisplay::initContent() {
 	initRaceBox(character->race.getRaceID());
 	initGenderBox(character->details.isMale());
@@ -244,6 +247,24 @@ void CharacterDisplay::initContent() {
 	setProBox();
 	initHPContent();
 	initAbilityContent();
+}
+
+void CharacterDisplay::initBasicContent() {
+	ui.nameTable->setItem(0, 0, new QTableWidgetItem(character->getName()));
+	ui.nameTable->setItem(1, 0, new QTableWidgetItem(character->getPlayerName()));
+
+	ui.classTable->setItem(0, 0, tableItem(character->getClassName()));
+	ui.classTable->setItem(0, 0, new QTableWidgetItem(QString::number(character->getEXP())));
+
+	ui.levelTable->setItem(0, 0, tableItem(character->_class.getLV()));
+
+	ui.raceTable->setItem(0, 0, tableItem(character->getRaceName()));
+	ui.raceTable->setItem(1, 0, tableItem(character->getSubRaceName()));
+
+	ui.ageTable->setItem(1, 0, new QTableWidgetItem(character->details.getAge()));
+
+	ui.sizeTable->setItem(0, 0, new QTableWidgetItem(character->details.getHeight()));
+	ui.sizeTable->setItem(1, 0, new QTableWidgetItem(character->details.getWeight()));
 }
 
 void CharacterDisplay::initRaceBox(int index) {
@@ -351,5 +372,30 @@ void CharacterDisplay::initAbilityContent() {
 		else
 			item = tableItem(character->Ability()->getAbilityModifier(i));
 		ui.abilityTable->setItem(i, 4, item);
+	}
+}
+
+void CharacterDisplay::initBGContent() {
+	auto list = character->details.getCharacteristics();
+	for (int i = 0; i < 5; i++) {
+		ui.characterDetailsTable->setItem(i, 1, tableItem(list[i]));
+	}
+	
+	auto languageList = character->details.getLanguageList();
+	int row = 0;
+	for (auto i = languageList.begin(); i != languageList.end(); i++) {
+		ui.languageTable->insertRow(row);
+		ui.languageTable->setItem(row++, 0, tableItem(*i));
+	}
+
+	ui.appearanceText->setPlainText(character->details.getAppearance());
+	ui.bgText->setPlainText(character->details.getBGStory());
+}
+
+void CharacterDisplay::initWealthTable() {
+	auto wealth = character->characterWealth.getWealth();
+
+	for (int i = 0; i < 5; i++) {
+		ui.wealthTable->setItem(i, 0, new QTableWidgetItem(QString::number(wealth[i])));
 	}
 }
