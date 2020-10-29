@@ -78,5 +78,7 @@ public:
 
     virtual QString getRaceName();
     QString getClassName();
+
+    int getSkillProBonus(int x);
 };
 

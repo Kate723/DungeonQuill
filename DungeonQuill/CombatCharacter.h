@@ -17,6 +17,7 @@ class CombatPiece;
 
 class CombatCharacter
 {
+protected:
 	int id;							//角色编号
 	std::string name;				//角色名称
 	CharacterType type;				//角色类型
@@ -57,6 +58,16 @@ public:
 
 	QString getName();
 	virtual QString getRaceName();
+	QString getSizeString();
+	QString getSpeedString();
+	QString getHPString();
+
+	AbilityScore* Ability();
+	const bool* getSkillProList();
+	int getSkillProBonus(int x);
+	const std::vector<std::string> getEquipmentProList();
+	int getSpeed();
+	int* getHPdata();
 
 	friend CombatPiece;
 };

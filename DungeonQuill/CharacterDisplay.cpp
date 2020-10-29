@@ -32,39 +32,8 @@ void CharacterDisplay::initBasicInfo()
 }
 
 void CharacterDisplay::initMainTab() {
-	auto item = tableItem("体型");
-	ui.hpTable->setItem(0, 0, item);
-	item = tableItem("速度");
-	ui.hpTable->setItem(0, 2, item);
-	item = tableItem("特殊");
-	ui.hpTable->setItem(1, 0, item);
-	item = tableItem("临时HP");
-	ui.hpTable->setItem(1, 2, item);
-	item = tableItem("HP");
-	ui.hpTable->setItem(2, 0, item);
-	item = tableItem("HD");
-	ui.hpTable->setItem(3, 0, item);
 	ui.hpTable->setSpan(2, 1, 1, 3);
 	ui.hpTable->setSpan(3, 1, 1, 3);
-
-	//插入属性名称
-	item = tableItem("力量");
-	ui.abilityTable->setItem(0, 1, item);
-	item = tableItem("敏捷");
-	ui.abilityTable->setItem(1, 1, item);
-	item = tableItem("体质");
-	ui.abilityTable->setItem(2, 1, item);
-	item = tableItem("智力");
-	ui.abilityTable->setItem(3, 1, item);
-	item = tableItem("感知");
-	ui.abilityTable->setItem(4, 1, item);
-	item = tableItem("魅力");
-	ui.abilityTable->setItem(5, 1, item);
-
-	for (int i = 0; i <= 5; i++) {
-		ui.abilityTable->setCellWidget(i, 0, newProBox());
-	}
-
 	initSkillTable();
 
 	//表格整体格式初始化
@@ -72,62 +41,111 @@ void CharacterDisplay::initMainTab() {
 	initTableFormat(ui.combatTable,100);
 	initTableFormat(ui.hpTable);
 	initTableFormat(ui.skillTable);
-	initTableFormat(ui.skillTable);
 }
+
+int skillFamilyNameRow[] = { 0,1,5,11,17 };
+std::string skillFamilyName[] = { "","敏捷系","智力系","感知系","魅力系" };
 
 void CharacterDisplay::initSkillTable() {
 	//合并技能类型名单元格
-	ui.skillTable->setSpan(1, 0, 1, 3);
-	ui.skillTable->setSpan(5, 0, 1, 3);
-	ui.skillTable->setSpan(11, 0, 1, 3);
-	ui.skillTable->setSpan(17, 0, 1, 3);
+	for (int i = 1; i < 5; i++) {
+		ui.skillTable->setSpan(skillFamilyNameRow[i], 0, 1, 3);
+		//设置内容与格式
+		auto item = tableItem(skillFamilyName[i]);
+		ui.skillTable->setItem(skillFamilyNameRow[i], 0, item);
+	}
 
-	//设置内容与格式
-	auto item = tableItem("敏捷系");
-	ui.skillTable->setItem(1, 0, item);
-	item = tableItem("智力系");
-	ui.skillTable->setItem(5, 0, item);
-	item = tableItem("感知系");
-	ui.skillTable->setItem(11, 0, item);
-	item = tableItem("魅力系");
-	ui.skillTable->setItem(17, 0, item);
+	int skillIndex = 0;
 
-	item = tableItem("运动");
+	auto item = tableItem("运动");
 	ui.skillTable->setItem(0, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(0, 2, item);
+
 	item = tableItem("特技");
 	ui.skillTable->setItem(2, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(2, 2, item);
+
 	item = tableItem("巧手");
 	ui.skillTable->setItem(3, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(3, 2, item);
+
 	item = tableItem("隐匿");
 	ui.skillTable->setItem(4, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(4, 2, item);
+
 	item = tableItem("调查");
 	ui.skillTable->setItem(6, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(6, 2, item);
+
 	item = tableItem("奥秘");
 	ui.skillTable->setItem(7, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(7, 2, item);
+
 	item = tableItem("历史");
 	ui.skillTable->setItem(8, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(8, 2, item);
+
 	item = tableItem("自然");
 	ui.skillTable->setItem(9, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(9, 2, item);
+
 	item = tableItem("宗教");
 	ui.skillTable->setItem(10, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(10, 2, item);
+
 	item = tableItem("察觉");
 	ui.skillTable->setItem(12, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(12, 2, item);
+
 	item = tableItem("洞悉");
 	ui.skillTable->setItem(13, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(13, 2, item);
+
 	item = tableItem("驯养");
 	ui.skillTable->setItem(14, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(14, 2, item);
+
 	item = tableItem("医疗");
 	ui.skillTable->setItem(15, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(15, 2, item);
+
 	item = tableItem("生存");
 	ui.skillTable->setItem(16, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(16, 2, item);
+
 	item = tableItem("说服");
 	ui.skillTable->setItem(18, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(18, 2, item);
+
 	item = tableItem("欺诈");
 	ui.skillTable->setItem(19, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(19, 2, item);
+
 	item = tableItem("威吓");
 	ui.skillTable->setItem(20, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(20, 2, item);
+
 	item = tableItem("表演");
 	ui.skillTable->setItem(21, 1, item);
+	item = tableItem(character->getSkillProBonus(skillIndex++));
+	ui.skillTable->setItem(21, 2, item);
 
 	ui.skillTable->setCellWidget(0, 0, newProBox());
 	ui.skillTable->setCellWidget(2, 0, newProBox());
@@ -175,11 +193,36 @@ QTableWidgetItem* CharacterDisplay::tableItem(const char* str) {
 	return item;
 }
 
+QTableWidgetItem* CharacterDisplay::tableItem(QString str) {
+	auto item = new QTableWidgetItem(str);
+	item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+	item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+
+	return item;
+}
+
+QTableWidgetItem* CharacterDisplay::tableItem(std::string str) {
+	auto item = new QTableWidgetItem(QString::fromStdString(str));
+	item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+	item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+
+	return item;
+}
+
+QTableWidgetItem* CharacterDisplay::tableItem(int num) {
+	auto item = new QTableWidgetItem(QString::number(num));
+	item->setFlags(item->flags() & ~Qt::ItemIsEditable);
+	item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+
+	return item;
+}
+
 QComboBox* CharacterDisplay::newProBox() {
 	auto proBox = new QComboBox();
 	proBox->addItem(QString::fromLocal8Bit("-"));
 	proBox->addItem(QString::fromLocal8Bit("O"));
 
+	proBoxList.push_back(proBox);
 	return proBox;
 }
 
@@ -195,12 +238,15 @@ void CharacterDisplay::initTableFormat(const QTableWidget* table, const int Head
 }
 
 void CharacterDisplay::initContent() {
-	initRaceBox();
-	initGenderBox();
-	initAligBox();
+	initRaceBox(character->race.getRaceID());
+	initGenderBox(character->details.isMale());
+	initAligBox(character->details.getAlignmentID());
+	setProBox();
+	initHPContent();
+	initAbilityContent();
 }
 
-void CharacterDisplay::initRaceBox() {
+void CharacterDisplay::initRaceBox(int index) {
 	QComboBox* raceBox = new QComboBox();
 	raceBox->addItem(QString::fromLocal8Bit("矮人"));
 	raceBox->addItem(QString::fromLocal8Bit("精灵"));
@@ -212,22 +258,22 @@ void CharacterDisplay::initRaceBox() {
 	raceBox->addItem(QString::fromLocal8Bit("半兽人"));
 	raceBox->addItem(QString::fromLocal8Bit("提夫林"));
 
-	raceBox->setCurrentIndex(character->race.getRaceID());
+	raceBox->setCurrentIndex(index);
 
 	ui.raceTable->setCellWidget(0, 0, raceBox);
 }
 
-void CharacterDisplay::initGenderBox() {
+void CharacterDisplay::initGenderBox(int index) {
 	QComboBox* genderBox = new QComboBox();
 	genderBox->addItem(QString::fromLocal8Bit("男"));
 	genderBox->addItem(QString::fromLocal8Bit("女"));
 
-	genderBox->setCurrentIndex(character->details.isMale());
+	genderBox->setCurrentIndex(index);
 
 	ui.ageTable->setCellWidget(0, 0, genderBox);
 }
 
-void CharacterDisplay::initAligBox() {
+void CharacterDisplay::initAligBox(int index) {
 	QComboBox* aligBox = new QComboBox();
 	aligBox->addItem(QString::fromLocal8Bit("守序善良"));
 	aligBox->addItem(QString::fromLocal8Bit("中立善良"));
@@ -239,7 +285,71 @@ void CharacterDisplay::initAligBox() {
 	aligBox->addItem(QString::fromLocal8Bit("中立邪恶"));
 	aligBox->addItem(QString::fromLocal8Bit("混乱邪恶"));
 
-	aligBox->setCurrentIndex(character->details.getAlignmentID());
+	aligBox->setCurrentIndex(index);
 
 	ui.alignmentTable->setCellWidget(1, 0, aligBox);
+}
+
+void CharacterDisplay::setProBox() {
+	auto proList = character->Ability()->getProList();
+	auto i = proBoxList.begin();
+	int abilityIndex = 0;
+	for (; abilityIndex < 6; abilityIndex++) {
+		(*i)->setCurrentIndex(proList[abilityIndex]);
+	}
+
+	proList = character->getSkillProList();
+	int skillIndex = 0;
+	for (; i != proBoxList.end(); i++) {
+		(*i)->setCurrentIndex(proList[skillIndex++]);
+	}
+}
+
+void CharacterDisplay::initHPContent() {
+	auto item = tableItem("体型");
+	ui.hpTable->setItem(0, 0, item);
+	item = tableItem(character->getSizeString());
+	ui.hpTable->setItem(0, 1, item);
+
+	item = tableItem("速度");
+	ui.hpTable->setItem(0, 2, item);
+	item = tableItem(character->getSpeedString());
+	ui.hpTable->setItem(0, 3, item);
+
+	item = tableItem(character->_class.getspecialAbilityName());
+	ui.hpTable->setItem(1, 0, item);
+	item = tableItem(character->_class.getspecialAbilityString());
+	ui.hpTable->setItem(1, 1, item);
+
+	item = tableItem("临时HP");
+	ui.hpTable->setItem(1, 2, item);
+	item = tableItem(*(character->getHPdata() + 2));
+	ui.hpTable->setItem(1, 3, item);
+
+	item = tableItem("HP");
+	ui.hpTable->setItem(2, 0, item);
+	item = tableItem(character->getHPString());
+	ui.hpTable->setItem(2, 1, item);
+
+	item = tableItem("HD");
+	ui.hpTable->setItem(3, 0, item);
+}
+
+void CharacterDisplay::initAbilityContent() {
+	auto proList = character->Ability()->getProList();
+	for (int i = 0; i < 6; i++) {
+		ui.abilityTable->setCellWidget(i, 0, newProBox());
+		auto item = tableItem(AbilityScore::abilityNameCh[i]);
+		ui.abilityTable->setItem(i, 1, item);
+		item = tableItem(character->Ability()->getAbilityScore(i));
+		ui.abilityTable->setItem(i, 2, item);
+		item = tableItem(character->Ability()->getAbilityModifier(i));
+		ui.abilityTable->setItem(i, 3, item);
+		if (proList[i]) {
+			item = tableItem(character->Ability()->getAbilityModifier(i) + character->_class.getProBonus());
+		}
+		else
+			item = tableItem(character->Ability()->getAbilityModifier(i));
+		ui.abilityTable->setItem(i, 4, item);
+	}
 }

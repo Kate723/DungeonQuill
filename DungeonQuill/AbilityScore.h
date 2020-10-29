@@ -10,14 +10,15 @@
 
 class AbilityScore
 {
-	int abilityScore[ABILITY_NUM + 1];														//属性值
-	bool abilityProficiency[ABILITY_NUM + 1];												//属性豁免
+	int abilityScore[ABILITY_NUM];														//属性值
+	bool abilityProficiency[ABILITY_NUM];												//属性豁免
 public:
-	static std::string abilityNameEn[ABILITY_NUM + 1], abilityNameCh[ABILITY_NUM + 1];		//属性名称
+	static std::string abilityNameEn[ABILITY_NUM], abilityNameCh[ABILITY_NUM];		//属性名称
 	
 	AbilityScore(int defaultNum = 8);				//构造函数
-	int getAbilityScore(int id);					//由id得到属性值
-	int getAbilityScore(std::string name);			//由名称得到属性值
-	int getAbilityModifier(int id);					//由id得到调整值
-	int getAbilityModifier(std::string name);		//由名称得到调整值
+	const int getAbilityScore(int id);					//由id得到属性值
+	const int getAbilityScore(std::string name);			//由名称得到属性值
+	const int getAbilityModifier(int id);					//由id得到调整值
+	const int getAbilityModifier(std::string name);		//由名称得到调整值
+	const bool* getProList();
 };
