@@ -357,14 +357,15 @@ void DataManager::download()
         std::vector<Amour> amourList;
         std::vector<std::string> equipmentProList;
         QSqlQuery equery(equdb);
-        for (int i = 96; aquery.value(i).isValid()&&i<96+vnum; i++)
+        for (int i = 96; !aquery.value(i).isValid()&&i<96+vnum; i++)
         {
+            qDebug() << aquery.value(i).isValid();
             equery.exec("select * from equipment where ID = "+ aquery.value(i).toString());
             Equipment* e = new Equipment(equery.value(0).toInt(), equery.value(1).toString().toStdString(), 
                 equery.value(2).toString().toStdString(), (EquipemntType)equery.value(3).toInt());
             equipmentList.push_back(*e);
         }
-        for (int i = 96+vnum; aquery.value(i).isValid() && i < 96 + 2*vnum; i++)
+        for (int i = 96+vnum; !aquery.value(i).isValid() && i < 96 + 2*vnum; i++)
         {
             equery.exec("select * from weapon where ID = " + aquery.value(i).toString());
             wquery.exec("selsect * from equipment where ID = "+ aquery.value(i).toString());
@@ -374,7 +375,7 @@ void DataManager::download()
                 equery.value(6).toInt(), equery.value(7).toInt());
             weaponList.push_back(*w);
         }
-        for (int i = 96 + 2*vnum; aquery.value(i).isValid() && i < 96 + 3 * vnum; i++)
+        for (int i = 96 + 2*vnum; !aquery.value(i).isValid() && i < 96 + 3 * vnum; i++)
         {
             equery.exec("select * from amour where ID = " + aquery.value(i).toString());
             wquery.exec("selsect * from equipment where ID = " + aquery.value(i).toString());
@@ -383,29 +384,29 @@ void DataManager::download()
                 (AmourType)equery.value(2).toInt(), equery.value(1).toInt(),equery.value(3).toInt());
            amourList.push_back(*a);
         }
-        for (int i = 96 + 3 * vnum; aquery.value(i).isValid() && i < 96 + 3 * vnum+vnumc; i++)
+        for (int i = 96 + 3 * vnum; !aquery.value(i).isValid() && i < 96 + 3 * vnum+vnumc; i++)
         {
             languageList.push_back(aquery.value(i).toString().toStdString());
         }
-        for (int i = 96 + 3 * vnum+vnumc; aquery.value(i).isValid() && i < 96 + 3 * vnum + 4*vnumc; i = i+3)
+        for (int i = 96 + 3 * vnum+vnumc; !aquery.value(i).isValid() && i < 96 + 3 * vnum + 4*vnumc; i = i+3)
         {
             BasicInfo* b = new BasicInfo(aquery.value(i).toInt(), aquery.value(i+1).toString().toStdString(),
                 aquery.value(i+2).toString().toStdString() );
             spellList.push_back(*b);
         }
-        for (int i = 96+ 3 * vnum + 4 * vnumc; aquery.value(i).isValid() && i < 96 + 3 * vnum + 7 * vnumc; i = i + 3)
+        for (int i = 96+ 3 * vnum + 4 * vnumc; !aquery.value(i).isValid() && i < 96 + 3 * vnum + 7 * vnumc; i = i + 3)
         {
             BasicInfo* b = new BasicInfo(aquery.value(i).toInt(), aquery.value(i + 1).toString().toStdString(),
                 aquery.value(i + 2).toString().toStdString());
             ttraitList.push_back(*b);
         }
-        for (int i = 96 + 3 * vnum + 7 * vnumc; aquery.value(i).isValid() && i < 96 + 3 * vnum + 10 * vnumc; i = i + 3)
+        for (int i = 96 + 3 * vnum + 7 * vnumc; !aquery.value(i).isValid() && i < 96 + 3 * vnum + 10 * vnumc; i = i + 3)
         {
             BasicInfo* b = new BasicInfo(aquery.value(i).toInt(), aquery.value(i + 1).toString().toStdString(),
                 aquery.value(i + 2).toString().toStdString());
             traitList.push_back(*b);
         }
-        for (int i = 96 + 3 * vnum; aquery.value(i).isValid() && i <96 + 3 * vnum + vnumc; i++)
+        for (int i = 96 + 3 * vnum; !aquery.value(i).isValid() && i <96 + 3 * vnum + vnumc; i++)
         {
             equipmentProList.push_back(aquery.value(i).toString().toStdString());
         }
