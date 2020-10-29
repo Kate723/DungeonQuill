@@ -15,9 +15,14 @@ class Monster :
 public:
     static int monsterNum;                      //怪物数目
     static std::vector<Monster*> monsterList;   //怪物列表
-    Monster(int ttid, std::string ttname, int tspeed, int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint,int tid, std::string tname, 
+    Monster(int ttid, std::string ttname, CharacterType ttype, AbilityScore tabilityScore,
+        bool s0, bool s1, bool s2, bool s3, bool  s4, bool  s5, bool  s6, bool  s7, bool  s8, bool s9, bool  s10,
+        bool  s11, bool  s12, bool s13, bool  s14, bool  s15, bool s16, bool s17, bool s18, bool  s19, std::vector<std::string> tequipmentProList,
+        Size tsize, int tspeed,
+        int tmaxHitPoint, int tcurHitPoint, int ttempHitPointint ,int tid, std::string tname,
         std::string tremarks):
-    CombatCharacter(ttid,ttname,tspeed, tmaxHitPoint, tcurHitPoint, ttempHitPoint),raceInfo(tid, tname, tremarks),actionList(){}
+    CombatCharacter(ttid, ttname, ttype, tabilityScore, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14,
+        s15, s16, s17, s18, s19, tequipmentProList, tsize, tspeed, tmaxHitPoint, tcurHitPoint, ttempHitPointint),raceInfo(tid, tname, tremarks),actionList(){}
 
     virtual QString getRaceName();
 };

@@ -166,8 +166,8 @@ void DataManager::createDb()
 
     QSqlQuery aquery(advdb);
     qs = "create table Adventurer(ID int primary key, ttname varchar(20),ttype int,tabilityScore int,"
-        " s0 int, s1 int s2, int, s3 int, s4 int,s5 int , s6 int, s7 int, s8 int, s9 int, s10 int,"
-        "s11int , s12 int, s13 int,  s14 int, s15 int, s16 int, s17 int, s18 int, s19 int,tsize int" 
+        " s0 bool, s1 bool s2, int,  bool int, s4  bool,s5  bool , s6  bool, s7  bool, s8  bool, s9  bool, s10  bool,"
+        "s11 bool , s12  bool, s13  bool,  s14  bool, s15  bool, s16  bool, s17  bool, s18  bool, s19  bool,tsize int" 
         "tspeed  int,tmaxHitPoint  int,tcurHitPoint  int ,"
         "ttempHitPoint int,texp  int ,tsex  bool , tage int ,feet  int ,inch  int , tweight int ,talignment int,"
         "trait1 varchar(1000), trait2 varchar(1000),tideal varchar(1000), tbond varchar(1000), "
@@ -410,10 +410,10 @@ void DataManager::download()
         }
         Adventurer* adv = new Adventurer(aquery.value(0).toInt(), aquery.value(1).toString().toStdString(), 
             (CharacterType)aquery.value(2).toInt(), (AbilityScore)aquery.value(3).toInt(),
-            aquery.value(4).toInt(), aquery.value(5).toInt(), aquery.value(6).toInt(), aquery.value(7).toInt(), aquery.value(8).toInt(),
-            aquery.value(9).toInt(), aquery.value(10).toInt(), aquery.value(11).toInt(), aquery.value(12).toInt(), aquery.value(13).toInt(),
-            aquery.value(14).toInt(), aquery.value(15).toInt(), aquery.value(16).toInt(), aquery.value(17).toInt(), aquery.value(18).toInt(),
-            aquery.value(19).toInt(), aquery.value(20).toInt(), aquery.value(21).toInt(), aquery.value(22).toInt(), aquery.value(23).toInt(),
+            aquery.value(4).toBool(), aquery.value(5).toBool(), aquery.value(6).toBool(), aquery.value(7).toBool(), aquery.value(8).toBool(),
+            aquery.value(9).toBool(), aquery.value(10).toBool(), aquery.value(11).toBool(), aquery.value(12).toBool(), aquery.value(13).toBool(),
+            aquery.value(14).toBool(), aquery.value(15).toBool(), aquery.value(16).toBool(), aquery.value(17).toBool(), aquery.value(18).toBool(),
+            aquery.value(19).toBool(), aquery.value(20).toBool(), aquery.value(21).toBool(), aquery.value(22).toBool(), aquery.value(23).toBool(),
             equipmentProList, (Size)aquery.value(24).toInt(),aquery.value(25).toInt(),aquery.value(26).toInt(), 
             aquery.value(27).toInt(), aquery.value(28).toInt(), aquery.value(29).toInt(), aquery.value(30).toBool(),
             aquery.value(31).toInt(), aquery.value(32).toInt(), aquery.value(33).toInt(), aquery.value(34).toInt(), 
