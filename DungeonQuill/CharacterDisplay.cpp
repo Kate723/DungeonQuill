@@ -38,7 +38,6 @@ void CharacterDisplay::initMainTab() {
 
 	//表格整体格式初始化
 	initTableFormat(ui.abilityTable);
-	initTableFormat(ui.combatTable,100);
 	initTableFormat(ui.hpTable);
 	initTableFormat(ui.skillTable);
 }
