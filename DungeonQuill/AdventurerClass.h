@@ -10,8 +10,6 @@
 
 class AdventurerClass
 {
-	
-
 	int level;				//职业等级
 
 	std::string specialAbilityName;		//特殊能力名称
@@ -41,5 +39,12 @@ public:
 		curSpecialPoint(tcurSpecialPoint), maxSpecialPoint(tmaxSpecialPoint), 
 		maxSpellSlots{m0,m1,m2,m3,m4,m5,m6,m7,m8,m9}, curSpellSlots{ c0,c1,c2,c3,c4,c5,c6,c7,c8,c9 },
 		spellList(tspellList), traitList(ttraitList) {}
+
+	int getProBonus();
+	QString getspecialAbilityName();
+	QString getspecialAbilityString();
+
+	const int* getMaxSpellSlots();
+	const int* getCurSpellSlots();
 };
 
