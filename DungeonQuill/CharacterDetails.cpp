@@ -45,3 +45,11 @@ QString CharacterDetails::getAlignment() {
 	}
 	return NULL;
 }
+
+bool CharacterDetails::isMale() {
+	return sex;
+}
+
+int CharacterDetails::getAlignmentID() {
+	return alignment;
+}

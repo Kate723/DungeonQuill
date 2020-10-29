@@ -24,4 +24,6 @@ public:
 
 	QString getRaceName();
 	QString getSubRaceName();
+
+	int getRaceID();
 };

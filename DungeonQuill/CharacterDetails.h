@@ -55,4 +55,7 @@ public:
 	QString getGender();
 	QString getAge();
 	QString getAlignment();
+
+	bool isMale();
+	int getAlignmentID();
 };

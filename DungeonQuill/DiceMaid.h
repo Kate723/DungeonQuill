@@ -20,6 +20,6 @@ public slots:
 	void diceRollButtonClicked();
 
 public:
-	DiceMaid();
+	DiceMaid(DungeonQuill* mainWindow);
 	~DiceMaid();
 };

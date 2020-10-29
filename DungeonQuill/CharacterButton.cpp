@@ -22,7 +22,7 @@ void CharacterButton::setDisplayText()
 
 void CharacterButton::displayCharacter()
 {
-	//auto characterWindow = CharacterDisplay(adventurer);
-	//characterWindow.setWindowModality(Qt::ApplicationModal);
-	//characterWindow.show();
+	auto characterWindow = new CharacterDisplay(adventurer);
+	characterWindow->setWindowModality(Qt::ApplicationModal);
+	characterWindow->show();
 }
