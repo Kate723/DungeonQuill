@@ -52,8 +52,14 @@ public:
 	static std::string conditionName[15];					//状态名称
 
 	//CombatCharacter* findCharacter(int id);
-	CombatCharacter(int tid, std::string tname,int tspeed, int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint):
-		id(tid),name(tname),abilityScore(),skillPro(),speed(tspeed),maxHitPoint(tmaxHitPoint),curHitPoint(tcurHitPoint),
+	CombatCharacter(int tid, std::string tname, CharacterType ttype, AbilityScore tabilityScore,
+		int s0, int s1, int s2, int s3, int s4, int s5, int s6, int s7, int s8, int s9, int s10,
+		int s11, int s12, int s13, int  s14, int s15, int s16, int s17, int s18, int s19,
+		std::vector<std::string> tequipmentProList,Size tsize,int tspeed, int tmaxHitPoint,
+		int tcurHitPoint, int ttempHitPoint):
+		id(tid), name(tname), type(ttype), abilityScore(tabilityScore), skillPro{s0,s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13,s14,
+	s15,s16,s17,s18,s19}, equipmentProList(tequipmentProList), size(tsize),speed(tspeed), maxHitPoint(tmaxHitPoint),
+		curHitPoint(tcurHitPoint),
 		tempHitPoint(ttempHitPoint){}
 
 	QString getName();
