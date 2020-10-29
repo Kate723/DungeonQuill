@@ -166,7 +166,7 @@ void DataManager::createDb()
 
     QSqlQuery aquery(advdb);
     qs = "create table Adventurer(ID int primary key, ttname varchar(20),ttype int,tabilityScore int,"
-        " s0 bool, s1 bool s2, int,  bool int, s4  bool,s5  bool , s6  bool, s7  bool, s8  bool, s9  bool, s10  bool,"
+        " s0 bool, s1 bool ,s2 bool, s3  bool, s4  bool,s5  bool , s6  bool, s7  bool, s8  bool, s9  bool, s10  bool,"
         "s11 bool , s12  bool, s13  bool,  s14  bool, s15  bool, s16  bool, s17  bool, s18  bool, s19  bool,tsize int" 
         "tspeed  int,tmaxHitPoint  int,tcurHitPoint  int ,"
         "ttempHitPoint int,texp  int ,tsex  bool , tage int ,feet  int ,inch  int , tweight int ,talignment int,"
@@ -319,7 +319,7 @@ void DataManager::download()
     }
 
     //普通
-    query2.exec("select * from Spell where ID not in (selest ID from damageSpell) and ID not in (selest ID from healSpell)");
+    query2.exec("select * from Spell where ID not in (select ID from damageSpell) and ID not in (select ID from healSpell)");
     while (query2.next())
     {
         Spell::spellNum++;
