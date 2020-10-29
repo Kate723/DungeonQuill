@@ -286,7 +286,7 @@ void DataManager::download()
     //伤害
     QSqlQuery query1(spelldb);
     QSqlQuery query2(spelldb);
-    /*query1.exec("select * from damageSpell");
+    query1.exec("select * from damageSpell");
     while (query1.next())
     {
         DamageSpell::damageSpellNum++;
@@ -316,13 +316,12 @@ void DataManager::download()
             query2.value(17).toBool(), query2.value(18).toInt(), query2.value(19).toInt(), query2.value(20).toInt(), query2.value(21).toString().toStdString(),
             query1.value(1).toInt(), query1.value(2).toInt(), query1.value(3).toInt());
         HealSpell::HealSpellList.push_back(hs);
-    }*/
+    }
 
     //普通
     query2.exec("select * from Spell where ID not in (select ID from damageSpell) and ID not in (select ID from healSpell)");
     while (query2.next())
     {
-        qDebug() << query2.value(0);
         Spell::spellNum++;
         Spell* s = new Spell(query2.value(0).toInt(), query2.value(1).toString().toStdString(), query2.value(2).toString().toStdString(),
             query2.value(3).toInt(), query2.value(4).toInt(), query2.value(5).toBool(), query2.value(6).toInt(), query2.value(7).toString().toStdString(),
@@ -335,7 +334,7 @@ void DataManager::download()
     spelldb.close();
 
     //冒险者
-    /*QSqlDatabase advdb = QSqlDatabase::database("advConnection");
+    QSqlDatabase advdb = QSqlDatabase::database("advConnection");
     if (!advdb.open())
         exit(-1);
     QSqlQuery aquery(advdb);
@@ -438,7 +437,7 @@ void DataManager::download()
     }
     
     advdb.close();
-    equdb.close();*/
+    equdb.close();
 }
 
 
