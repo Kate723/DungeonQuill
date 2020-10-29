@@ -76,8 +76,9 @@ void DungeonQuill::initSpellTab() {
     for (int i = 1; i <= spellNum; i++) {
         auto pSpell = findNextSpell(i == spellNum);
         auto newButton = new SpellBotton(pSpell);
+        
         grid->addWidget(newButton, row, col + 1);
-
+        qDebug() << pSpell->getNameCH();
         row += ++col / 4;
         col %= 4;
     }
@@ -95,7 +96,7 @@ Spell* DungeonQuill::findNextSpell(bool resetFlag) {
 
     int lowestID = 100000;
     Spell* nextSpell = NULL;
-    if (p > Spell::spellNum) {
+    if (p < Spell::spellNum) {
         nextSpell = Spell::spellList[p];
         lowestID = nextSpell->getID();
     }
