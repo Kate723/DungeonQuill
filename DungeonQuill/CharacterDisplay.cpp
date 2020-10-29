@@ -200,7 +200,7 @@ QTableWidgetItem* CharacterDisplay::tableItem(QString str) {
 }
 
 QTableWidgetItem* CharacterDisplay::tableItem(std::string str) {
-	auto item = new QTableWidgetItem(QString::fromStdString(str));
+	auto item = new QTableWidgetItem(QString::fromLocal8Bit(str.c_str()));
 	item->setFlags(item->flags() & ~Qt::ItemIsEditable);
 	item->setTextAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 
