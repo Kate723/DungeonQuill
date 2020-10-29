@@ -16,6 +16,6 @@ class Amour :
     int strengthLimit;  //力量要求
 
 public:
-    Amour(int ID, std::string name, std::string remark, AmourType type, int strength);
+    Amour(int ID, std::string name, std::string remark, AmourType type, int tbasicAC, int strength);
 };
 
