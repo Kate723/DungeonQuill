@@ -3,11 +3,13 @@
 #include <QtWidgets/QMainWindow>
 #include <qtoolbutton.h>
 #include <qscrollarea.h>
+#include "CharacterButton.h"
 #include "SpellBotton.h"
 #include "MapButton.h"
 #include "NewMapButton.h"
 #include "qtablewidget.h"
 #include "CombatManager.h"
+#include "CharacterChoose.h"
 #include "DataManager.h"
 #include "ui_DungeonQuill.h"
 
@@ -29,6 +31,8 @@ private:
     Ui::DungeonQuillClass ui;
     static DungeonQuill* instance;
     static void deleteLayout(QLayout* layout);
+
+    void initCharacterTab();
     
     void initCombatTab();
     QTableWidget* showMap(CombatMap* map);

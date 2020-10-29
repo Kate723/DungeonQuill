@@ -15,10 +15,32 @@ DungeonQuill::DungeonQuill()
     connect(ui.comboBox_level, SIGNAL(currentIndexChanged(int)), this, SLOT(spellInquiry(int)));
     connect(ui.comboBox_school, SIGNAL(currentIndexChanged(int)), this, SLOT(spellInquiry(int)));
 
+    initCharacterTab();
     initCombatTab();
     initSpellTab();
+}
 
-    auto combatManager = new CombatManager();
+void DungeonQuill::initCharacterTab() {
+    QGridLayout* grid = new QGridLayout();
+
+    int characterNum = Adventurer::adventurerList.size();
+    qDebug() << characterNum;
+
+    int row = 0;
+    int col = 0;
+    for (int i = 0; i < characterNum; i++) {
+        qDebug() << i;
+        auto newButton = new CharacterButton(Adventurer::adventurerList[i]);
+        grid->addWidget(newButton, row, col + 1);
+
+        row += ++col / 4;
+        col %= 4;
+    }
+    grid->setColumnStretch(0, 0);
+    grid->setColumnStretch(5, 0);
+    grid->setRowStretch(row + 1, 1);
+    grid->setSpacing(20);
+    ui.characterArea->setLayout(grid);
 }
 
 void DungeonQuill::initCombatTab() {
@@ -52,7 +74,6 @@ void DungeonQuill::initSpellTab() {
     int row = 0;
     int col = 0;
     for (int i = 1; i <= spellNum; i++) {
-        qDebug() << i;
         auto pSpell = findNextSpell(i == spellNum);
         auto newButton = new SpellBotton(pSpell);
         grid->addWidget(newButton, row, col + 1);

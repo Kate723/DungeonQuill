@@ -30,4 +30,6 @@ public slots:
 public:
 	CombatManager();
 	~CombatManager();
+	static CombatCondition getCombatCondition();
+	static void setCombatCondition(CombatCondition condition);
 };

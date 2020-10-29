@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
     //定义主窗口并打开
     DungeonQuill w;
     auto dicemaid = new DiceMaid(&w);
+    auto combatManager = new CombatManager();
     w.show();
 
    

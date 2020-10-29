@@ -309,7 +309,7 @@ void CharacterDisplay::initAligBox(int index) {
 
 	ui.alignmentTable->setCellWidget(1, 0, aligBox);
 }
-
+ 
 void CharacterDisplay::setProBox() {
 	auto proList = character->Ability()->getProList();
 	auto i = proBoxList.begin();
