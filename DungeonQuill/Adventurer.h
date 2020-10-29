@@ -39,8 +39,9 @@ public:
     static std::vector<Adventurer*> adventurerList;     //冒险者列表
 
     Adventurer(int ttid, std::string ttname, CharacterType ttype, AbilityScore tabilityScore, 
-        int s0, int s1, int s2, int s3, int s4, int s5, int s6, int s7, int s8, int s9, int s10,
-        int s11, int s12, int s13, int s14, int s15, int s16, int s17, int s18, int s19, std::vector<std::string> tequipmentProList, 
+        bool s0, bool s1, bool s2, bool s3, bool s4, bool s5, bool s6, bool s7, bool s8, bool s9, bool s10,
+        bool s11, bool s12, bool s13, bool s14, bool s15, bool s16, bool s17, bool s18, bool s19, 
+        std::vector<std::string> tequipmentProList, 
         Size tsize, int tspeed,
         int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint, 
 
