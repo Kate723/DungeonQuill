@@ -38,7 +38,6 @@ void CharacterDisplay::initMainTab() {
 
 	//表格整体格式初始化
 	initTableFormat(ui.abilityTable);
-	initTableFormat(ui.combatTable,100);
 	initTableFormat(ui.hpTable);
 	initTableFormat(ui.skillTable);
 }
@@ -310,7 +309,7 @@ void CharacterDisplay::initAligBox(int index) {
 
 	ui.alignmentTable->setCellWidget(1, 0, aligBox);
 }
-
+ 
 void CharacterDisplay::setProBox() {
 	auto proList = character->Ability()->getProList();
 	auto i = proBoxList.begin();

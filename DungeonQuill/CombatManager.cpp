@@ -33,10 +33,22 @@ void CombatManager::combatStart(CombatMap* _map, MapEditor* _combatWin) {
 
 	instance->combatWin->show();
 	instance->conditionFlag = CHARACTER_CHOOSE;
+
+	auto chooseWin = new CharacterChoose();
+	chooseWin->setWindowModality(Qt::ApplicationModal);
+	chooseWin->show();
 }
 
 void CombatManager::combatEnd() {
 	instance->combatWin->close();
 	delete instance->combatWin;
 	instance->conditionFlag = CombatCondition::IDIE;
+}
+
+CombatCondition CombatManager::getCombatCondition() {
+	return instance->conditionFlag;
+}
+
+void CombatManager::setCombatCondition(CombatCondition condition) {
+	instance->conditionFlag = condition;
 }

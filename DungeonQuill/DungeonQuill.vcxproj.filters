@@ -167,6 +167,9 @@
     <ClCompile Include="DisplayButton.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CharacterChoose.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Area.h">
@@ -264,6 +267,9 @@
     <QtUic Include="MapEditor.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="CharacterChoose.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CharacterDisplay.h">
@@ -298,6 +304,9 @@
     </QtMoc>
     <QtMoc Include="DisplayButton.h">
       <Filter>Header Files\ui\Button</Filter>
+    </QtMoc>
+    <QtMoc Include="CharacterChoose.h">
+      <Filter>Header Files\ui</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

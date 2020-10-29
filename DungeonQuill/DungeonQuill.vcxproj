@@ -106,6 +106,7 @@
     <ClCompile Include="BasicInfo.cpp" />
     <ClCompile Include="Buff.cpp" />
     <ClCompile Include="CharacterButton.cpp" />
+    <ClCompile Include="CharacterChoose.cpp" />
     <ClCompile Include="CharacterDetails.cpp" />
     <ClCompile Include="CharacterDisplay.cpp" />
     <ClCompile Include="ChoosableClassTrait.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="Wealth.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <QtRcc Include="DungeonQuill.qrc" />
+    <QtUic Include="CharacterChoose.ui" />
     <QtUic Include="CharacterDisplay.ui" />
     <QtUic Include="DungeonQuill.ui" />
     <QtMoc Include="DungeonQuill.h" />
@@ -152,6 +154,7 @@
     <ClInclude Include="BasicInfo.h" />
     <ClInclude Include="Buff.h" />
     <QtMoc Include="CharacterButton.h" />
+    <QtMoc Include="CharacterChoose.h" />
     <ClInclude Include="CharacterDetails.h" />
     <QtMoc Include="SpellBotton.h" />
     <QtMoc Include="NewMapButton.h" />
