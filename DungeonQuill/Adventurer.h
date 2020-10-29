@@ -39,7 +39,10 @@ public:
     static int adventurerNum;                           //冒险者数目
     static std::vector<Adventurer*> adventurerList;     //冒险者列表
 
-    Adventurer(int ttid, std::string ttname, int tspeed, 
+    Adventurer(int ttid, std::string ttname, CharacterType ttype, AbilityScore tabilityScore, 
+        int s0, int s1, int s2, int s3, int s4, int s5, int s6, int s7, int s8, int s9, int s10,
+        int s11, int s12, int s13, int  s14, int s15, int s16, int s17, int s18, int s19, std::vector<std::string> tequipmentProList, 
+        Size tsize, int tspeed,
         int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint, 
 
         int texp, 
@@ -63,7 +66,8 @@ public:
 
         int cp, int sp, int ep, int gp, int pp):
 
-        CombatCharacter(ttid, ttname, tspeed, tmaxHitPoint, tcurHitPoint, ttempHitPoint), 
+        CombatCharacter(ttid, ttname, ttype, tabilityScore, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14,
+            s15, s16, s17, s18, s19,tequipmentProList, tsize, tspeed, tmaxHitPoint, tcurHitPoint, ttempHitPoint),
         exp(texp),
         details(tsex, tage,feet,inch,tweight,talignment, tlanguageList,
             trait1, trait2, tideal, tbond, tflaw, tapperance, tbgStory),
