@@ -38,7 +38,8 @@ public:
     static int adventurerNum;                           //冒险者数目
     static std::vector<Adventurer*> adventurerList;     //冒险者列表
 
-    Adventurer(int ttid, std::string ttname, CharacterType ttype, AbilityScore tabilityScore, 
+    Adventurer(int ttid, std::string ttname, CharacterType ttype, int as0, int as1, int as2, int as3, int as4, int as5,
+        bool ap0, bool ap1, bool ap2, bool ap3, bool ap4, bool ap5,
         bool s0, bool s1, bool s2, bool s3, bool s4, bool s5, bool s6, bool s7, bool s8, bool s9, bool s10,
         bool s11, bool s12, bool s13, bool s14, bool s15, bool s16, bool s17, bool s18, bool s19, 
         std::vector<std::string> tequipmentProList, 
@@ -66,7 +67,7 @@ public:
 
         int cp, int sp, int ep, int gp, int pp):
 
-        CombatCharacter(ttid, ttname, ttype, tabilityScore, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14,
+        CombatCharacter(ttid, ttname, ttype, as0, as1, as2, as3, as4, as5, ap0, ap1, ap2, ap3, ap4, ap5, s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14,
             s15, s16, s17, s18, s19,tequipmentProList, tsize, tspeed, tmaxHitPoint, tcurHitPoint, ttempHitPoint),
         exp(texp),
         details(tsex, tage,feet,inch,tweight,talignment, tlanguageList,
