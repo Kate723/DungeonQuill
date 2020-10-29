@@ -6,6 +6,7 @@ CharacterDisplay::CharacterDisplay(Adventurer* _character) :
 	ui.setupUi(this);
 
 	initFormat();
+	initContent();
 }
 
 CharacterDisplay::~CharacterDisplay()
@@ -21,35 +22,6 @@ void CharacterDisplay::initFormat()
 
 void CharacterDisplay::initBasicInfo() 
 {
-	QComboBox* raceBox = new QComboBox();
-	raceBox->addItem(QString::fromLocal8Bit("矮人"));
-	raceBox->addItem(QString::fromLocal8Bit("精灵"));
-	raceBox->addItem(QString::fromLocal8Bit("半身人"));
-	raceBox->addItem(QString::fromLocal8Bit("人类"));
-	raceBox->addItem(QString::fromLocal8Bit("龙裔"));
-	raceBox->addItem(QString::fromLocal8Bit("侏儒"));
-	raceBox->addItem(QString::fromLocal8Bit("半精灵"));
-	raceBox->addItem(QString::fromLocal8Bit("半兽人"));
-	raceBox->addItem(QString::fromLocal8Bit("提夫林"));
-	ui.raceTable->setCellWidget(0, 0, raceBox);
-
-	QComboBox* genderBox = new QComboBox();
-	genderBox->addItem(QString::fromLocal8Bit("男"));
-	genderBox->addItem(QString::fromLocal8Bit("女"));
-	ui.ageTable->setCellWidget(0, 0, genderBox);
-
-	QComboBox* aligBox = new QComboBox();
-	aligBox->addItem(QString::fromLocal8Bit("守序善良"));
-	aligBox->addItem(QString::fromLocal8Bit("中立善良"));
-	aligBox->addItem(QString::fromLocal8Bit("混乱善良"));
-	aligBox->addItem(QString::fromLocal8Bit("守序中立"));
-	aligBox->addItem(QString::fromLocal8Bit("绝对中立"));
-	aligBox->addItem(QString::fromLocal8Bit("混乱中立"));
-	aligBox->addItem(QString::fromLocal8Bit("守序邪恶"));
-	aligBox->addItem(QString::fromLocal8Bit("中立邪恶"));
-	aligBox->addItem(QString::fromLocal8Bit("混乱邪恶"));
-	ui.alignmentTable->setCellWidget(1, 0, aligBox);
-
 	initTableFormat(ui.nameTable);
 	initTableFormat(ui.classTable);
 	initTableFormat(ui.levelTable);
@@ -220,4 +192,54 @@ void CharacterDisplay::initTableFormat(const QTableWidget* table, const int Head
 	table->verticalHeader()->setMinimumWidth(HeaderWidth);		//行表头宽度
 
 	((QAbstractItemView*)table)->setSelectionMode(QAbstractItemView::NoSelection);		//取消选择功能
+}
+
+void CharacterDisplay::initContent() {
+	initRaceBox();
+	initGenderBox();
+	initAligBox();
+}
+
+void CharacterDisplay::initRaceBox() {
+	QComboBox* raceBox = new QComboBox();
+	raceBox->addItem(QString::fromLocal8Bit("矮人"));
+	raceBox->addItem(QString::fromLocal8Bit("精灵"));
+	raceBox->addItem(QString::fromLocal8Bit("半身人"));
+	raceBox->addItem(QString::fromLocal8Bit("人类"));
+	raceBox->addItem(QString::fromLocal8Bit("龙裔"));
+	raceBox->addItem(QString::fromLocal8Bit("侏儒"));
+	raceBox->addItem(QString::fromLocal8Bit("半精灵"));
+	raceBox->addItem(QString::fromLocal8Bit("半兽人"));
+	raceBox->addItem(QString::fromLocal8Bit("提夫林"));
+
+	raceBox->setCurrentIndex(character->race.getRaceID());
+
+	ui.raceTable->setCellWidget(0, 0, raceBox);
+}
+
+void CharacterDisplay::initGenderBox() {
+	QComboBox* genderBox = new QComboBox();
+	genderBox->addItem(QString::fromLocal8Bit("男"));
+	genderBox->addItem(QString::fromLocal8Bit("女"));
+
+	genderBox->setCurrentIndex(character->details.isMale());
+
+	ui.ageTable->setCellWidget(0, 0, genderBox);
+}
+
+void CharacterDisplay::initAligBox() {
+	QComboBox* aligBox = new QComboBox();
+	aligBox->addItem(QString::fromLocal8Bit("守序善良"));
+	aligBox->addItem(QString::fromLocal8Bit("中立善良"));
+	aligBox->addItem(QString::fromLocal8Bit("混乱善良"));
+	aligBox->addItem(QString::fromLocal8Bit("守序中立"));
+	aligBox->addItem(QString::fromLocal8Bit("绝对中立"));
+	aligBox->addItem(QString::fromLocal8Bit("混乱中立"));
+	aligBox->addItem(QString::fromLocal8Bit("守序邪恶"));
+	aligBox->addItem(QString::fromLocal8Bit("中立邪恶"));
+	aligBox->addItem(QString::fromLocal8Bit("混乱邪恶"));
+
+	aligBox->setCurrentIndex(character->details.getAlignmentID());
+
+	ui.alignmentTable->setCellWidget(1, 0, aligBox);
 }

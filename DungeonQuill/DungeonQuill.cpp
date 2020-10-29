@@ -17,6 +17,8 @@ DungeonQuill::DungeonQuill()
 
     initCombatTab();
     initSpellTab();
+
+    auto combatManager = new CombatManager();
 }
 
 void DungeonQuill::initCombatTab() {

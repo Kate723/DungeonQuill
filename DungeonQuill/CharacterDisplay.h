@@ -26,4 +26,9 @@ private:
 	void initMainTab();
 	void initSkillTable();
 	void initTableFormat(const QTableWidget* table, const int HeaderWidth = 50);
+
+	void initContent();
+	void initGenderBox();
+	void initRaceBox();
+	void initAligBox();
 };

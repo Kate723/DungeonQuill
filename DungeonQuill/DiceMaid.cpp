@@ -1,10 +1,9 @@
 ﻿#include "DiceMaid.h"
 
-
 DiceMaid* DiceMaid::instance = nullptr;
 
-DiceMaid::DiceMaid() :
-	ui(&DungeonQuill::instance->ui)
+DiceMaid::DiceMaid(DungeonQuill* mainWindow) :
+	ui(&mainWindow->ui)
 {
 	if (instance) {
 		delete this;

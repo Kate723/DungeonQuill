@@ -1,6 +1,6 @@
 ﻿#include "CombatManager.h"
 
-CombatManager* CombatManager::instance = NULL;
+CombatManager* CombatManager::instance = nullptr;
 
 CombatManager::CombatManager() :
 	map(nullptr), combatWin(nullptr), actionQueue(std::queue < CombatPiece*>()), conditionFlag(CombatCondition::IDIE)
@@ -9,6 +9,8 @@ CombatManager::CombatManager() :
 		delete this;
 		return;
 	}
+
+	instance = this;
 }
 
 CombatManager::~CombatManager()
