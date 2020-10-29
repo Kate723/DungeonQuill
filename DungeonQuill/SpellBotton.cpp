@@ -2,6 +2,10 @@
 
 SpellBotton::SpellBotton(Spell* _spell) : spell(_spell)
 {
+	if (!spell) {
+		delete this;
+		return;
+	}
 	connect(this, SIGNAL(clicked()), this, SLOT(displaySpell()));
 
 	setDisplayText();
