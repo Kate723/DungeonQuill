@@ -166,7 +166,7 @@ void DataManager::createDb()
 
     QSqlQuery aquery(advdb);
     qs = "create table Adventurer(ID int primary key, ttname varchar(20),ttype int,tabilityScore int,"
-        " s0 bool, s1 bool s2, int,  bool int, s4  bool,s5  bool , s6  bool, s7  bool, s8  bool, s9  bool, s10  bool,"
+        " s0 bool, s1 bool ,s2 bool, s3  bool, s4  bool,s5  bool , s6  bool, s7  bool, s8  bool, s9  bool, s10  bool,"
         "s11 bool , s12  bool, s13  bool,  s14  bool, s15  bool, s16  bool, s17  bool, s18  bool, s19  bool,tsize int" 
         "tspeed  int,tmaxHitPoint  int,tcurHitPoint  int ,"
         "ttempHitPoint int,texp  int ,tsex  bool , tage int ,feet  int ,inch  int , tweight int ,talignment int,"
@@ -292,6 +292,8 @@ void DataManager::download()
         DamageSpell::damageSpellNum++;
         query2.exec("select * from Spell where ID ="+query1.value(0).toString());
         query2.next();
+        qDebug() << query1.value(0);
+        qDebug() << query2.value(0);
         DamageSpell *ds = new DamageSpell(query2.value(0).toInt(), query2.value(1).toString().toStdString(), query2.value(2).toString().toStdString(),
             query2.value(3).toInt(),query2.value(4).toInt(), query2.value(5).toBool(), query2.value(6).toInt(), query2.value(7).toString().toStdString(), 
             query2.value(8).toInt(),query2.value(9).toBool(), query2.value(10).toBool(), query2.value(11).toBool(), query2.value(12).toBool(), 
@@ -322,6 +324,7 @@ void DataManager::download()
     query2.exec("select * from Spell where ID not in (selest ID from damageSpell) and ID not in (selest ID from healSpell)");
     while (query2.next())
     {
+        qDebug() << query2.value(0);
         Spell::spellNum++;
         Spell* s = new Spell(query2.value(0).toInt(), query2.value(1).toString().toStdString(), query2.value(2).toString().toStdString(),
             query2.value(3).toInt(), query2.value(4).toInt(), query2.value(5).toBool(), query2.value(6).toInt(), query2.value(7).toString().toStdString(),
@@ -334,7 +337,7 @@ void DataManager::download()
     spelldb.close();
 
     //冒险者
-    QSqlDatabase advdb = QSqlDatabase::database("advConnection");
+    /*QSqlDatabase advdb = QSqlDatabase::database("advConnection");
     if (!advdb.open())
         exit(-1);
     QSqlQuery aquery(advdb);
@@ -437,7 +440,7 @@ void DataManager::download()
     }
     
     advdb.close();
-    equdb.close();
+    equdb.close();*/
 }
 
 
