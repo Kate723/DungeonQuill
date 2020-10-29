@@ -55,6 +55,12 @@ public:
 	QString getGender();
 	QString getAge();
 	QString getAlignment();
+	QString getHeight();
+	QString getWeight();
+	QString* getCharacteristics();
+	QString getAppearance();
+	QString getBGStory();
+	std::vector<std::string> getLanguageList();
 
 	bool isMale();
 	int getAlignmentID();

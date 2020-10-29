@@ -1,5 +1,9 @@
 ﻿#include "AdventurerClass.h"
 
+int AdventurerClass::getLV() {
+	return level;
+}
+
 int AdventurerClass::getProBonus() {
 	return (level - 1) / 4;
 }

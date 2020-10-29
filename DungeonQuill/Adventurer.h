@@ -21,11 +21,10 @@ class Adventurer :
 {
     int exp;                    //角色经验
     
-
     int curHitDice;				//当前生命骰
     int maxHitDice;				//最大生命骰
 
-    QString iconPath;           //头像路径
+    QString playerName;           //玩家名称
     
 public:
     CharacterDetails details;   //角色细节
@@ -41,7 +40,7 @@ public:
 
     Adventurer(int ttid, std::string ttname, CharacterType ttype, AbilityScore tabilityScore, 
         int s0, int s1, int s2, int s3, int s4, int s5, int s6, int s7, int s8, int s9, int s10,
-        int s11, int s12, int s13, int  s14, int s15, int s16, int s17, int s18, int s19, std::vector<std::string> tequipmentProList, 
+        int s11, int s12, int s13, int s14, int s15, int s16, int s17, int s18, int s19, std::vector<std::string> tequipmentProList, 
         Size tsize, int tspeed,
         int tmaxHitPoint, int tcurHitPoint, int ttempHitPoint, 
 
@@ -61,7 +60,7 @@ public:
         std::vector<BasicInfo> traitList,
 
         int tcurHitDice,int tmaxHitDice,
-        QString ticonPath, 
+        QString tplayername,
         std::vector<Equipment> tequipmentList,std::vector<Weapon> tweaponList,std::vector<Amour> tamourList,
 
         int cp, int sp, int ep, int gp, int pp):
@@ -76,13 +75,15 @@ public:
             tspecialAbilityName,tcurSpecialPoint,tmaxSpecialPoint, m0, m1, m2, m3, m4, m5, m6, m7, m8, m9,
             c0, c1, c2, c3, c4, c5, c6, c7, c8, c9, tspellList, traitList),
         curHitDice(tcurHitDice), maxHitDice(tmaxHitDice), 
-        iconPath(ticonPath),
+        playerName(tplayername),
         equipmentList(tequipmentList), weaponList(tweaponList), amourList(tamourList),
         characterWealth (cp, sp, ep, gp, pp){}
 
     virtual QString getRaceName();
+    QString getSubRaceName();
     QString getClassName();
-
+    QString getPlayerName();
+    int getEXP();
     int getSkillProBonus(int x);
 };
 

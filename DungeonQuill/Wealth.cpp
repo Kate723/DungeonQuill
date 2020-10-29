@@ -11,3 +11,9 @@ Wealth::Wealth(int cp, int sp, int ep, int gp, int pp) {
 	goldCoin = gp;
 	platinumCoin = pp;
 }
+
+int* Wealth::getWealth() {
+	int wealth[] = { copperCoin, silverCoin, electrumCoin, goldCoin, platinumCoin };
+
+	return wealth;
+}

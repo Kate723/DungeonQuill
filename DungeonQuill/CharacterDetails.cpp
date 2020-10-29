@@ -46,6 +46,34 @@ QString CharacterDetails::getAlignment() {
 	return NULL;
 }
 
+QString CharacterDetails::getHeight() {
+	return QString::number(height.feet) + "\'" + QString::number(height.inch) +"\'\'";
+}
+
+QString CharacterDetails::getWeight() {
+	return QString::number(weight);
+}
+
+QString* CharacterDetails::getCharacteristics() {
+	QString characteristicsList[] = { QString::fromStdString(characteristics.trait[0]),
+		QString::fromStdString(characteristics.trait[1]), QString::fromStdString(characteristics.ideal),
+		QString::fromStdString(characteristics.bond), QString::fromStdString(characteristics.flaw) };
+
+	return characteristicsList;
+}
+
+QString CharacterDetails::getAppearance() {
+	return QString::fromStdString(apperance);
+}
+
+QString CharacterDetails::getBGStory() {
+	return QString::fromStdString(bgStory);
+}
+
+std::vector<std::string> CharacterDetails::getLanguageList() {
+	return languageList;
+}
+
 bool CharacterDetails::isMale() {
 	return sex;
 }
