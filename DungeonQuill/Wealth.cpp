@@ -1,4 +1,5 @@
 ﻿#include "Wealth.h"
+#include <qdebug.h>
 
 std::string Wealth::coinNameCH[] = { "","铜币" ,"银币" ,"银金币" ,"金币" ,"铂金币" };
 std::string Wealth::coinNameEN[] = { "","cp" ,"sp" ,"ep" ,"gp" ,"pp" };
@@ -13,7 +14,7 @@ Wealth::Wealth(int cp, int sp, int ep, int gp, int pp) {
 }
 
 int* Wealth::getWealth() {
-	int wealth[] = { copperCoin, silverCoin, electrumCoin, goldCoin, platinumCoin };
+	static int wealth[5] = { copperCoin, silverCoin, electrumCoin, goldCoin, platinumCoin };
 
 	return wealth;
 }

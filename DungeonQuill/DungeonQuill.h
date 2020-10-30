@@ -9,6 +9,7 @@
 #include "NewMapButton.h"
 #include "qtablewidget.h"
 #include "CombatManager.h"
+#include "DiceMaid.h"
 #include "CharacterChoose.h"
 #include "DataManager.h"
 #include "ui_DungeonQuill.h"
@@ -21,6 +22,7 @@ class DungeonQuill : public QMainWindow
 
 public slots:
     void spellInquiry(int x);
+    void diceRollButtonClicked();
 
 public:
     DungeonQuill();
@@ -30,6 +32,7 @@ public:
 private:
     Ui::DungeonQuillClass ui;
     static DungeonQuill* instance;
+    DiceMaid* dice;
     static void deleteLayout(QLayout* layout);
 
     void initCharacterTab();
@@ -40,6 +43,9 @@ private:
 
     void initSpellTab();
     Spell* findNextSpell(bool resetFlag);
+
+    void initDiceTab();
+    void sleep(int msec);
 
     friend DiceMaid;
 };

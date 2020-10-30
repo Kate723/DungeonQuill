@@ -170,6 +170,9 @@
     <ClCompile Include="CharacterChoose.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InitiativeRoll.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Area.h">
@@ -270,6 +273,9 @@
     <QtUic Include="CharacterChoose.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="InitiativeRoll.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="CharacterDisplay.h">
@@ -307,6 +313,9 @@
     </QtMoc>
     <QtMoc Include="CharacterChoose.h">
       <Filter>Header Files\ui</Filter>
+    </QtMoc>
+    <QtMoc Include="InitiativeRoll.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

@@ -3,6 +3,10 @@
 std::string CombatCharacter::conditionName[] = {"目盲", "魅惑" , "耳聋", "恐慌", 
 "擒抱", "失能", "隐形", "麻痹", "石化", "中毒", "倒地", "束缚", "震慑", "昏迷"};
 
+int CombatCharacter::getID() {
+	return id;
+}
+
 QString CombatCharacter::getName() {
 	return QString::fromUtf8(name.c_str());
 }
@@ -67,4 +71,29 @@ int* CombatCharacter::getHPdata() {
 	int hpData[] = { maxHitPoint,curHitPoint,tempHitPoint };
 
 	return hpData;
+}
+
+int CombatCharacter::getInitiativePlus() {
+	return 0;
+}
+
+void CombatCharacter::setInitiativeData(int* data) {
+	for (int i = 0; i < 3; i++) {
+		*(initiative + i) = *(data + i);
+	}
+}
+
+int* CombatCharacter::getInitiativeData() {
+	return initiative;
+}
+
+QString CombatCharacter::getInitiativeString() {
+	if (!initiative) return nullptr;
+	return QString::number(initiative[1]) + '+' + QString::number(initiative[2]) + '=' + QString::number(initiative[0]);
+}
+
+bool CombatCharacter::compareInitiative(CombatCharacter* last) {
+	if (this->initiative[0] == last->initiative[0])
+		return this->initiative[2] > last->initiative[2];
+	return this->initiative[0] > last->initiative[0];
 }

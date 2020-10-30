@@ -1,4 +1,5 @@
 ﻿#include "CharacterDisplay.h"
+#include "qdebug.h"
 
 CharacterDisplay::CharacterDisplay(Adventurer* _character) : 
 	character(_character)
@@ -235,17 +236,29 @@ void CharacterDisplay::initTableFormat(const QTableWidget* table, const int Head
 	((QAbstractItemView*)table)->setSelectionMode(QAbstractItemView::NoSelection);		//取消选择功能
 }
 
+void CharacterDisplay::initTextEditFormat(QTextEdit* edit) {
+	QTextCursor textCursor = edit->textCursor();
+	QTextBlockFormat textBlockFormat;
+	textBlockFormat.setLineHeight(20, QTextBlockFormat::FixedHeight);//设置固定行高
+	textCursor.setBlockFormat(textBlockFormat);
+	edit->setTextCursor(textCursor);
+}
+
 /// <summary>
 /// 初始化内容函数
 /// </summary>
 
 void CharacterDisplay::initContent() {
+	initBasicContent();
 	initRaceBox(character->race.getRaceID());
 	initGenderBox(character->details.isMale());
 	initAligBox(character->details.getAlignmentID());
 	setProBox();
 	initHPContent();
 	initAbilityContent();
+	initBGContent();
+	initWealthTable();
+	initSpellSlots();
 }
 
 void CharacterDisplay::initBasicContent() {
@@ -253,7 +266,7 @@ void CharacterDisplay::initBasicContent() {
 	ui.nameTable->setItem(1, 0, new QTableWidgetItem(character->getPlayerName()));
 
 	ui.classTable->setItem(0, 0, tableItem(character->getClassName()));
-	ui.classTable->setItem(0, 0, new QTableWidgetItem(QString::number(character->getEXP())));
+	ui.classTable->setItem(1, 0, new QTableWidgetItem(QString::number(character->getEXP())));
 
 	ui.levelTable->setItem(0, 0, tableItem(character->_class.getLV()));
 
@@ -285,8 +298,8 @@ void CharacterDisplay::initRaceBox(int index) {
 
 void CharacterDisplay::initGenderBox(int index) {
 	QComboBox* genderBox = new QComboBox();
-	genderBox->addItem(QString::fromLocal8Bit("男"));
 	genderBox->addItem(QString::fromLocal8Bit("女"));
+	genderBox->addItem(QString::fromLocal8Bit("男"));
 
 	genderBox->setCurrentIndex(index);
 
@@ -353,6 +366,8 @@ void CharacterDisplay::initHPContent() {
 
 	item = tableItem("HD");
 	ui.hpTable->setItem(3, 0, item);
+	item = tableItem(character->getHDString());
+	ui.hpTable->setItem(3, 1, item);
 }
 
 void CharacterDisplay::initAbilityContent() {
@@ -388,7 +403,9 @@ void CharacterDisplay::initBGContent() {
 	}
 
 	ui.appearanceText->setPlainText(character->details.getAppearance());
-	ui.bgText->setPlainText(character->details.getBGStory());
+	ui.bgText->setPlainText(character->details.getBGStory());	
+	initTextEditFormat(ui.appearanceText);
+	initTextEditFormat(ui.bgText);
 }
 
 void CharacterDisplay::initWealthTable() {
@@ -397,4 +414,13 @@ void CharacterDisplay::initWealthTable() {
 	for (int i = 0; i < 5; i++) {
 		ui.wealthTable->setItem(i, 0, new QTableWidgetItem(QString::number(wealth[i])));
 	}
+	initTableFormat(ui.wealthTable);
+}
+
+void CharacterDisplay::initSpellSlots() {
+	auto spellSlots = character->_class.getSpellSlotStrings();
+	for (int i = 0; i < 9; i++) {
+		ui.spellSlotTable->setItem(i, 0, tableItem(spellSlots[i]));
+	}
+	initTableFormat(ui.wealthTable);
 }

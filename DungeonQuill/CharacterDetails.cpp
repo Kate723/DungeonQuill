@@ -55,9 +55,12 @@ QString CharacterDetails::getWeight() {
 }
 
 QString* CharacterDetails::getCharacteristics() {
-	QString characteristicsList[] = { QString::fromStdString(characteristics.trait[0]),
-		QString::fromStdString(characteristics.trait[1]), QString::fromStdString(characteristics.ideal),
-		QString::fromStdString(characteristics.bond), QString::fromStdString(characteristics.flaw) };
+	static QString characteristicsList[5];
+	characteristicsList[0] = QString::fromStdString(characteristics.trait[0]);
+	characteristicsList[1] = QString::fromStdString(characteristics.trait[1]);
+	characteristicsList[2] = QString::fromStdString(characteristics.ideal);
+	characteristicsList[3] = QString::fromStdString(characteristics.bond);
+	characteristicsList[4] = QString::fromStdString(characteristics.flaw);
 
 	return characteristicsList;
 }

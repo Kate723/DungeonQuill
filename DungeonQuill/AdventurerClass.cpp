@@ -5,7 +5,7 @@ int AdventurerClass::getLV() {
 }
 
 int AdventurerClass::getProBonus() {
-	return (level - 1) / 4;
+	return (level - 1) / 4 + 2;
 }
 
 QString AdventurerClass::getspecialAbilityName() {
@@ -22,4 +22,13 @@ const int* AdventurerClass::getMaxSpellSlots() {
 
 const int* AdventurerClass::getCurSpellSlots() {
 	return curSpellSlots;
+}
+
+QString* AdventurerClass::getSpellSlotStrings() {
+	static QString spellSlot[10];
+	for (int i = 0; i < 9; i++) {
+		spellSlot[i] = QString::number(curSpellSlots[i + 1]) + '/' + QString::number(maxSpellSlots[i + 1]);
+	}
+
+	return spellSlot;
 }

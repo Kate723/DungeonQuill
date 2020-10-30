@@ -47,5 +47,6 @@ public:
 
 	const int* getMaxSpellSlots();
 	const int* getCurSpellSlots();
+	QString* getSpellSlotStrings();
 };
 

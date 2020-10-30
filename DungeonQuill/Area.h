@@ -16,7 +16,7 @@ class Area
 	}shape;
 	int size;		//区域大小，以尺为单位
 public:
-	Area(int sI, int s):
+	Area(int sI = SPHERE, int s = 5):
 		shape((AreaShape)sI),size(s){}
 };
 

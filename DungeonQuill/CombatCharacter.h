@@ -35,6 +35,7 @@ protected:
 	/// <summary>
 	/// 以下战斗临时数据，不计入数据库
 	/// </summary>
+	int initiative[3];				//先攻数据
 	std::vector<Buff> buffList;		//增/减益列表
 
 	bool isConsentrating;			//是否处于专注
@@ -63,6 +64,7 @@ public:
 		curHitPoint(tcurHitPoint),
 		tempHitPoint(ttempHitPoint){}
 
+	int getID();
 	QString getName();
 	virtual QString getRaceName();
 	QString getSizeString();
@@ -75,6 +77,12 @@ public:
 	const std::vector<std::string> getEquipmentProList();
 	int getSpeed();
 	int* getHPdata();
+
+	virtual int getInitiativePlus();
+	void setInitiativeData(int* data);
+	int* getInitiativeData();
+	QString getInitiativeString();
+	bool compareInitiative(CombatCharacter* last);
 
 	friend CombatPiece;
 };

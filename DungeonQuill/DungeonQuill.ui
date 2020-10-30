@@ -159,89 +159,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
-          <item>
-           <widget class="QComboBox" name="comboBox_job">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>180</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 16pt &quot;汉仪南宫体简&quot;;</string>
-            </property>
-            <property name="maxVisibleItems">
-             <number>20</number>
-            </property>
-            <item>
-             <property name="text">
-              <string>不限职业</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>吟游诗人</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>牧师</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>德鲁伊</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>战士</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>武僧</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>圣武士</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>游侠</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>游荡者</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>术士</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>邪术师</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>法师</string>
-             </property>
-            </item>
-           </widget>
-          </item>
+         <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,1,0,1">
           <item>
            <spacer name="horizontalSpacer_4">
             <property name="orientation">
@@ -427,28 +345,6 @@
              </size>
             </property>
            </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="inquiryBotton">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>80</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 16pt &quot;汉仪南宫体简&quot;;</string>
-            </property>
-            <property name="text">
-             <string>查询</string>
-            </property>
-           </widget>
           </item>
          </layout>
         </item>

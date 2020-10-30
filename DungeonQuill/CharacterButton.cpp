@@ -15,8 +15,16 @@ CharacterButton::~CharacterButton()
 void CharacterButton::setDisplayText()
 {
 	displayText->setText(
-		tr("<h3><font color = brown>%1<br>")
-		.arg(adventurer->getName()) 
+		tr("<h3><font color = brown>%1<h1><font color = green>LV.%2</font>"
+		   "<h4><font color = black>%3%4  %5  %6"
+			"<h4>%7")
+		.arg(adventurer->getName())
+		.arg(adventurer->_class.getLV())
+		.arg(adventurer->getRaceName())
+		.arg(adventurer->getClassName())
+		.arg(adventurer->details.getGender())
+		.arg(adventurer->details.getAge())
+		.arg(adventurer->details.getAlignment())
 	);	
 }
 

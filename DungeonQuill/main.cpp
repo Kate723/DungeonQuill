@@ -3,6 +3,7 @@
 #include "AbilityScore.h"
 #include <QtWidgets/QApplication>
 #include <qfile.h>
+#include <qdebug.h>
 #include <iostream>
 #include "DataManager.h"
 #include "DiceMaid.h"
@@ -29,11 +30,9 @@ int main(int argc, char *argv[])
 
     //定义主窗口并打开
     DungeonQuill w;
-    auto dicemaid = new DiceMaid(&w);
+    auto dicemaid = new DiceMaid();
     auto combatManager = new CombatManager();
     w.show();
-
-   
 
     return a.exec();
 }

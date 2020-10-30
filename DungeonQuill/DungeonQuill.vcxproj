@@ -123,6 +123,7 @@
     <ClCompile Include="DisplayButton.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="HealSpell.cpp" />
+    <ClCompile Include="InitiativeRoll.cpp" />
     <ClCompile Include="MapButton.cpp" />
     <ClCompile Include="MapEditor.cpp" />
     <ClCompile Include="Monster.cpp" />
@@ -141,6 +142,7 @@
     <QtMoc Include="DungeonQuill.h" />
     <ClCompile Include="DungeonQuill.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="InitiativeRoll.ui" />
     <QtUic Include="MapEditor.ui" />
     <QtUic Include="SpellDisplay.ui" />
   </ItemGroup>
@@ -163,6 +165,7 @@
     <QtMoc Include="CombatManager.h" />
     <QtMoc Include="DiceMaid.h" />
     <QtMoc Include="DisplayButton.h" />
+    <QtMoc Include="InitiativeRoll.h" />
     <ClInclude Include="Wealth.h" />
     <ClInclude Include="Weapon.h" />
     <QtMoc Include="SpellDisplay.h" />

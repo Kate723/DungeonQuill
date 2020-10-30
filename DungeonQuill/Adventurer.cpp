@@ -1,5 +1,9 @@
 ﻿#include "Adventurer.h"
 
+QString Adventurer::getHDString() {
+	return QString::number(curHitDice) + '/' + QString::number(maxHitDice);
+}
+
 QString Adventurer::getRaceName() {
 	return race.getRaceName();
 }
@@ -49,4 +53,8 @@ int Adventurer::getSkillProBonus(int x) {
 	if (skillPro[x])
 		proBonus += _class.getProBonus();
 	return proBonus;
+}
+
+int Adventurer::getInitiativePlus() {
+	return abilityScore.getAbilityModifier(1);
 }

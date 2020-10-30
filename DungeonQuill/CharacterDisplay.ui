@@ -33,6 +33,9 @@
          <height>250</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">font: 12pt &quot;汉仪南宫体简&quot;;</string>
+       </property>
        <property name="title">
         <string>基本信息</string>
        </property>
@@ -633,6 +636,10 @@
    </item>
    <item>
     <widget class="QTabWidget" name="Tab">
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;汉仪南宫体简&quot;;
+</string>
+     </property>
      <property name="tabPosition">
       <enum>QTabWidget::North</enum>
      </property>
@@ -719,7 +726,7 @@
             <bool>false</bool>
            </attribute>
            <attribute name="verticalHeaderDefaultSectionSize">
-            <number>30</number>
+            <number>33</number>
            </attribute>
            <row/>
            <row/>
@@ -838,7 +845,7 @@
             <bool>false</bool>
            </attribute>
            <attribute name="verticalHeaderDefaultSectionSize">
-            <number>30</number>
+            <number>33</number>
            </attribute>
            <row/>
            <row/>
@@ -959,6 +966,9 @@
       </layout>
      </widget>
      <widget class="QWidget" name="bgTab">
+      <property name="styleSheet">
+       <string notr="true">font: 10pt &quot;汉仪南宫体简&quot;;</string>
+      </property>
       <attribute name="title">
        <string>背景</string>
       </attribute>
@@ -999,6 +1009,9 @@
                 <width>16777215</width>
                 <height>150</height>
                </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
               </property>
               <property name="verticalScrollBarPolicy">
                <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -1166,7 +1179,7 @@
                </layout>
               </item>
               <item>
-               <widget class="QPlainTextEdit" name="appearanceText"/>
+               <widget class="QTextEdit" name="appearanceText"/>
               </item>
              </layout>
             </item>
@@ -1210,7 +1223,7 @@
                </layout>
               </item>
               <item>
-               <widget class="QPlainTextEdit" name="bgText"/>
+               <widget class="QTextEdit" name="bgText"/>
               </item>
              </layout>
             </item>
@@ -1236,8 +1249,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>749</width>
-            <height>469</height>
+            <width>98</width>
+            <height>28</height>
            </rect>
           </property>
          </widget>
@@ -1314,7 +1327,7 @@
       <attribute name="title">
        <string>法术</string>
       </attribute>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QHBoxLayout" name="horizontalLayout_12" stretch="5,1">
        <item>
         <widget class="QScrollArea" name="scrollArea">
          <property name="widgetResizable">
@@ -1325,11 +1338,38 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>1013</width>
-            <height>469</height>
+            <width>98</width>
+            <height>28</height>
            </rect>
           </property>
          </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="spellSlotTable">
+         <property name="rowCount">
+          <number>9</number>
+         </property>
+         <property name="columnCount">
+          <number>1</number>
+         </property>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <column>
+          <property name="text">
+           <string>法术位</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>

@@ -81,11 +81,13 @@ public:
         equipmentList(tequipmentList), weaponList(tweaponList), amourList(tamourList),
         characterWealth (cp, sp, ep, gp, pp){}
 
+    QString getHDString();
     virtual QString getRaceName();
     QString getSubRaceName();
     QString getClassName();
     QString getPlayerName();
     int getEXP();
     int getSkillProBonus(int x);
+    virtual int getInitiativePlus();
 };
 

@@ -8,8 +8,8 @@
 #include <QObject>
 #include <queue>
 #include "EnumType.h"
+#include "InitiativeRoll.h"
 #include "CombatMap.h"
-#include "CombatCharacter.h"
 #include "MapEditor.h"
 
 class CombatManager : public QObject
@@ -21,7 +21,12 @@ class CombatManager : public QObject
 	CombatCondition conditionFlag;
 	CombatMap* map;							//战斗地图
 	MapEditor* combatWin;					//战斗窗口
+	QScrollArea* combatQueueArea;			//战斗队列显示
 	std::queue<CombatPiece*> actionQueue;	//先攻队列
+
+	void characterSort(std::vector<Adventurer*> characterList);
+	void initQuickSort(std::vector<Adventurer*> &characterList, int begin, int end);
+	void initQueue(std::vector<Adventurer*> characterList);
 
 public slots:
 	static void combatStart(CombatMap* _map, MapEditor* _combatWin);
@@ -32,4 +37,5 @@ public:
 	~CombatManager();
 	static CombatCondition getCombatCondition();
 	static void setCombatCondition(CombatCondition condition);
+	static void characterSelected(std::vector<Adventurer*> characterList);
 };

@@ -5,9 +5,10 @@
 */
 #pragma once
 #include "Area.h"
-#include "CombatCharacter.h"
+#include "Adventurer.h"
 
 class MapEditor;
+class CombatManager;
 
 class CombatPiece
 {
@@ -17,10 +18,10 @@ class CombatPiece
 	BasicInfo pieceInfo;			//棋子信息
 	Area occupiedArea;				//占据区域（画图用）
 	
-public:
-	CombatCharacter *character;		//代表战斗角色
-	CombatPiece(int _x,int _y,const CombatCharacter* character = NULL);
+	Adventurer *character;		//代表战斗角色
+	CombatPiece(Adventurer* character = NULL);
 
 	friend MapEditor;
+	friend CombatManager;
 };
 

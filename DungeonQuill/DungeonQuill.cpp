@@ -14,10 +14,12 @@ DungeonQuill::DungeonQuill()
 
     connect(ui.comboBox_level, SIGNAL(currentIndexChanged(int)), this, SLOT(spellInquiry(int)));
     connect(ui.comboBox_school, SIGNAL(currentIndexChanged(int)), this, SLOT(spellInquiry(int)));
+    connect(ui.diceRollButton, SIGNAL(clicked()), this, SLOT(diceRollButtonClicked()));
 
     initCharacterTab();
     initCombatTab();
     initSpellTab();
+    initDiceTab();
 }
 
 void DungeonQuill::initCharacterTab() {
@@ -78,7 +80,6 @@ void DungeonQuill::initSpellTab() {
         auto newButton = new SpellBotton(pSpell);
         
         grid->addWidget(newButton, row, col + 1);
-        qDebug() << pSpell->getNameCH();
         row += ++col / 4;
         col %= 4;
     }
@@ -235,4 +236,53 @@ QTableWidgetItem* DungeonQuill::tableItem(QColor gridColor, QString& str)
     item->setBackgroundColor(gridColor);
 
     return item;
+}
+
+void DungeonQuill::initDiceTab() {
+    ui.diceMaidText->setAlignment(Qt::AlignCenter);
+    ui.diceRollText->setAlignment(Qt::AlignCenter);
+
+    ui.diceNumSpinBox->setValue(1);
+    ui.diceSideSpinBox->setValue(20);
+}
+
+void DungeonQuill::diceRollButtonClicked() {
+    int diceNum = ui.diceNumSpinBox->value();
+    int diceSide = ui.diceSideSpinBox->value();
+    if (diceNum <= 0 || diceSide <= 0) return;
+
+    QString resString = QString();
+    int resSum = 0;
+    for (int i = 0; i < diceNum; i++) {
+        auto dice = new DiceRollType(10, 0, diceSide);
+        auto rollResult = DiceMaid::diceRoll(dice);
+
+        for (int j = 0; j < 10; j++) {
+            ui.diceRollText->setText(resString + QString::number(rollResult[j]));
+            ui.diceRollText->setAlignment(Qt::AlignCenter);
+            sleep(50);
+        }
+        resSum += rollResult[9];
+        resString += QString::number(rollResult[9]);
+        if (i != (diceNum - 1))
+            resString += QString::fromLocal8Bit("+");
+    }
+    if (diceNum > 1) {
+        resString += QString::fromLocal8Bit("=");
+        sleep(100);
+        ui.diceRollText->setText(resString);
+        ui.diceRollText->setAlignment(Qt::AlignCenter);
+
+        resString += QString::number(resSum);
+        sleep(100);
+        ui.diceRollText->setText(resString);
+        ui.diceRollText->setAlignment(Qt::AlignCenter);
+    }
+}
+
+void DungeonQuill::sleep(int msec) {
+    QTime reachTime = QTime::currentTime().addMSecs(msec);
+
+    while (QTime::currentTime() < reachTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents);
 }
