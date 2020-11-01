@@ -1,5 +1,4 @@
 ﻿#include "CharacterDisplay.h"
-#include "qdebug.h"
 
 CharacterDisplay::CharacterDisplay(Adventurer* _character) : 
 	character(_character)

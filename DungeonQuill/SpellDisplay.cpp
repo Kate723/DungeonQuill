@@ -1,5 +1,4 @@
 ﻿#include "SpellDisplay.h"
-#include <qdebug.h>
 
 SpellDisplay::SpellDisplay(Spell* displaySpell) : spell(displaySpell)
 {

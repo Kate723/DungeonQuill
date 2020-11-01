@@ -3,7 +3,6 @@
 #include "AbilityScore.h"
 #include <QtWidgets/QApplication>
 #include <qfile.h>
-#include <qdebug.h>
 #include <iostream>
 #include "DataManager.h"
 #include "DiceMaid.h"

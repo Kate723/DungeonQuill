@@ -1,5 +1,4 @@
 ﻿#include "CharacterChoose.h"
-#include <qdebug.h>
 
 CharacterChoose::CharacterChoose()
 {

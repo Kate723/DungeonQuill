@@ -1,5 +1,4 @@
 ﻿#include "NewMapButton.h"
-#include <qdebug.h>
 
 NewMapButton::NewMapButton()
 {

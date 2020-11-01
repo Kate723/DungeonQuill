@@ -1,6 +1,6 @@
 ﻿#include "DataManager.h"
 #include <QSqlError>
-#include <QDebug>
+
 //创建数据库
 void DataManager::createDb()
 {
@@ -359,7 +359,6 @@ void DataManager::download()
         QSqlQuery equery(equdb);
         for (int i = 96; !aquery.value(i).isValid()&&i<96+vnum; i++)
         {
-            qDebug() << aquery.value(i).isValid();
             equery.exec("select * from equipment where ID = "+ aquery.value(i).toString());
             Equipment* e = new Equipment(equery.value(0).toInt(), equery.value(1).toString().toStdString(), 
                 equery.value(2).toString().toStdString(), (EquipemntType)equery.value(3).toInt());

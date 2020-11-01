@@ -26,12 +26,10 @@ void DungeonQuill::initCharacterTab() {
     QGridLayout* grid = new QGridLayout();
 
     int characterNum = Adventurer::adventurerList.size();
-    qDebug() << characterNum;
 
     int row = 0;
     int col = 0;
     for (int i = 0; i < characterNum; i++) {
-        qDebug() << i;
         auto newButton = new CharacterButton(Adventurer::adventurerList[i]);
         grid->addWidget(newButton, row, col + 1);
 
@@ -71,7 +69,6 @@ void DungeonQuill::initSpellTab() {
     QGridLayout* grid = new QGridLayout();
 
     int spellNum = Spell::spellNum + DamageSpell::damageSpellNum + HealSpell::healSpellNum;
-    qDebug() << spellNum;
 
     int row = 0;
     int col = 0;
@@ -133,7 +130,6 @@ void DungeonQuill::spellInquiry(int x)
     //重新筛选建立
     QGridLayout* grid = new QGridLayout();
     int spellNum = Spell::spellNum + DamageSpell::damageSpellNum + HealSpell::healSpellNum;
-    qDebug() << spellNum;
 
     int row = 0;
     int col = 0;
@@ -142,7 +138,6 @@ void DungeonQuill::spellInquiry(int x)
         if (selectedLV && pSpell->getLevel() != selectedLV - 1) continue;
         if (selectedSchool && pSpell->getSchoolID() != selectedSchool - 1) continue;
 
-        qDebug() << i;
         auto newButton = new SpellBotton(pSpell);
         grid->addWidget(newButton, row, col++);
 

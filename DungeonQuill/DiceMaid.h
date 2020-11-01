@@ -2,7 +2,6 @@
 
 #include <QObject>
 #include <qtimer.h>
-#include <qdebug.h>
 #include <random>
 #include "DiceRollType.h"
 #include "Adventurer.h"

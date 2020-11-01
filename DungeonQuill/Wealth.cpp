@@ -1,5 +1,4 @@
 ﻿#include "Wealth.h"
-#include <qdebug.h>
 
 std::string Wealth::coinNameCH[] = { "","铜币" ,"银币" ,"银金币" ,"金币" ,"铂金币" };
 std::string Wealth::coinNameEN[] = { "","cp" ,"sp" ,"ep" ,"gp" ,"pp" };

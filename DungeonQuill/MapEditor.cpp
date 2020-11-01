@@ -1,5 +1,4 @@
 ﻿#include "MapEditor.h"
-#include "qdebug.h"
 
 QColor barrierColor = QColor(138, 105, 19);
 QColor flatColor = QColor(249, 241, 219);
