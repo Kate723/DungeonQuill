@@ -357,7 +357,7 @@ void DataManager::download()
         std::vector<Amour> amourList;
         std::vector<std::string> equipmentProList;
         QSqlQuery equery(equdb);
-        for (int i = 96; !aquery.value(i).isValid()&&i<96+vnum; i++)
+        for (int i = 96; !aquery.value(i).isValid() &&i<96+vnum; i++)
         {
             qDebug() << aquery.value(i).isValid();
             equery.exec("select * from equipment where ID = "+ aquery.value(i).toString());
